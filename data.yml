@@ -302,12 +302,34 @@
   ytburl: https://youtu.be/l-psxR3CjLA
   spotyurl: https://open.spotify.com/track/2MvLw9BE5ndkvZLXJcb1oC?si=1dbde88f0d1445ed
 
-- anime: Death Parade
+- anime: Your lie in April
+  relation: OP1
+  img: yourlieinapril01.png
+  titre: Hikaru Nara
+  interprete: Goose House
+  ytburl: https://youtu.be/ZZSd3pq8Yqk
+  spotyurl: https://open.spotify.com/track/2cwvwUyyjjFsv55EywX9Zo?si=617f052781854507
+
+- anime: Your lie in April
+  relation: OP2
+  img: yourlieinapril01.png
+  titre: Nanairo Symphony
+  interprete: Coalamode.
+  ytburl: https://youtu.be/wBbc_xgvZhk
+  spotyurl: https://open.spotify.com/track/3oJLF4CajKbrJSdxpXKXc8?si=2fd638168b474c81
+
+- anime: Your lie in April
   relation: ED1
-  img: deathparade01.png
-  titre: Last Theater
-  interprete: NoisyCell
-  ytburl: https://youtu.be/l-psxR3CjLA
-  spotyurl: https://open.spotify.com/track/2MvLw9BE5ndkvZLXJcb1oC?si=1dbde88f0d1445ed
+  img: yourlieinapril01.png
+  titre: Kirameki
+  interprete: wacci
+  ytburl: https://youtu.be/RgX1xRHy3mo
+  spotyurl: https://open.spotify.com/track/4grqiBUgCehXsO6RjQH9YR?si=a264cafc703b4f5d
 
-
+- anime: Your lie in April
+  relation: ED2
+  img: yourlieinapril01.png
+  titre: Orange
+  interprete: 7!!
+  ytburl: https://youtu.be/JdSpuTi9d8A
+  spotyurl: https://open.spotify.com/track/1iOQmZULzzkDN1hQZNoDii?si=6f82ea5324734aaa
