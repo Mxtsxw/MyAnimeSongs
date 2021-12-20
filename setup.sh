@@ -8,6 +8,4 @@ if echo "$reponse" | grep -iq "^y" ;then
     echo "Environnement créé"
 fi
 
-export FLASK_APP=website
-
 echo -e "-------------------------------------\n- source venv/bin/activate\n- flask run"
