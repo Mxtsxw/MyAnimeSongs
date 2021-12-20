@@ -10,4 +10,4 @@ fi
 
 export FLASK_APP=website
 
-echo -e "-------------------------------------\nsource venv/bin/activate"
+echo -e "-------------------------------------\n- source venv/bin/activate\n- flask run"
