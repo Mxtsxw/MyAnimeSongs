@@ -14,7 +14,7 @@ class Song(db.Model):
     title = db.Column(db.String(200))
     relation = db.Column(db.String(10))
     interpreter = db.Column(db.String(200))
-    ytb_url = db.Column(db.Sring(200))
+    ytb_url = db.Column(db.String(200))
     spoty_url = db.Column(db.String(200))
     anime_id = db.Column(db.Integer, db.ForeignKey("anime.id"))
     anime = db.relationship("Anime", backref = db.backref("songs", lazy = "dynamic"))
