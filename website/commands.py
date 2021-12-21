@@ -2,14 +2,15 @@ import click
 import yaml
 from .app import app, db
 from .models import Anime, Song
+import os.path
 
 @app.cli.command()
-@click.argument('filename')
 
-def create_db(filename):
-    
+def create_db():
+    '''Create the tables and populates them with data.yml'''
+
     db.create_all()
-    songs = yaml.load(open(filename), Loader = yaml.SafeLoader)
+    songs = yaml.load(open("website/database/data.yml"), Loader = yaml.SafeLoader)
     
     animes = dict()
     
@@ -37,4 +38,12 @@ def create_db(filename):
     
     db.session.commit()
     
+@app.cli.command()
+
+def remove_db():
+    '''Remove database/songs.db file'''
+    if os.path.exists("website/database/songs.db"):
+        os.remove("website/database/songs.db")
+    else:
+        print("The file does not exist")
 
