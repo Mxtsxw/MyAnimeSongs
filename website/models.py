@@ -21,4 +21,13 @@ class Song(db.Model):
 
     def __repr__(self):
         return "<Song (%d) %s>" % (self.id, self.title)
-    
+
+def get_animes():
+    return Anime.query.all()
+
+def get_anime(id):
+    return Anime.query.get_or_404(id)
+
+def get_songs_anime(id):
+    return Anime.query.get_or_404(id).songs.all()
+
