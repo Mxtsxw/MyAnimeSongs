@@ -31,3 +31,9 @@ def get_anime(id):
 def get_songs_anime(id):
     return Anime.query.get_or_404(id).songs.all()
 
+def get_songs():
+    return Song.query.all()
+
+def get_song(id):
+    return Song.query.get_or_404(id)
+
