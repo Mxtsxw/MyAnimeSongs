@@ -17,7 +17,7 @@ def create_db():
     for song in songs:
         anime = song["anime"]
         if anime not in animes:
-            obj = Anime(name = anime)
+            obj = Anime(name = anime, img = song["img"])
             db.session.add(obj)
             animes[anime] = obj
     
