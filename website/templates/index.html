@@ -2,7 +2,6 @@
 {% block main %}
 <div class="container">
 
-
 <div>
     <ul>
         {% for anime in animes %}
@@ -18,8 +17,13 @@
                 <li>
                     <p>Titre : {{ song.title }}    {{ song.relation}}</p>
                     <p>Interprète : {{ song.interpreter }}</p>
-                    <a href="{{ song.ytb_url }}" target="_blank">youtube</a>
-                    <a href="{{ song.spoty_url }}" target="_blank">spoty</a>
+                    <iframe id="ytplayer" type="text/html" width="640" height="360"
+                    src="http://www.youtube.com/embed/{{ song.ytb_url }}?autoplay=1"
+                    loading="lazy"></iframe>
+                    <iframe width="300" height="380"
+                    src="{{ song.spoty_url }}" 
+                    allowtransparency="true" allow="encrypted-media"
+                    loading="lazy"></iframe>
                 </li>
                 {% endfor %}
             </ul>
