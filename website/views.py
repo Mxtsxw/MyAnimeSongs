@@ -11,18 +11,6 @@ from website.models import get_anime, get_animes, get_song, get_songs, get_songs
 def home():
     return render_template(
         "index.html",
-        title="My Anime Songs"
-    )
-
-class AnimeRequest(FlaskForm):
-    anime = StringField("nom", validators = [DataRequired()])
-    
-
-@app.route("/request/")
-def request_song():
-    form = AnimeRequest()
-    return render_template(
-        "anime-request.html",
-        form = form,
+        title="My Anime Songs",
         animes = get_animes()
     )
