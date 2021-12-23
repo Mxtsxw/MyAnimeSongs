@@ -23,7 +23,7 @@ class Song(db.Model):
         return "<Song (%d) %s>" % (self.id, self.title)
 
 def get_animes():
-    return Anime.query.all()
+    return Anime.query.order_by('name').all()
 
 def get_anime(id):
     return Anime.query.get_or_404(id)
@@ -32,7 +32,7 @@ def get_songs_anime(id):
     return Anime.query.get_or_404(id).songs.all()
 
 def get_songs():
-    return Song.query.all()
+    return Song.query.order_by('title').all()
 
 def get_song(id):
     return Song.query.get_or_404(id)
