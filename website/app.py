@@ -1,5 +1,5 @@
 from flask import Flask
-from flask_bootstrap import Bootstrap
+from flask_bootstrap5 import Bootstrap
 from flask_sqlalchemy import SQLAlchemy 
 import os.path
 
