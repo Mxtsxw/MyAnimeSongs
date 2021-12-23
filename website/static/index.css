@@ -1,0 +1,9 @@
+.crop {
+    width: 150px;
+    height: 200px;
+    overflow: hidden;
+}
+
+.crop img{
+    width: 80%;
+}
