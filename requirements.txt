@@ -1,7 +1,7 @@
 click==8.0.3
 dominate==2.6.0
 Flask==2.0.2
-Flask-Bootstrap4==4.0.2
+flask-bootstrap5==0.1.dev1
 Flask-SQLAlchemy==2.5.1
 Flask-WTF==1.0.0
 greenlet==1.1.2
