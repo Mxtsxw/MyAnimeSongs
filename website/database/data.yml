@@ -449,7 +449,7 @@
 - anime: Tokyo Revengers
   relation: ED2
   img: tokyorevengers01.jpg
-  title: Tokyo Wonder.
+  title: Tokyo Wonder
   interpreter: Nakimushi
   ytb_url: 8EVUrD1etHs
   spoty_url: https://open.spotify.com/embed/track/2qzZWD9zaMaXGQmARikLhL
@@ -593,10 +593,10 @@
 - anime: My Hero Academia - Saison 4
   relation: ED1
   img: mha04.jpg
-  title: Star Maker
-  interpreter: KANA-BOON
+  title: Koukai no Uta
+  interpreter: Sayuri
   ytb_url: 1NfF9Bo8vhM
-  spoty_url: https://open.spotify.com/embed/track/0pQm5AbAaVy9XrOLf7rgSF
+  spoty_url: https://open.spotify.com/embed/track/6jZBvlt3xG6gdPh1vFMBhs
 
 - anime: My Hero Academia - Saison 4
   relation: OP2
@@ -605,3 +605,115 @@
   interpreter: KANA-BOON
   ytb_url: MdfFVdFWl1U
   spoty_url: https://open.spotify.com/embed/track/0pQm5AbAaVy9XrOLf7rgSF
+
+- anime: My Hero Academia - Saison 4
+  relation: ED2
+  img: mha04.jpg
+  title: Shout Baby
+  interpreter: Ryokuoushoku Shakai
+  ytb_url: qi1J4Lyl8do
+  spoty_url: https://open.spotify.com/embed/track/5K1m4aaPCxwnm9SKlWW1vh
+
+- anime: My Hero Academia - Saison 4
+  relation: OST
+  img: mha04.jpg
+  title: Might*U
+  interpreter: Makayla Philips
+  ytb_url: 7HxxQ8d68_E
+  spoty_url: https://open.spotify.com/embed/track/3YfBeHLGH9EhRPVHYaQMyD
+
+- anime: My Hero Academia - Saison 4
+  relation: OST
+  img: mha04.jpg
+  title: Hero Too
+  interpreter: Chrissy Costanza
+  ytb_url: GgwUenaQqlM
+  spoty_url: https://open.spotify.com/embed/track/0VPkaJMRQIhYWXiE1LqaCK
+
+- anime: My Hero Academia - Saison 5
+  relation: OP1
+  img: mha05.jpg
+  title: NO.1
+  interpreter: DISH//
+  ytb_url: jlwOlzVK5kY
+  spoty_url: https://open.spotify.com/embedtrack/7b7QqKepv8wY6VopSmQqX8
+
+- anime: My Hero Academia - Saison 5
+  relation: ED1
+  img: mha05.jpg
+  title: Ashiato
+  interpreter: The Peggies
+  ytb_url: Y9ahFjtZtQI
+  spoty_url: https://open.spotify.com/embed/track/4k5g6HNKtrWbYDllw2Dyp0
+
+- anime: My Hero Academia - Saison 5
+  relation: OP2
+  img: mha05.jpg
+  title: Merry-Go-Round
+  interpreter: MAN WITH A MISSION
+  ytb_url: KI17EkQBEc0
+  spoty_url: https://open.spotify.com/embed/track/3tGXnGvZpT4fzua650wrRh
+
+- anime: My Hero Academia - Saison 5
+  relation: ED2
+  img: mha05.jpg
+  title: Uso ja Nai
+  interpreter: Sakiyama Soushi
+  ytb_url: UNfXxvS8ZjA
+  spoty_url: https://open.spotify.com/embed/track/0ayjyEFPDtTlWQcSbT407P
+
+- anime: Steins;Gate
+  relation: OP1
+  img: steinsgate01.jpg
+  title: Hacking to the Gate
+  interpreter: Ito Kanako
+  ytb_url: dd7BILZcYAY
+  spoty_url: https://open.spotify.com/embed/track/7mMshfkGDVQTjn03tvSlwI
+
+- anime: Steins;Gate
+  relation: ED1
+  img: steinsgate01.jpg
+  title: Tokitsukasadoru Juuni no Meiyaku
+  interpreter: PHANTASM
+  ytb_url: 8vuGxe5ooKw
+  spoty_url: https://open.spotify.com/embed/track/25AyADU9T2FSZWdAmOhOxc
+
+- anime: Steins;Gate
+  relation: ED2
+  img: steinsgate01.jpg
+  title: Fake Verthandi
+  interpreter: Abo Takeshi
+  ytb_url: _hW_t0875Gk
+  spoty_url: https://open.spotify.com/embed/track/2wHj9XulFpAwK8PG9KASCU
+
+- anime: Steins;Gate
+  relation: ED3
+  img: steinsgate01.jpg
+  title: Sky Clad no Kansokusha
+  interpreter: Ito Kanako
+  ytb_url: GpovDdSC8Po
+  spoty_url: https://open.spotify.com/embed/track/3Y0W7Lxg1X4cbyvtmdCHzL
+
+- anime: Steins;Gate
+  relation: ED4
+  img: steinsgate01.jpg
+  title: Another Heaven
+  interpreter: Ito Kanako
+  ytb_url: Pvt4zgNmz80
+  spoty_url: https://open.spotify.com/embedtrack/1R1Kh3CwdPY7FrhkNvyEpS
+
+- anime: Steins;Gate the movie
+  relation: OP1
+  img: steinsgateMOVIE.jpg
+  title: Anata no Eranda Kono Toki wo
+  interpreter: Ito Kanako
+  ytb_url: xZnnOBIlo0c
+  spoty_url: "Non disponible"
+
+- anime: Steins;Gate the movie
+  relation: ED1
+  img: steinsgateMOVIE.jpg
+  title: Anata no Eranda Kono Toki wo
+  interpreter: Ayane (J-Pop)
+  ytb_url: dmmnx4VQmPU
+  spoty_url: https://open.spotify.com/embed/track/2nD6bkPxRNieZcEA5PvKe9
