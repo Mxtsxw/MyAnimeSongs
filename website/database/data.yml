@@ -664,7 +664,7 @@
 
 - anime: Steins;Gate
   relation: OP1
-  img: steinsgate01.jpg
+  img: sg01.jpg
   title: Hacking to the Gate
   interpreter: Ito Kanako
   ytb_url: dd7BILZcYAY
@@ -672,7 +672,7 @@
 
 - anime: Steins;Gate
   relation: ED1
-  img: steinsgate01.jpg
+  img: sg01.jpg
   title: Tokitsukasadoru Juuni no Meiyaku
   interpreter: PHANTASM
   ytb_url: 8vuGxe5ooKw
@@ -680,7 +680,7 @@
 
 - anime: Steins;Gate
   relation: ED2
-  img: steinsgate01.jpg
+  img: sg01.jpg
   title: Fake Verthandi
   interpreter: Abo Takeshi
   ytb_url: _hW_t0875Gk
@@ -688,7 +688,7 @@
 
 - anime: Steins;Gate
   relation: ED3
-  img: steinsgate01.jpg
+  img: sg01.jpg
   title: Sky Clad no Kansokusha
   interpreter: Ito Kanako
   ytb_url: GpovDdSC8Po
@@ -696,24 +696,88 @@
 
 - anime: Steins;Gate
   relation: ED4
-  img: steinsgate01.jpg
+  img: sg01.jpg
   title: Another Heaven
   interpreter: Ito Kanako
   ytb_url: Pvt4zgNmz80
   spoty_url: https://open.spotify.com/embedtrack/1R1Kh3CwdPY7FrhkNvyEpS
 
-- anime: Steins;Gate the movie
+- anime: Steins;Gate the Movie
   relation: OP1
-  img: steinsgateMOVIE.jpg
+  img: sgMOVIE.jpg
   title: Anata no Eranda Kono Toki wo
   interpreter: Ito Kanako
   ytb_url: xZnnOBIlo0c
   spoty_url: "Non disponible"
 
-- anime: Steins;Gate the movie
+- anime: Steins;Gate the Movie
   relation: ED1
-  img: steinsgateMOVIE.jpg
+  img: sgMOVIE.jpg
   title: Anata no Eranda Kono Toki wo
   interpreter: Ayane (J-Pop)
   ytb_url: dmmnx4VQmPU
   spoty_url: https://open.spotify.com/embed/track/2nD6bkPxRNieZcEA5PvKe9
+
+- anime: Demon Slayer - Saison 1
+  relation: OP1
+  img: kny01.jpg
+  title: Gurenge
+  interpreter: LiSA
+  ytb_url: jiJu4K2jems
+  spoty_url: https://open.spotify.com/embed/track/0qMip0B2D4ePEjBJvAtYre
+
+- anime: Demon Slayer - Saison 1
+  relation: ED1
+  img: kny01.jpg
+  title: from the edge
+  interpreter: FictionJunction ft.LiSA
+  ytb_url: espUnZOLjRo
+  spoty_url: https://open.spotify.com/embed/track/1acwOlcOCrr0AxdyMS8fEm
+
+- anime: Demon Slayer - Saison 1
+  relation: ED2
+  img: kny01.jpg
+  title: Kamado Tanjirou no Uta
+  interpreter: Shiina Go ft.Nakagawa Nami
+  ytb_url: bq7caidfUts
+  spoty_url: https://open.spotify.com/embed/track/0NsMgzCzCuedQKqIWSOF34
+
+- anime: Demon Slayer the Movie
+  relation: ED1
+  img: knyMOVIE.jpg
+  title: Homura
+  interpreter: LiSA
+  ytb_url: 4DxL6IKmXx4
+  spoty_url: https://open.spotify.com/embed/track/0cSkn2l67csUljEy0EEBPn
+
+- anime: Demon Slayer - Mugen Ressha-hen
+  relation: OP1
+  img: kny02.jpg
+  title: Akeboshi
+  interpreter: LiSA
+  ytb_url: tTGcTtwKLmg
+  spoty_url: https://open.spotify.com/embed/track/3J34JtfZNylVXSKN4TDf12
+
+- anime: Demon Slayer - Mugen Ressha-hen
+  relation: ED1
+  img: kny02.jpg
+  title: Shirogane
+  interpreter: LiSA
+  ytb_url: xcl3foPcG0U
+  spoty_url: https://open.spotify.com/embed/track/0f5hcKLCRgpdVV424X4XDQ
+
+- anime: Demon Slayer - Yuukaku-hen
+  relation: OP1
+  img: kny03.jpg
+  title: Zankyou Zanka
+  interpreter: Aimer
+  ytb_url: 0MPq9QGUBa4
+  spoty_url: https://open.spotify.com/embed/track/7v8wKvNQQIxkugCFFjrkaO
+
+- anime: Demon Slayer - Yuukaku-hen
+  relation: ED1
+  img: kny03.jpg
+  title: Asa ga kuru
+  interpreter: Aimer
+  ytb_url: "01/09/2022"
+  spoty_url: "01/09/2022"
