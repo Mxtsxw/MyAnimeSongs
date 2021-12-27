@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block main %}
+
+    <div class="container">
+        <form action="" method="post">
+            {{ form.hidden_tag() }}
+            <div class="mb-3">
+                {{ form.email.label(class_="form-label") }}
+                {{ form.email(class_="form-control") }}
+            </div>
+            <div class="mb-3">
+                {{ form.username.label(class_="form-label") }}
+                {{ form.username(class_="form-control") }}
+            </div>
+            <div class="mb-3">
+                {{ form.password.label(class_="form-label") }}
+                {{ form.password(class_="form-control") }}
+            </div>
+            <div class="mb-3">
+                {{ form.submit(class_="btn btn-outline-dark") }}
+            </div>
+        </form>
+    </div>
+
+{% endblock %}
