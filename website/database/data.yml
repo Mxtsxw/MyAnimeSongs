@@ -526,6 +526,8 @@
   ytb_url: XwJEFzsqNoY
   spoty_url: https://open.spotify.com/embed/track/4fKjIzm80Rpf4EUAt96hW2
 
+# Naruto - OP
+
 - anime: Naruto
   relation: OP4
   img: naruto01.jpg
@@ -573,6 +575,8 @@
   interpreter: HEARTS GROW
   ytb_url: -m8kR0FQ7Wk
   spoty_url: https://open.spotify.com/embed/track/5Uf7tljfwhcaLNZi6AdVow
+
+# Naruto Shippuden - OP
 
 - anime: Naruto Shippuden
   relation: OP1
@@ -725,7 +729,7 @@
   interpreter: Asian Kung-Fu Generation
   ytb_url: VMkg2F4QfIA
   spoty_url: https://open.spotify.com/embed/track/3xQBvKxm8mdy9OBLiJDcwB
-  
+
 - anime: Naruto Shippuden
   relation: OP20
   img: narutoshippuden01.jpg
@@ -734,5 +738,125 @@
   ytb_url: xQKlfIeqTGM
   spoty_url: https://open.spotify.com/embed/track/2UnrCmVUqwkT7sV1S3vd4W
 
+# Naruto - ED
 
+- anime: Naruto Shippuden
+  relation: ED1
+  img: narutoshippuden01.jpg
+  title: Wind
+  interpreter: Yoshio Akeboshi
+  ytb_url: Oyhpwyrq1N0
+  spoty_url: https://open.spotify.com/embed/track/5BqKtuCFLfZyzfZOwlgW1f
+
+- anime: Naruto Shippuden
+  relation: ED2
+  img: narutoshippuden01.jpg
+  title: Harmonia
+  interpreter: Rythem
+  ytb_url: VTIK1gBhzXk
+  spoty_url: https://open.spotify.com/embed/track/5LJ0jOJnGBaMq989cZOCHR
+
+- anime: Naruto Shippuden
+  relation: ED3
+  img: narutoshippuden01.jpg
+  title: Viva★Rock
+  interpreter: Orange Range
+  ytb_url: pZaRs2bvy4U
+  spoty_url: https://open.spotify.com/embed/track/1mYNlXFX7lLH69B11yNPZv
+
+- anime: Naruto Shippuden
+  relation: ED4
+  img: narutoshippuden01.jpg
+  title: ALIVE
+  interpreter: Raico
+  ytb_url: jw6Rvy39_gc
+  spoty_url: https://open.spotify.com/embed/track/60Xbes7nMoY3VpiRVqlv9j
+
+- anime: Naruto Shippuden
+  relation: ED5
+  img: narutoshippuden01.jpg
+  title: Many Times Before
+  interpreter: The Mass Missile
+  ytb_url: ZKd5C6w7UvA
+  spoty_url: https://open.spotify.com/embed/track/3KwDeGfyQB9xihdr9Mrj7u
+
+- anime: Naruto Shippuden
+  relation: ED6
+  img: narutoshippuden01.jpg
+  title: Meteor
+  interpreter: TiA
+  ytb_url: 5z5-Ly_VbXk
+  spoty_url: https://open.spotify.com/embed/track/5irpRHOAPuzjfQA6OkSZwY
+
+- anime: Naruto Shippuden
+  relation: ED7
+  img: narutoshippuden01.jpg
+  title: Mountain A Go Go Two 
+  interpreter: Captain Straydum
+  ytb_url: _kjd_3viXu0
+  spoty_url: Undefined
+
+- anime: Naruto Shippuden
+  relation: ED8
+  img: narutoshippuden01.jpg
+  title: Bring it On  
+  interpreter: GaGaGaSP
+  ytb_url: s2rCblHEYZs
+  spoty_url: https://open.spotify.com/embed/track/22CnkjWBgo4jyLBkgm608R
+
+- anime: Naruto Shippuden
+  relation: ED9
+  img: narutoshippuden01.jpg
+  title: Lost Words
+  interpreter: No Regret Life
+  ytb_url: TPYBJUT3XNw
+  spoty_url: https://open.spotify.com/embed/track/0pmkdHvXPsxB9oazxqLHKZ
+
+- anime: Naruto Shippuden
+  relation: ED10
+  img: narutoshippuden01.jpg
+  title: Speed
+  interpreter: Analogfish
+  ytb_url: A7pi4-Et5lY
+  spoty_url: https://open.spotify.com/embed/track/2EMkZExcXFYVk4W7JBxGKA
+
+- anime: Naruto Shippuden
+  relation: ED11
+  img: narutoshippuden01.jpg
+  title: Because Your are With Me
+  interpreter: Amadori
+  ytb_url: b5DOukHM3WE
+  spoty_url: https://open.spotify.com/embed/track/3SR0EhMaVycmPpIPH7b1jY
+
+- anime: Naruto Shippuden
+  relation: ED12
+  img: narutoshippuden01.jpg
+  title: Parade
+  interpreter: Chaba
+  ytb_url: xfI6B1Auh-k
+  spoty_url: https://open.spotify.com/embed/track/43vYPeFCegw1GVNbbgB7N0
+
+- anime: Naruto Shippuden
+  relation: ED13
+  img: narutoshippuden01.jpg
+  title: Yellow Moon
+  interpreter: Yoshio Akeboshi
+  ytb_url: xPNyvbkrFbY
+  spoty_url: https://open.spotify.com/embed/track/3nPTeT1tp6GmHjmBFnCSzF
+
+- anime: Naruto Shippuden
+  relation: ED14
+  img: narutoshippuden01.jpg
+  title: Pinocchio
+  interpreter: OreSkaBand
+  ytb_url: 0gUrP6onHr8
+  spoty_url: https://open.spotify.com/embed/track/2xHiJof9C8GZjrbx8mc0pd
+
+- anime: Naruto Shippuden
+  relation: ED15
+  img: narutoshippuden01.jpg
+  title: Scenario
+  interpreter: SABOTEN
+  ytb_url: j65Koam6avI
+  spoty_url: https://open.spotify.com/embed/track/7EcX1Yf0fk0c1jU8PQQ4xx
 
