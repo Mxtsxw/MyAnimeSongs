@@ -1,5 +1,7 @@
+from enum import unique
 from sqlalchemy.orm import backref
 from .app import db
+from flask_login import UserMixin
 
 class Anime(db.Model):
     id = db.Column(db.Integer, primary_key = True)
@@ -37,3 +39,41 @@ def get_songs():
 def get_song(id):
     return Song.query.get_or_404(id)
 
+class User(UserMixin, db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    username = db.Column(db.String(15), unique = True)
+    email = db.Column(db.String(50), unique = True)
+    password = db.Column(db.String(80))
+    role_id = db.Column(db.Integer, db.ForeignKey("role.id"))
+    role = db.relationship("Role", backref = db.backref("users", lazy = "dynamic"))
+    
+    def __repr__(self):
+        return "<User (%d) %s %s %s>" % (self.id, self.username, self.email, self.role)
+    
+class Role(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    name = db.Column(db.String(20), unique = True)
+    
+    def __repr__(self):
+        return "<Role (%d) %s>" % (self.id, self.name)
+    
+def get_role_id(role_name):
+    return Role.query.filter_by(name = role_name).first().id
+
+def get_user(user_id):
+    return User.query.get(int(user_id))
+
+def get_user_by_username(username):
+    return User.query.filter_by(username = username).first()
+
+def get_user_by_email(email):
+    return User.query.filter_by(email = email).first()
+
+def get_users():
+    return User.query.all()
+
+def create_user(username, email, password, role_id):
+    new_user = User(username = username, email = email, password = password, role_id = role_id)
+    db.session.add(new_user)
+    db.session.commit()
+    return new_user

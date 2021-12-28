@@ -1,7 +1,7 @@
 import click
 import yaml
 from .app import app, db
-from .models import Anime, Song
+from .models import Anime, Song, Role, User
 import os.path
 
 @app.cli.command()
@@ -38,6 +38,27 @@ def create_db():
     
     db.session.commit()
     
+    for role in ["Administrateur", "Modérateur", "Utilisateur"]:
+        obj = Role(name = role)
+        db.session.add(obj)
+
+    db.session.commit()
+    
+    if app.config['ENV'] != "production":
+        
+        from werkzeug.security import generate_password_hash
+        
+        admin_obj = User(
+            username = "admin",
+            email = "admin@admin.com",
+            password = generate_password_hash("adminadmin"),
+            role_id = 1
+        )
+        
+        db.session.add(admin_obj)
+        db.session.commit()
+    
+        
 @app.cli.command()
 
 def remove_db():
