@@ -6,7 +6,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SelectField, PasswordField, BooleanField
 from wtforms.validators import DataRequired, InputRequired, Length, Email
 from website.models import get_anime, get_animes, get_song, get_songs, get_songs_anime
-from .models import db, User
+from .models import db, User, Role
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, login_required, logout_user, current_user
 
@@ -84,7 +84,8 @@ def register():
         
         else:
             hashed_password = generate_password_hash(form.password.data, method="sha256")
-            new_user = User(username = form.username.data, email = form.email.data, password = hashed_password)
+            user_role_id = Role.query.filter_by(name = "Utilisateur").first().id
+            new_user = User(username = form.username.data, email = form.email.data, password = hashed_password, role_id = user_role_id)
             db.session.add(new_user)
             db.session.commit()
         
