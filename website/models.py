@@ -44,9 +44,11 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(15), unique = True)
     email = db.Column(db.String(50), unique = True)
     password = db.Column(db.String(80))
+    role_id = db.Column(db.Integer, db.ForeignKey("role.id"))
+    role = db.relationship("Role", backref = db.backref("users", lazy = "dynamic"))
     
     def __repr__(self):
-        return "<User (%d) %s %s>" % (self.id, self.username, self.email)
+        return "<User (%d) %s %s %s>" % (self.id, self.username, self.email, self.role)
     
 class Role(db.Model):
     id = db.Column(db.Integer, primary_key = True)
