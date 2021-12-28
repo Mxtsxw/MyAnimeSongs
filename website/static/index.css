@@ -1,3 +1,7 @@
+html, body{
+    box-sizing: border-box;
+}
+
 .crop {
     width: 150px;
     height: 200px;
@@ -13,17 +17,30 @@
 }
 
 .carousel-bg{
-
     position: absolute;
     object-fit: cover;
     object-position: 50% 50%;
     width: 100%;
     top: 0;
     left: 0;
-    opacity: 50%;
+    opacity: 40%;
 }
 
 .shadow{
     background-color: #000;
     height: 100%;
+}
+
+.card img{
+    height: 270px;
+    width: 190px;
+}
+
+.card a{
+    text-decoration: none;
+}
+
+.title{
+    text-decoration: none;
+    text-transform: uppercase;
 }
