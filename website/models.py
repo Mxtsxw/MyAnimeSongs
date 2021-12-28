@@ -56,3 +56,24 @@ class Role(db.Model):
     
     def __repr__(self):
         return "<Role (%d) %s>" % (self.id, self.name)
+    
+def get_role_id(role_name):
+    return Role.query.filter_by(name = role_name).first().id
+
+def get_user(user_id):
+    return User.query.get(int(user_id))
+
+def get_user_by_username(username):
+    return User.query.filter_by(username = username).first()
+
+def get_user_by_email(email):
+    return User.query.filter_by(email = email).first()
+
+def get_users():
+    return User.query.all()
+
+def create_user(username, email, password, role_id):
+    new_user = User(username = username, email = email, password = password, role_id = role_id)
+    db.session.add(new_user)
+    db.session.commit()
+    return new_user
