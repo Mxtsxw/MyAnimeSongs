@@ -502,7 +502,7 @@
   ytb_url: -GHKpSeBiPY
   spoty_url: https://open.spotify.com/embed/track/3CYfCp9XAHc69wtCKTwMaj
 
-- anime: My Hero Academia - Saison 1
+- anime: My Hero Academia
   relation: OP1
   img: mha01.jpg
   title: The DAY
@@ -510,7 +510,7 @@
   ytb_url: yu0HjPzFYnY
   spoty_url: https://open.spotify.com/embed/track/1tjOClAkdMxDfYPO0xvGbG
 
-- anime: My Hero Academia - Saison 1
+- anime: My Hero Academia
   relation: ED1
   img: mha01.jpg
   title: HEROES
@@ -710,7 +710,7 @@
   ytb_url: dmmnx4VQmPU
   spoty_url: https://open.spotify.com/embed/track/2nD6bkPxRNieZcEA5PvKe9
 
-- anime: Demon Slayer - Saison 1
+- anime: Demon Slayer
   relation: OP1
   img: kny01.jpg
   title: Gurenge
@@ -718,7 +718,7 @@
   ytb_url: jiJu4K2jems
   spoty_url: https://open.spotify.com/embed/track/0qMip0B2D4ePEjBJvAtYre
 
-- anime: Demon Slayer - Saison 1
+- anime: Demon Slayer
   relation: ED1
   img: kny01.jpg
   title: from the edge
@@ -726,7 +726,7 @@
   ytb_url: espUnZOLjRo
   spoty_url: https://open.spotify.com/embed/track/1acwOlcOCrr0AxdyMS8fEm
 
-- anime: Demon Slayer - Saison 1
+- anime: Demon Slayer
   relation: ED2
   img: kny01.jpg
   title: Kamado Tanjirou no Uta
@@ -765,8 +765,6 @@
   interpreter: Aimer
   ytb_url: 0MPq9QGUBa4
   spoty_url: https://open.spotify.com/embed/track/7v8wKvNQQIxkugCFFjrkaO
-
-# Naruto - OP
 
 - anime: Naruto
   relation: OP1
@@ -839,8 +837,6 @@
   interpreter: HEARTS GROW
   ytb_url: -m8kR0FQ7Wk
   spoty_url: https://open.spotify.com/embed/track/5Uf7tljfwhcaLNZi6AdVow
-
-# Naruto Shippuden - OP
 
 - anime: Naruto Shippuden
   relation: OP1
@@ -1002,8 +998,6 @@
   ytb_url: xQKlfIeqTGM
   spoty_url: https://open.spotify.com/embed/track/2UnrCmVUqwkT7sV1S3vd4W
 
-# Naruto - ED
-
 - anime: Naruto
   relation: ED1
   img: naruto01.jpg
@@ -1123,9 +1117,6 @@
   interpreter: SABOTEN
   ytb_url: j65Koam6avI
   spoty_url: https://open.spotify.com/embed/track/7EcX1Yf0fk0c1jU8PQQ4xx
-
-
-# Naruto Shippuden - ED
 
 - anime: Naruto Shippuden
   relation: ED1
