@@ -12,16 +12,34 @@ from flask_login import login_user, login_required, logout_user, current_user
 
 
 class LoginForm(FlaskForm):
-    username = StringField('Username', validators=[InputRequired(), Length(min=4, max=15)])
-    password = PasswordField('Password', validators=[InputRequired(), Length(min=8, max=80)])
-    remember = BooleanField('Remember me')
-    submit = SubmitField("Sign in")
+    username = StringField('Pseudo', validators = [InputRequired(message = "Le pseudo est obligatoire"), 
+                                                   Length(min = 4, max = 15, message = "Le pseudo doit faire entre 4 et 15 caractères")], 
+                                                   id = "floatingInput", render_kw = {"placeholder": "baptiste"})
+    
+    password = PasswordField('Mot de passe', validators = [InputRequired(message = "Le mot de passe est obligatoire"),
+                                                           Length(min = 8, max = 80, message = "Le mot de passe doit faire entre 8 et 80 caractères")],
+                                                           id = "floatingPassword", render_kw = {"placeholder": "Azerty20"})
+    remember = BooleanField('Se souvenir de moi')
+    submit = SubmitField("Se connecter")
     
 class RegisterForm(FlaskForm):
-    email = StringField("email", validators=[InputRequired(), Email(message="Invalid email", check_deliverability=True), Length(max=50)])
-    username = StringField('Username', validators=[InputRequired(), Length(min=4, max=15)])
-    password = PasswordField('Password', validators=[InputRequired(), Length(min=8, max=80)])
-    submit = SubmitField("Sign up")
+    email = StringField("Email", validators = [InputRequired(message = "L'Email est obligatoire"),
+                                               Email(message="Email invalide", check_deliverability = True),
+                                               Length(max = 50, message = "L'Email ne doit pas faire plus de 50 caractères")],
+                                               id = "floatingInput", render_kw = {"placeholder": "baptiste@gmail.com"})
+    
+    username = StringField('Pseudo', validators = [InputRequired(message = "Le pseudo est obligatoire"), 
+                                                   Length(min = 4, max = 15, message = "Le pseudo doit faire entre 4 et 15 caractères")], 
+                                                   id = "floatingInput", render_kw = {"placeholder": "baptiste"})
+    
+    password = PasswordField('Mot de passe', validators = [InputRequired(message = "Le mot de passe est obligatoire"),
+                                                           Length(min = 8, max = 80, message = "Le mot de passe doit faire entre 8 et 80 caractères")],
+                                                           id = "floatingPassword", render_kw = {"placeholder": "Azerty20"})
+    
+    password_confirmation = PasswordField('Confirmer votre mot de passe', validators = [InputRequired(message = "Confirmation obligatoire")],
+                                                           id = "floatingPassword", render_kw = {"placeholder": "Azerty20"})
+    
+    submit = SubmitField("S'inscrire")
     
 @login_manager.user_loader
 def load_user(user_id):
@@ -31,6 +49,8 @@ def load_user(user_id):
 def login():
     form = LoginForm()
     
+    valid = True
+    
     if form.validate_on_submit():
         user = User.query.filter_by(username = form.username.data).first()
         if user:
@@ -38,32 +58,47 @@ def login():
                 login_user(user, remember = form.remember.data)
                 return redirect(url_for("home"))
         
-        return '<h1>Invalid username or password</h1>'
-        
-        #return '<h1>' + form.username.data + ' ' + form.password.data + '</h1>'
+        valid = False
     
     return render_template(
         "login.html",
-        form = form
+        valid = valid,
+        form = form,
+        user = current_user
     )
     
 @app.route("/register", methods=['GET', 'POST'])
 def register():
     form = RegisterForm()
     
+    valid = True
+    error_message = None
+    
     if form.validate_on_submit():
-        hashed_password = generate_password_hash(form.password.data, method="sha256")
-        new_user = User(username = form.username.data, email = form.email.data, password = hashed_password)
-        db.session.add(new_user)
-        db.session.commit()
         
-        return "<h1>New User have been created</h1>"
+        if User.query.filter_by(username = form.username.data).first() or User.query.filter_by(email = form.email.data).first():
+            error_message = "Pseudo ou Email déjà pris"
+            
+        elif form.password.data != form.password_confirmation.data:
+            error_message = "Les mots de passe ne correspondent pas"
         
-        #return '<h1>' + form.username.data + ' ' + form.email.data + ' ' + form.password.data + '</h1>'
+        else:
+            hashed_password = generate_password_hash(form.password.data, method="sha256")
+            new_user = User(username = form.username.data, email = form.email.data, password = hashed_password)
+            db.session.add(new_user)
+            db.session.commit()
+        
+            login_user(new_user, remember = False)
+            return redirect(url_for("home"))
+
+        valid = False
     
     return render_template(
         "register.html",
-        form = form
+        valid = valid,
+        error_message = error_message,
+        form = form,
+        user = current_user
     )
     
 @app.route("/logout")
@@ -73,12 +108,12 @@ def logout():
     return redirect(url_for("home"))
 
 @app.route("/")
-@login_required
+#@login_required
 def home():
     
     return render_template(
         "index.html",
-        current_user.is_authenticated,
-        title="My Anime Songs",
+        user = current_user,
+        title = "My Anime Songs",
         animes = get_animes()
     )
