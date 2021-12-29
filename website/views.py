@@ -4,8 +4,8 @@ from .app import app, login_manager
 from flask import render_template, url_for, redirect
 from flask_wtf import FlaskForm
 from wtforms import StringField, SelectField, PasswordField, BooleanField
-from wtforms.validators import DataRequired, InputRequired, Length, Email, URL
-from website.models import get_anime, get_animes, get_song, get_songs, get_songs_anime, get_role_id, get_user, get_user_by_username, get_user_by_email, create_user
+from wtforms.validators import DataRequired, InputRequired, Length, Email, URL, ValidationError
+from website.models import get_anime, get_animes, get_song, get_songs, get_songs_anime, get_role_id, get_user, get_user_by_username, get_user_by_email, create_user, get_anime_by_name
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, login_required, logout_user, current_user
 
@@ -114,18 +114,23 @@ def home():
         animes = get_animes()
     )
     
+    
+def is_anime(form, field):
+    if not get_anime_by_name(field.data):
+        raise ValidationError("L'anime ne figure pas dans la base de données")
+    
 class RequestSongForm(FlaskForm):
-    anime = StringField("Selectionnez un animé", validators = [InputRequired()], render_kw = {"list": "datalistAnime"})
-    title = StringField("Titre", validators = [InputRequired(message = "champ obligatoire"), Length(max = 60)],
+    anime = StringField("Selectionnez un anime", validators = [InputRequired(message = "Champ obligatoire"), is_anime], render_kw = {"list": "datalistAnime"})
+    title = StringField("Titre", validators = [InputRequired(message = "Champ obligatoire"), Length(max = 60)],
                         render_kw = {"placeholder": "Fly High!!"})
-    interpreter = StringField("Interprète", validators = [InputRequired(message = "champ obligatoire"), Length(max = 60)],
+    interpreter = StringField("Interprète", validators = [InputRequired(message = "Champ obligatoire"), Length(max = 60, message = "Ne peux pas faire plus de 60 caractères")],
                               render_kw = {"placeholder": "BURNOUT SYNDROMES"})
-    relation = StringField("Relation", validators = [InputRequired(message = "champ obligatoire"), Length(max = 5)],
+    relation = StringField("Relation", validators = [InputRequired(message = "Champ obligatoire"), Length(max = 5, message = "Ne peux pas faire plus de 5 caractères")],
                            render_kw = {"placeholder": "OP2"})
-    ytb_url = StringField("URL Youtube", validators = [InputRequired(message = "champ obligatoire"), Length(max = 120)],
-                          render_kw = {"placeholder": "watch?v=txgg-fbVjf4&ab_channel=BURNOUTSYNDROMESVEVO"})
-    spoty_url = StringField("URL Spotify", validators = [InputRequired(message = "champ obligatoire"), Length(max = 120)],
-                             render_kw = {"placeholder": "3YOZLPRiTuYgItSGO41gPT?si=4e9a74511f334ef2"})
+    ytb_url = StringField("URL Youtube", validators = [InputRequired(message = "Champ obligatoire"), Length(max = 120, message = "Ne peux pas faire plus de 120 caractères")],
+                          render_kw = {"placeholder": "https://www.youtube.com/watch?v=txgg-fbVjf4&ab_channel=BURNOUTSYNDROMESVEVO"})
+    spoty_url = StringField("URL Spotify", validators = [InputRequired(message = "Champ obligatoire"), Length(max = 120, message = "Ne peux pas faire plus de 120 caractères")],
+                             render_kw = {"placeholder": "https://open.spotify.com/track/3YOZLPRiTuYgItSGO41gPT?si=4e9a74511f334ef2"})
     submit = SubmitField("Envoyer la demande")
         
 @app.route("/request/song", methods=['GET', 'POST'])
@@ -133,6 +138,9 @@ class RequestSongForm(FlaskForm):
 def request_song():
     
     form = RequestSongForm()
+    
+    if form.validate_on_submit():
+        pass
     
     return render_template(
         "request-song.html",

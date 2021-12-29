@@ -39,6 +39,10 @@ def get_songs():
 def get_song(id):
     return Song.query.get_or_404(id)
 
+def get_anime_by_name(name):
+    return Anime.query.filter_by(name = name).first()
+    
+
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key = True)
     username = db.Column(db.String(15), unique = True)
