@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block main %}
+<div class="container">
+
+    <ul>
+        <li>
+
+        <a href="{{ url_for('administration_request_song', id = request.id) }}"> {{ request.id }}</a>
+
+        </li>
+
+        <li>title : {{ request.title }}</li>
+        <li>relation : {{ request.relation }}</li>
+        <li>interpreter : {{ request.interpreter }}</li>
+        <li>anime : {{ request.anime }}</li>
+    </ul>
+
+</div>
+{% endblock %}
