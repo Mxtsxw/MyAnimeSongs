@@ -117,5 +117,6 @@ def home():
 @app.route("/anime/name")
 def anime():
     return render_template(
-        "anime.html"
+        "anime.html",
+        user = current_user,
     )

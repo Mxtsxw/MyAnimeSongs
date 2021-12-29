@@ -57,3 +57,36 @@ html, body{
 
   cursor: pointer;
 }
+
+/* anime.html */
+
+.banner{
+    overflow: hidden;
+    height: 250px;
+    background-color: #13171D;
+    width: 100%;
+}
+
+.banner-bg{
+    position: absolute;
+    object-fit: cover;
+    width: 100%;
+}
+
+.banner-content{
+    display: flex;
+    padding: .5em;
+}
+
+.banner-img{
+    width: 220px;
+}
+
+.img-placeholder{
+    display: inline-block;
+    margin-top: -125px;
+}
+
+.desc {
+    margin: 1em;
+}
