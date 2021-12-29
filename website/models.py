@@ -110,8 +110,11 @@ def create_song_request(title, interpreter, relation, ytb_url, spoty_url, anime_
     db.session.add(obj)
     db.session.commit()
     
-def get_song_requests(username):
+def get_song_requests_by_user(username):
     return User.query.filter_by(username = username).first().song_requests.all()
 
 def get_song_request(id):
     return SongRequest.query.get(id)
+
+def get_song_requests():
+    return SongRequest.query.all()
