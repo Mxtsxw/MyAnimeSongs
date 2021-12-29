@@ -7,7 +7,7 @@ from flask import render_template, url_for, redirect
 from flask_wtf import FlaskForm
 from wtforms import StringField, SelectField, PasswordField, BooleanField
 from wtforms.validators import DataRequired, InputRequired, Length, Email, URL, ValidationError
-from website.models import User, get_anime, get_animes, get_song, get_songs, get_songs_anime, get_role_id, get_user, get_user_by_username, get_user_by_email, create_user, get_anime_by_name, create_song_request, get_song_request, get_song_requests, get_users
+from website.models import User, get_anime, get_animes, get_song, get_songs, get_songs_anime, get_role_id, get_user, get_user_by_username, get_user_by_email, create_user, get_anime_by_name, create_song_request, get_song_request, get_song_requests, get_users, get_song_requests_by_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, login_required, logout_user, current_user
 
@@ -168,5 +168,31 @@ def profile_request():
     return render_template(
         "profile-request.html",
         user = current_user,
-        song_requests = get_song_requests(current_user.username)
+        song_requests = get_song_requests_by_user(current_user.username)
+    )
+    
+@app.route("/administration/request")
+@login_required
+def administration_request():
+    
+    if not current_user.role.name == "Administrateur":
+        return redirect(url_for("home"))
+        
+    return render_template(
+        "administration-request.html",
+        user = current_user,
+        song_requests = get_song_requests()
+    )
+    
+@app.route("/administration/request/song/<int:id>")
+@login_required
+def administration_request_song(id):
+    
+    if not current_user.role.name == "Administrateur":
+        return redirect(url_for("home"))
+        
+    return render_template(
+        "administration-request-song.html",
+        user = current_user,
+        request = get_song_request(id)
     )
