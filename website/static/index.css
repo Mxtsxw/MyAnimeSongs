@@ -33,14 +33,27 @@ html, body{
 
 .card img{
     height: 270px;
-    width: 190px;
+    width: 100%;
 }
 
 .card a{
     text-decoration: none;
+    
 }
 
 .title{
     text-decoration: none;
     text-transform: uppercase;
+}
+
+.card:hover{
+    transform: scale(1.05);
+}
+
+.card{
+    width: 190px;
+    background: #fff;
+    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+
+  cursor: pointer;
 }

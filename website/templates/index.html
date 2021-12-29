@@ -64,13 +64,11 @@
             <div class="row">
                 {% for anime in animes %}
                 <div class="col mb-2">
-                    <div class="card border-0">
+                    <div class="card border-0 d.flex flex-column align-items-center">
                         <img class="img-responsive rounded" src="{{ url_for('static', filename='images/'+anime.img) }}">
-                    <div class="card-content mt-2">
-                        <h6 ><a class="text-dark" href="">{{anime.name}}</a></h6>
-                        <a href="#" class="card-link text-muted">2 OP</a>
-                        <a href="#" class="card-link text-muted">5 ED</a>
-                    </div>
+                        <div class="card-content pt-3 align-self-start">
+                            <h6 ><a class="text-dark" href="">{{anime.name}}</a></h6>
+                        </div>
                     </div>
                 </div>
                 {% endfor %}
