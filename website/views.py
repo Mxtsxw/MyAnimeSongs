@@ -1,11 +1,12 @@
 from flask.app import Flask
+from werkzeug import datastructures
 from wtforms.fields.simple import HiddenField, SubmitField
 from .app import app, login_manager
 from flask import render_template, url_for, redirect
 from flask_wtf import FlaskForm
 from wtforms import StringField, SelectField, PasswordField, BooleanField
 from wtforms.validators import DataRequired, InputRequired, Length, Email, URL, ValidationError
-from website.models import get_anime, get_animes, get_song, get_songs, get_songs_anime, get_role_id, get_user, get_user_by_username, get_user_by_email, create_user, get_anime_by_name
+from website.models import User, get_anime, get_animes, get_song, get_songs, get_songs_anime, get_role_id, get_user, get_user_by_username, get_user_by_email, create_user, get_anime_by_name, create_song_request
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, login_required, logout_user, current_user
 
@@ -104,7 +105,6 @@ def logout():
     return redirect(url_for("home"))
 
 @app.route("/")
-#@login_required
 def home():
     
     return render_template(
@@ -140,7 +140,18 @@ def request_song():
     form = RequestSongForm()
     
     if form.validate_on_submit():
-        pass
+        
+        create_song_request(
+            title = form.title.data,
+            interpreter = form.interpreter.data,
+            relation = form.relation.data,
+            ytb_url = form.ytb_url.data,
+            spoty_url = form.spoty_url.data,
+            anime_name = form.anime.data,
+            user_id = current_user.id
+        )
+        
+        return redirect(url_for("home"))
     
     return render_template(
         "request-song.html",
