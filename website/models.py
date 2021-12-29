@@ -130,3 +130,7 @@ def get_song_request(id):
 
 def get_song_requests():
     return SongRequest.query.all()
+
+def delete_song_requests(request):
+    db.session.delete(request)
+    db.session.commit()
