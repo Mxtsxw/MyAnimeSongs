@@ -1,11 +1,13 @@
 from flask.app import Flask
+from werkzeug import datastructures
+from werkzeug.wrappers import request
 from wtforms.fields.simple import HiddenField, SubmitField
 from .app import app, login_manager
 from flask import render_template, url_for, redirect
 from flask_wtf import FlaskForm
 from wtforms import StringField, SelectField, PasswordField, BooleanField
-from wtforms.validators import DataRequired, InputRequired, Length, Email
-from website.models import get_anime, get_animes, get_song, get_songs, get_songs_anime, get_role_id, get_user, get_user_by_username, get_user_by_email, create_user
+from wtforms.validators import DataRequired, InputRequired, Length, Email, URL, ValidationError
+from website.models import delete_song_requests, get_anime, get_animes, get_song, get_songs, get_songs_anime, get_role_id, get_user, get_user_by_username, get_user_by_email, create_user, get_anime_by_name, create_song_request, get_song_request, get_song_requests, get_users, get_song_requests_by_user, create_song
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, login_required, logout_user, current_user
 
@@ -104,7 +106,6 @@ def logout():
     return redirect(url_for("home"))
 
 @app.route("/")
-#@login_required
 def home():
     
     return render_template(
@@ -118,5 +119,118 @@ def home():
 def anime():
     return render_template(
         "anime.html",
+        user = current_user
+    )
+    
+def is_anime(form, field):
+    if not get_anime_by_name(field.data):
+        raise ValidationError("L'anime ne figure pas dans la base de données")
+    
+class RequestSongForm(FlaskForm):
+    anime = StringField("Selectionnez un anime", validators = [InputRequired(message = "Champ obligatoire"), is_anime], render_kw = {"list": "datalistAnime"})
+    title = StringField("Titre", validators = [InputRequired(message = "Champ obligatoire"), Length(max = 60)],
+                        render_kw = {"placeholder": "Fly High!!"})
+    interpreter = StringField("Interprète", validators = [InputRequired(message = "Champ obligatoire"), Length(max = 60, message = "Ne peux pas faire plus de 60 caractères")],
+                              render_kw = {"placeholder": "BURNOUT SYNDROMES"})
+    relation = StringField("Relation", validators = [InputRequired(message = "Champ obligatoire"), Length(max = 5, message = "Ne peux pas faire plus de 5 caractères")],
+                           render_kw = {"placeholder": "OP2"})
+    ytb_url = StringField("URL Youtube", validators = [InputRequired(message = "Champ obligatoire"), Length(max = 120, message = "Ne peux pas faire plus de 120 caractères")],
+                          render_kw = {"placeholder": "https://www.youtube.com/watch?v=txgg-fbVjf4&ab_channel=BURNOUTSYNDROMESVEVO"})
+    spoty_url = StringField("URL Spotify", validators = [InputRequired(message = "Champ obligatoire"), Length(max = 120, message = "Ne peux pas faire plus de 120 caractères")],
+                             render_kw = {"placeholder": "https://open.spotify.com/track/3YOZLPRiTuYgItSGO41gPT?si=4e9a74511f334ef2"})
+    submit = SubmitField("Envoyer la demande")
+    
+    # administration part
+    
+    accept = SubmitField("Accepter la demande")
+    refuse = SubmitField("Refuser la demande")
+        
+@app.route("/request/song", methods=['GET', 'POST'])
+@login_required
+def request_song():
+    
+    form = RequestSongForm()
+    
+    if form.validate_on_submit():
+        
+        create_song_request(
+            title = form.title.data,
+            interpreter = form.interpreter.data,
+            relation = form.relation.data,
+            ytb_url = form.ytb_url.data,
+            spoty_url = form.spoty_url.data,
+            anime_name = form.anime.data,
+            user_id = current_user.id
+        )
+        
+        return redirect(url_for("profile_request"))
+    
+    return render_template(
+        "request-song.html",
         user = current_user,
+        form = form,
+        animes = get_animes()
+    )
+    
+@app.route("/profile/request")
+@login_required
+def profile_request():
+    
+    return render_template(
+        "profile-request.html",
+        user = current_user,
+        song_requests = get_song_requests_by_user(current_user.username)
+    )
+    
+@app.route("/administration/request")
+@login_required
+def administration_request():
+    
+    if not current_user.role.name == "Administrateur":
+        return redirect(url_for("home"))
+        
+    return render_template(
+        "administration-request.html",
+        user = current_user,
+        song_requests = get_song_requests()
+    )
+    
+@app.route("/administration/request/song/<int:id>", methods=['GET', 'POST'])
+@login_required
+def administration_request_song(id):
+    
+    if not current_user.role.name == "Administrateur":
+        return redirect(url_for("home"))
+    
+    request = get_song_request(id)
+        
+    form = RequestSongForm()
+    
+    form.anime.render_kw["value"] = request.anime.name
+    form.title.render_kw["value"] = request.title
+    form.relation.render_kw["value"] = request.relation
+    form.interpreter.render_kw["value"] = request.interpreter
+    form.ytb_url.render_kw["value"] = request.ytb_url
+    form.spoty_url.render_kw["value"] = request.spoty_url
+    
+    if form.validate_on_submit():
+        
+        if form.accept.data :
+            
+            create_song(
+                title = form.title.data,
+                interpreter = form.interpreter.data,
+                relation = form.relation.data,
+                ytb_url = form.ytb_url.data,
+                spoty_url = form.spoty_url.data,
+                anime_id = get_anime_by_name(form.anime.data).id
+            )
+            
+        delete_song_requests(request)
+        
+    return render_template(
+        "administration-request-song.html",
+        user = current_user,
+        request = request,
+        form = form
     )

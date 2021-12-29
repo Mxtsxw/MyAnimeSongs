@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block main %}
+<div class="container">
+
+    <h1>Demande de son</h1>
+
+    <ul>
+
+    {% for request in song_requests %}
+
+    <li>
+        <ul>
+            <li>
+
+            <a href="{{ url_for('administration_request_song', id = request.id) }}"> {{ request.id }}</a>
+
+            </li>
+
+            <li>title : {{ request.title }}</li>
+            <li>relation : {{ request.relation }}</li>
+            <li>interpreter : {{ request.interpreter }}</li>
+            <li>anime : {{ request.anime }}</li>
+        </ul>
+    </li>
+
+    {% endfor %}
+
+    </ul>
+
+</div>
+{% endblock %}

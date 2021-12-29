@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+{% block main %}
+
+<div class="w-75 container mt-3">
+
+    <form action="" method="post" class = "needs-validation" novalidate>
+
+        {{ form.hidden_tag() }}
+
+        <div class="mb-3">
+
+            {{ form.anime.label(class_ = "form-label") }}
+
+            {% if not form.anime.errors %}
+
+            {{ form.anime(class_ = "form-control") }}
+
+            {% else %}
+
+            {{ form.anime(class_ = "form-control is-invalid") }}
+            <p class="mt-1 invalid">{{ form.anime.errors[0] }}</p>
+
+            {% endif %}
+
+            <datalist id="datalistAnime">
+                
+                {% for anime in animes %}
+            
+                <option value="{{ anime.name }}">
+
+                {% endfor %}
+            
+            </datalist>
+        
+            <p class = "mt-1 mb-0">Vous ne trouvez pas votre animé ? <a href="#" class="link-primary">Ajoutez le</a> !</p>
+
+        </div>
+
+        <div class="mb-3">
+
+            {{ form.title.label(class_ = "form-label") }}
+
+            {% if not form.title.errors %}
+
+            {{ form.title(class_ = "form-control") }}
+
+            {% else %}
+
+            {{ form.title(class_ = "form-control is-invalid") }}
+            <p class="mt-1 mb-0 invalid">{{ form.title.errors[0] }}</p>
+
+            {% endif %}
+
+        </div>
+
+        <div class="row g-3 mb-3">
+
+            <div class="col-sm-6">
+
+                {{ form.interpreter.label(class_ = "form-label") }}
+
+                {% if not form.interpreter.errors %}
+
+                {{ form.interpreter(class_ = "form-control") }}
+    
+                {% else %}
+    
+                {{ form.interpreter(class_ = "form-control is-invalid") }}
+                <p class="mt-1 mb-0 invalid">{{ form.interpreter.errors[0] }}</p>
+    
+                {% endif %}
+
+            </div>
+
+            <div class="col-sm-6">
+
+                {{ form.relation.label(class_ = "form-label") }}
+
+                {% if not form.relation.errors %}
+
+                {{ form.relation(class_ = "form-control") }}
+    
+                {% else %}
+    
+                {{ form.relation(class_ = "form-control is-invalid") }}
+                <p class="mt-1 mb-0 invalid">{{ form.relation.errors[0] }}</p>
+    
+                {% endif %}
+
+            </div>
+            
+        </div>
+
+        <div class="mb-3">
+
+            <!-- Youtube -->
+
+            {{ form.ytb_url.label(class_ = "form-label") }}
+
+            {% if not form.ytb_url.errors %}
+
+            {{ form.ytb_url(class_ = "form-control mb-3") }}
+
+            {% else %}
+
+            {{ form.ytb_url(class_ = "form-control is-invalid") }}
+            <p class="mt-1 invalid">{{ form.ytb_url.errors[0] }}</p>
+
+            {% endif %}
+
+            <!-- Spotify -->
+
+            {{ form.spoty_url.label(class_ = "form-label") }}
+
+            {% if not form.spoty_url.errors %}
+
+            {{ form.spoty_url(class_ = "form-control") }}
+
+            {% else %}
+
+            {{ form.spoty_url(class_ = "form-control is-invalid") }}
+            <p class="mt-1 invalid">{{ form.spoty_url.errors[0] }}</p>
+
+            {% endif %}
+
+        </div>
+
+        <div class="mb-3">
+            {{ form.submit(class_="btn btn-outline-dark") }}
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock %}
