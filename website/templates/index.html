@@ -1,8 +1,99 @@
 {% extends "base.html" %}
 {% block main %}
-<div class="container">
 
-<div>
+<div class="main">
+
+    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2" class=""></button>
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3" class="" aria-current="true"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="shadow"><img src="{{ url_for('static', filename='images/yourname01.jpg') }}" alt="Cover carousel" class="carousel-bg"></div> <!-- Carousel background image -->
+            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"></rect></svg>
+    
+            <div class="container">
+              <div class="carousel-caption text-start">
+                
+                <h1>MyAnimeSongs</h1>
+                <p>Retrouvez toutes les bandes sons de vos animes favoris</p>
+                <p><a class="btn btn-lg btn-primary" href="#">Connectez-vous</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="shadow"><img src="{{ url_for('static', filename='images/yourlieinapril01.jpg') }}" alt="Cover carousel" class="carousel-bg"></div> <!-- Carousel background image -->
+            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"></rect></svg>
+    
+            <div class="container">
+              <div class="carousel-caption">
+                <h1>Creez et écoutez vos playlists</h1>
+                <p>Créez des playlists personnalisées et ecoutez les directement via Youtube et Spotify</p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="shadow"><img src="{{ url_for('static', filename='images/jujutsukaisen01.jpg') }}" alt="Cover carousel" class="carousel-bg"></div> <!-- Carousel background image -->
+            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"></rect></svg>
+    
+            <div class="container">
+              <div class="carousel-caption text-end">
+                <h1>Ajouter vos propres sons</h1>
+                <p>Contribuez en ajoutant vos propres musiques et recommandations</p>
+                <p><a class="btn btn-lg btn-primary" href="#">Suggerer</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+    
+    <div class="py-5">
+        <div class="container d-flex flex-column align-items-center">
+            <h3 class="mb-3 align-self-start"><a href="/search/anime/trending" class="title text-secondary ">ANIMES</a></h3> 
+            <div class="row">
+                {% for anime in animes %}
+                <div class="col mb-2">
+                    <div class="card border-0 d.flex flex-column align-items-center">
+                        <img class="img-responsive rounded" src="{{ url_for('static', filename='images/'+anime.img) }}">
+                        <div class="card-content pt-3 align-self-start">
+                            <h6 ><a class="text-dark" href="">{{anime.name}}</a></h6>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <nav aria-label="...">
+                <ul class="pagination">
+                    <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1">Previous</a>
+                    </li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item">
+                    <a class="page-link" href="#">2</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+{% endblock %}
+
+<!-- <div>
     <ul>
         {% for anime in animes %}
         <li>
@@ -17,20 +108,19 @@
                 <li>
                     <p>Titre : {{ song.title }}    {{ song.relation}}</p>
                     <p>Interprète : {{ song.interpreter }}</p>
-                    <!-- <iframe id="ytplayer" type="text/html" width="640" height="360"
+                    <iframe id="ytplayer" type="text/html" width="640" height="360"
                     src="http://www.youtube.com/embed/{{ song.ytb_url }}"
                     loading="lazy"></iframe>
                     <iframe width="300" height="360"
                     src="{{ song.spoty_url }}" 
                     allowtransparency="true" allow="encrypted-media"
-                    loading="lazy"></iframe> -->
+                    loading="lazy"></iframe>
                 </li>
                 {% endfor %}
             </ul>
         </li>
         {% endfor %}
     </ul>
-</div>
-
-</div>
-{% endblock %}
+</div> -->
+        
+        
