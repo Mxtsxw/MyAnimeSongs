@@ -7,7 +7,7 @@ from flask import render_template, url_for, redirect
 from flask_wtf import FlaskForm
 from wtforms import StringField, SelectField, PasswordField, BooleanField
 from wtforms.validators import DataRequired, InputRequired, Length, Email, URL, ValidationError
-from website.models import User, get_anime, get_animes, get_song, get_songs, get_songs_anime, get_role_id, get_user, get_user_by_username, get_user_by_email, create_user, get_anime_by_name, create_song_request, get_song_request, get_song_requests, get_users, get_song_requests_by_user
+from website.models import delete_song_requests, get_anime, get_animes, get_song, get_songs, get_songs_anime, get_role_id, get_user, get_user_by_username, get_user_by_email, create_user, get_anime_by_name, create_song_request, get_song_request, get_song_requests, get_users, get_song_requests_by_user, create_song
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, login_required, logout_user, current_user
 
@@ -133,6 +133,11 @@ class RequestSongForm(FlaskForm):
     spoty_url = StringField("URL Spotify", validators = [InputRequired(message = "Champ obligatoire"), Length(max = 120, message = "Ne peux pas faire plus de 120 caractères")],
                              render_kw = {"placeholder": "https://open.spotify.com/track/3YOZLPRiTuYgItSGO41gPT?si=4e9a74511f334ef2"})
     submit = SubmitField("Envoyer la demande")
+    
+    # administration part
+    
+    accept = SubmitField("Accepter la demande")
+    refuse = SubmitField("Refuser la demande")
         
 @app.route("/request/song", methods=['GET', 'POST'])
 @login_required
@@ -184,15 +189,42 @@ def administration_request():
         song_requests = get_song_requests()
     )
     
-@app.route("/administration/request/song/<int:id>")
+@app.route("/administration/request/song/<int:id>", methods=['GET', 'POST'])
 @login_required
 def administration_request_song(id):
     
     if not current_user.role.name == "Administrateur":
         return redirect(url_for("home"))
+    
+    request = get_song_request(id)
+        
+    form = RequestSongForm()
+    
+    form.anime.render_kw["value"] = request.anime.name
+    form.title.render_kw["value"] = request.title
+    form.relation.render_kw["value"] = request.relation
+    form.interpreter.render_kw["value"] = request.interpreter
+    form.ytb_url.render_kw["value"] = request.ytb_url
+    form.spoty_url.render_kw["value"] = request.spoty_url
+    
+    if form.validate_on_submit():
+        
+        if form.accept.data :
+            
+            create_song(
+                title = form.title.data,
+                interpreter = form.interpreter.data,
+                relation = form.relation.data,
+                ytb_url = form.ytb_url.data,
+                spoty_url = form.spoty_url.data,
+                anime_id = get_anime_by_name(form.anime.data).id
+            )
+            
+        delete_song_requests(request)
         
     return render_template(
         "administration-request-song.html",
         user = current_user,
-        request = get_song_request(id)
+        request = request,
+        form = form
     )
