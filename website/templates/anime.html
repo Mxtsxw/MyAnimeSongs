@@ -6,7 +6,7 @@
         <!-- Set the banner background -->
     </div>
     <div class="banner-content container">
-        <div class="img-placeholder">
+        <div class="img-placeholder shadow">
             <img src="{{ url_for('static', filename='images/yourlieinapril01.jpg') }}" alt="Anime cover" class="banner-img rounded">
         </div>
         <div class="desc">
@@ -15,6 +15,75 @@
                 modi corrupti minima doloribus explicabo, dolore asperiores nostrum eveniet quos quaerat voluptatem quasi beatae.</p>    
         </div>
     </div>
+    <div class="container-fluid bg-dark">
+        <ul class="nav justify-content-center text-uppercase pt-3">
+            <li class="nav-item px-2">
+              <a class="nav-link active" href="#">Tous</a>
+            </li>
+            <li class="nav-item px-2">
+              <a class="nav-link" href="#">Opening</a>
+            </li>
+            <li class="nav-item px-2">
+              <a class="nav-link" href="#">Ending</a>
+            </li>
+            <li class="nav-item px-2">
+              <a class="nav-link" href="#">OST</a>
+            </li>
+        </ul>
+        <div class="container heading mt-5">
+            <h2><span>Opening</span></h2>
+        </div>
+        <div class="container text-secondary">
+            <div class="row">
+                {% for i in range(7) %}
+                <div class="col mb-2 mt-3">
+                    <div class="card">
+                        <div class="card-horizontal">
+                   
+                            <div class="card-body">
+                                <h4 class="card-title text-dark">Song Name</h4>
+                                <p class="card-text text-dark">Artist</p>
+                                <p class="card-text text-muted">Relation</p>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="container heading mt-5">
+            <h2><span>Ending</span></h2>
+        </div>
+        <div class="container text-secondary">
+            <div class="row">
+                {% for i in range(10) %}
+                <div class="col mb-2 mt-3">
+                    <div class="card">
+                        <div class="card-horizontal">
+                   
+                            <div class="card-body">
+                                <h4 class="card-title text-dark">Song Name</h4>
+                                <p class="card-text text-dark">Artist</p>
+                                <p class="card-text text-muted">Relation</p>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="container heading mt-5">
+            <h2><span>OST</span></h2>
+        </div>
+        <div class="container text-secondary pb-5">
+            <div class="row text-center text-white">
+                <p>Aucun son n'est enregistré dans cette catégorie. <a href="#">Ajouter</a> les votres !</p>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 {% endblock %}

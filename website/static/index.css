@@ -90,3 +90,18 @@ html, body{
 .desc {
     margin: 1em;
 }
+
+.heading h2 {
+    width: 100%; 
+    text-align: start; 
+    border-bottom: 3px solid #fff; 
+    line-height: 0.1em;
+    margin: 10px 0 20px; 
+    text-transform: uppercase;
+    color: white;
+ } 
+ 
+.heading h2 span { 
+     background:#212529; 
+     padding-right: 1em; 
+ }
