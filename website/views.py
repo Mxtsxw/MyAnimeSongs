@@ -1,12 +1,13 @@
 from flask.app import Flask
 from werkzeug import datastructures
+from werkzeug.wrappers import request
 from wtforms.fields.simple import HiddenField, SubmitField
 from .app import app, login_manager
 from flask import render_template, url_for, redirect
 from flask_wtf import FlaskForm
 from wtforms import StringField, SelectField, PasswordField, BooleanField
 from wtforms.validators import DataRequired, InputRequired, Length, Email, URL, ValidationError
-from website.models import User, get_anime, get_animes, get_song, get_songs, get_songs_anime, get_role_id, get_user, get_user_by_username, get_user_by_email, create_user, get_anime_by_name, create_song_request
+from website.models import User, get_anime, get_animes, get_song, get_songs, get_songs_anime, get_role_id, get_user, get_user_by_username, get_user_by_email, create_user, get_anime_by_name, create_song_request, get_song_request, get_song_requests, get_users
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, login_required, logout_user, current_user
 
@@ -151,11 +152,21 @@ def request_song():
             user_id = current_user.id
         )
         
-        return redirect(url_for("home"))
+        return redirect(url_for("profile_request"))
     
     return render_template(
         "request-song.html",
         user = current_user,
         form = form,
         animes = get_animes()
+    )
+    
+@app.route("/profile/request")
+@login_required
+def profile_request():
+    
+    return render_template(
+        "profile-request.html",
+        user = current_user,
+        song_requests = get_song_requests(current_user.username)
     )
