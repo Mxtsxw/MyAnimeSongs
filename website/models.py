@@ -23,7 +23,19 @@ class Song(db.Model):
 
     def __repr__(self):
         return "<Song (%d) %s>" % (self.id, self.title)
-
+    
+def create_song(anime_id, title, relation, interpreter, ytb_url, spoty_url):
+    obj = Song(
+        title = title,
+        relation = relation,
+        interpreter = interpreter,
+        ytb_url = ytb_url,
+        spoty_url = spoty_url,
+        anime_id = anime_id
+    )
+    db.session.add(obj)
+    db.session.commit()
+    
 def get_animes():
     return Anime.query.order_by('name').all()
 
