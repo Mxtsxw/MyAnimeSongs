@@ -5,8 +5,9 @@
 
     <form action="" method="post" class = "needs-validation" novalidate>
 
+        {{ form.hidden_tag() }}
+
         <div class="mb-3">
-            
 
             {{ form.anime.label(class_ = "form-label") }}
 
@@ -68,6 +69,7 @@
                 <p class="mt-1 mb-0 invalid">{{ form.interpreter.errors[0] }}</p>
     
                 {% endif %}
+
             </div>
 
             <div class="col-sm-6">
