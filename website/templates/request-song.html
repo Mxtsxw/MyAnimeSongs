@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block main %}
+
+<div class="w-50 container mt-3">
+
+    <form action="" method="post" class = "needs-validation" novalidate>
+
+        <div class="mb-3">
+            {{ form.anime.label(class_ = "form-label") }}
+            {{ form.anime(class_ = "form-control") }}
+
+            <datalist id="datalistAnime">
+                
+                {% for anime in animes %}
+            
+                <option value="{{ anime.name }}">
+
+                {% endfor %}
+            
+            </datalist>
+        
+            <p class = "mt-1">Vous ne trouvez pas votre animé ? <a href="#" class="link-primary">Ajoutez le</a> !</p>
+
+        </div>
+
+        <div class="mb-3">
+            {{ form.title.label(class_ = "form-label") }}
+            {{ form.title(class_ = "form-control") }}
+        </div>
+
+        <div class="row g-3 mb-3">
+
+            <div class="col-sm-6">
+                {{ form.interpreter.label(class_ = "form-label") }}
+                {{ form.interpreter(class_ = "form-control") }}
+            </div>
+
+            <div class="col-sm-6">
+                {{ form.relation.label(class_ = "form-label") }}
+                {{ form.relation(class_ = "form-control") }}
+            </div>
+            
+
+        </div>
+
+        <div class="mb-3">
+
+            {{ form.ytb_url.label(class_ = "form-label") }}
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon3">https://www.youtube.com/</span>
+                {{ form.ytb_url(class_ = "form-control") }}
+            </div>
+
+            {{ form.spoty_url.label(class_ = "form-label") }}
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon3">https://open.spotify.com/track/</span>
+                {{ form.spoty_url(class_ = "form-control") }}
+            </div>
+
+        </div>
+
+        <div class="mb-3">
+            {{ form.submit(class_="btn btn-outline-dark") }}
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock %}
