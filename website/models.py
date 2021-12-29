@@ -89,6 +89,7 @@ class SongRequest(db.Model):
     ytb_url = db.Column(db.String(200))
     spoty_url = db.Column(db.String(200))
     anime_id = db.Column(db.Integer, db.ForeignKey("anime.id"))
+    anime = db.relationship("Anime")
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
     user = db.relationship("User", backref = db.backref("song_requests", lazy = "dynamic"))
 
@@ -110,7 +111,7 @@ def create_song_request(title, interpreter, relation, ytb_url, spoty_url, anime_
     db.session.commit()
     
 def get_song_requests(username):
-    return User.query.filter_by(username = username).song_requests.all()
+    return User.query.filter_by(username = username).first().song_requests.all()
 
 def get_song_request(id):
     return SongRequest.query.get(id)
