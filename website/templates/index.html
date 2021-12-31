@@ -19,7 +19,7 @@
                 
                 <h1>MyAnimeSongs</h1>
                 <p>Retrouvez toutes les bandes sons de vos animes favoris</p>
-                <p><a class="btn btn-lg btn-primary" href="#">Connectez-vous</a></p>
+                <p><a class="btn btn-lg btn-primary" href="{{url_for('login')}}">Connectez-vous</a></p>
               </div>
             </div>
           </div>
@@ -42,7 +42,7 @@
               <div class="carousel-caption text-end">
                 <h1>Ajouter vos propres sons</h1>
                 <p>Contribuez en ajoutant vos propres musiques et recommandations</p>
-                <p><a class="btn btn-lg btn-primary" href="#">Suggerer</a></p>
+                <p><a class="btn btn-lg btn-primary" href="{{ url_for('request_song') }}">Suggerer</a></p>
               </div>
             </div>
           </div>
