@@ -67,7 +67,7 @@
                     <div class="card border-0 d.flex flex-column align-items-center">
                         <img class="img-responsive rounded" src="{{ url_for('static', filename='images/'+anime.img) }}">
                         <div class="card-content pt-3 align-self-start">
-                            <h6 ><a class="text-dark" href="">{{anime.name}}</a></h6>
+                            <h6 ><a class="text-dark" href="{{ url_for('anime', id=anime.id) }}">{{anime.name}}</a></h6>
                         </div>
                     </div>
                 </div>
