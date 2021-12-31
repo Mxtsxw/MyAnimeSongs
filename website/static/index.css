@@ -105,3 +105,9 @@ html, body{
      background:#212529; 
      padding-right: 1em; 
  }
+
+
+.active{
+    text-decoration: underline;
+    border-bottom: solid 2px #0a58ca;
+}

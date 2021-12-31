@@ -120,7 +120,8 @@ def anime(id):
     return render_template(
         "anime.html",
         user = current_user,
-        anime = get_anime(id)
+        anime = get_anime(id),
+        songs = get_songs_anime(id)
     )
     
 def is_anime(form, field):
