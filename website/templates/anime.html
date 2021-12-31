@@ -2,15 +2,15 @@
 {% block main %}
 
 <div class="container-fluid px-0 hero">
-    <div class="banner" style="background: url( {{ url_for('static', filename='images/yourname01.jpg') }} ); background-repeat: no-repeat; background-size: cover;">
+    <div class="banner" style="background: url( {{ url_for('static', filename='images/'+anime.img) }} ); background-repeat: no-repeat; background-size: cover; opacity: 1;">
         <!-- Set the banner background -->
     </div>
     <div class="banner-content container">
-        <div class="img-placeholder shadow">
-            <img src="{{ url_for('static', filename='images/yourlieinapril01.jpg') }}" alt="Anime cover" class="banner-img rounded">
+        <div class="img-placeholder shadow rounded">
+            <img src="{{ url_for('static', filename='images/'+anime.img) }}" alt="Anime cover" class="banner-img rounded">
         </div>
         <div class="desc">
-            <h3>Anime Name</h3>
+            <h3>{{ anime.name }}</h3>
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis molestiae fuga non rerum quis repellendus veritatis 
                 modi corrupti minima doloribus explicabo, dolore asperiores nostrum eveniet quos quaerat voluptatem quasi beatae.</p>    
         </div>
