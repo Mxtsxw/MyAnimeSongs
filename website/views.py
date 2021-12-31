@@ -123,6 +123,33 @@ def anime(id):
         anime = get_anime(id),
         songs = get_songs_anime(id)
     )
+
+@app.route("/anime/<id>/opening")
+def anime_opening(id):
+    return render_template(
+        "anime.html",
+        user = current_user,
+        anime = get_anime(id),
+        songs = get_songs_anime(id)
+    )
+
+@app.route("/anime/<id>/ending")
+def anime_ending(id):
+    return render_template(
+        "anime.html",
+        user = current_user,
+        anime = get_anime(id),
+        songs = get_songs_anime(id)
+    )
+
+@app.route("/anime/<id>/ost")
+def anime_ost(id):
+    return render_template(
+        "anime.html",
+        user = current_user,
+        anime = get_anime(id),
+        songs = get_songs_anime(id)
+    )
     
 def is_anime(form, field):
     if not get_anime_by_name(field.data):
