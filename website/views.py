@@ -7,7 +7,7 @@ from flask import render_template, url_for, redirect
 from flask_wtf import FlaskForm
 from wtforms import StringField, SelectField, PasswordField, BooleanField
 from wtforms.validators import DataRequired, InputRequired, Length, Email, URL, ValidationError
-from website.models import delete_song_requests, get_anime, get_animes, get_song, get_songs, get_songs_anime, get_role_id, get_user, get_user_by_username, get_user_by_email, create_user, get_anime_by_name, create_song_request, get_song_request, get_song_requests, get_users, get_song_requests_by_user, create_song
+from website.models import *
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, login_required, logout_user, current_user
 
@@ -143,7 +143,7 @@ class RequestSongForm(FlaskForm):
     # administration part
     
     accept = SubmitField("Accepter la demande")
-    refuse = SubmitField("Refuser la demande")
+    refuse = SubmitField("Rejeter la demande")
         
 @app.route("/request/song", methods=['GET', 'POST'])
 @login_required
@@ -160,7 +160,8 @@ def request_song():
             ytb_url = form.ytb_url.data,
             spoty_url = form.spoty_url.data,
             anime_name = form.anime.data,
-            user_id = current_user.id
+            user_id = current_user.id,
+            status_id = 2
         )
         
         return redirect(url_for("profile_request"))
@@ -216,7 +217,7 @@ def administration_request_song(id):
     if form.validate_on_submit():
         
         if form.accept.data :
-            
+
             create_song(
                 title = form.title.data,
                 interpreter = form.interpreter.data,
@@ -226,7 +227,11 @@ def administration_request_song(id):
                 anime_id = get_anime_by_name(form.anime.data).id
             )
             
-        delete_song_requests(request)
+            set_status(request, "Acceptée")
+            
+        else:
+            
+            set_status(request, "Rejetée")
         
     return render_template(
         "administration-request-song.html",
