@@ -144,7 +144,6 @@ class RequestSongForm(FlaskForm):
     
     accept = SubmitField("Accepter la demande")
     refuse = SubmitField("Rejeter la demande")
-    delete = SubmitField("Supprimer la demande")
         
 @app.route("/request/song", methods=['GET', 'POST'])
 @login_required
@@ -253,9 +252,11 @@ def administration_request_song(id):
             
             set_status(request, "Acceptée")
             
-        else:
+        else :
             
             set_status(request, "Rejetée")
+        
+        return redirect(url_for("administration_request"))
         
     return render_template(
         "administration-request-song.html",

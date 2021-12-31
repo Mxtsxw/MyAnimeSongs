@@ -20,12 +20,22 @@
             <li>relation : {{ request.relation }}</li>
             <li>interpreter : {{ request.interpreter }}</li>
             <li>anime : {{ request.anime }}</li>
+
         </ul>
     </li>
 
     {% endfor %}
 
     </ul>
+
+    <ul class="list-group list-group-flush">
+
+        {% for request in song_requests %}
+        <li class="list-group-item">
+            
+        </li>
+        {% endfor %}
+      </ul>
 
 </div>
 {% endblock %}
