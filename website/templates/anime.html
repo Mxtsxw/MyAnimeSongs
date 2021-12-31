@@ -67,7 +67,6 @@
                         <div class="col mb-2 mt-3">
                             <div class="card">
                                 <div class="card-horizontal">
-                        
                                     <div class="card-body">
                                         <h4 class="card-title text-dark">{{song.title}}</h4>
                                         <p class="card-text text-dark">{{song.interpreter}}</p>
@@ -93,7 +92,16 @@
             </div>
         {% endif %}
     </div>
+    <div id="spotify-frame">
+
+    </div>
 
 </div>
 
 {% endblock %}
+
+<!-- 
+    TODO:
+    - Trouver un moyen de verifier la presence d'ED/OP/OST
+    - Afficher message pour request lorsque qu'aucun son n'est disponible
+-->
