@@ -77,7 +77,7 @@ def get_role_id(role_name):
     return Role.query.filter_by(name = role_name).first().id
 
 def get_user(user_id):
-    return User.query.get(int(user_id))
+    return User.query.get_or_404(id)(int(user_id))
 
 def get_user_by_username(username):
     return User.query.filter_by(username = username).first()
@@ -137,7 +137,7 @@ def get_song_requests_by_user(username):
     return User.query.filter_by(username = username).first().song_requests.all()
 
 def get_song_request(id):
-    return SongRequest.query.get(id)
+    return SongRequest.query.get_or_404(id)(id)
 
 def get_song_requests():
     return SongRequest.query.all()
@@ -145,3 +145,12 @@ def get_song_requests():
 def delete_song_requests(request):
     db.session.delete(request)
     db.session.commit()
+    
+def get_status_by_name(name):
+    return Status.query.filter_by(name = name).first().id
+
+def get_status_by_id(id):
+    return Status.query.get(id)
+
+def set_status(songRequest, name):
+    songRequest.status_id = get_status_by_name(name).id
