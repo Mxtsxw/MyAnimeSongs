@@ -121,7 +121,8 @@ def anime(id):
         "anime.html",
         user = current_user,
         anime = get_anime(id),
-        songs = get_songs_anime(id)
+        songs = get_songs_anime(id),
+        display = "all"
     )
 
 @app.route("/anime/<id>/opening")
@@ -130,7 +131,8 @@ def anime_opening(id):
         "anime.html",
         user = current_user,
         anime = get_anime(id),
-        songs = get_songs_anime(id)
+        songs = get_songs_anime(id),
+        display = "opening"
     )
 
 @app.route("/anime/<id>/ending")
@@ -139,7 +141,8 @@ def anime_ending(id):
         "anime.html",
         user = current_user,
         anime = get_anime(id),
-        songs = get_songs_anime(id)
+        songs = get_songs_anime(id),
+        display = "ending"
     )
 
 @app.route("/anime/<id>/ost")
@@ -148,7 +151,8 @@ def anime_ost(id):
         "anime.html",
         user = current_user,
         anime = get_anime(id),
-        songs = get_songs_anime(id)
+        songs = get_songs_anime(id),
+        display = "ost"
     )
     
 def is_anime(form, field):

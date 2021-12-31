@@ -18,74 +18,80 @@
     <div class="container-fluid bg-dark">
         <ul class="nav justify-content-center text-uppercase pt-3 type-nav">
             <li class="nav-item px-2">
-              <a class="nav-link active" href="#">Tous</a>
+              <a class="nav-link {% if display == 'all' %} active {% endif %}" href="{{ url_for('anime', id=anime.id) }}">Tous</a>
             </li>
             <li class="nav-item px-2">
-              <a class="nav-link" href="#">Opening</a>
+              <a class="nav-link {% if display == 'opening' %} active {% endif %}" href="{{ url_for('anime_opening', id=anime.id) }}">Opening</a>
+            </li>
+            <li class="nav-item px-2"> 
+              <a class="nav-link {% if display == 'ending' %} active {% endif %}" href="{{ url_for('anime_ending', id=anime.id) }}">Ending</a>
             </li>
             <li class="nav-item px-2">
-              <a class="nav-link" href="#">Ending</a>
-            </li>
-            <li class="nav-item px-2">
-              <a class="nav-link" href="#">OST</a>
+              <a class="nav-link {% if display == 'ost' %} active {% endif %}" href="{{ url_for('anime_ost', id=anime.id) }}">OST</a>
             </li>
         </ul>
-        <div class="container heading mt-5">
-            <h2><span>Opening</span></h2>
-        </div>
-        <div class="container text-secondary">
-            <div class="row row-cols-auto">
-                {% for song in songs %}
-                {% if 'OP' in song.relation %}
-                    <div class="col mb-2 mt-3">
-                        <div class="card">
-                            <div class="card-horizontal">
-                    
-                                <div class="card-body">
-                                    <h4 class="card-title text-dark">{{song.title}}</h4>
-                                    <p class="card-text text-dark">{{song.interpreter}}</p>
-                                    <p class="card-text text-muted">{{song.relation}}</p>
+        {% if display == "all" or display == "opening" %}
+            <div class="container heading mt-5">
+                <h2><span>Opening</span></h2>
+            </div>
+            <div class="container text-secondary">
+                <div class="row row-cols-auto">
+                    {% for song in songs %}
+                    {% if 'OP' in song.relation %}
+                        <div class="col mb-2 mt-3">
+                            <div class="card">
+                                <div class="card-horizontal">
+                        
+                                    <div class="card-body">
+                                        <h4 class="card-title text-dark">{{song.title}}</h4>
+                                        <p class="card-text text-dark">{{song.interpreter}}</p>
+                                        <p class="card-text text-muted">{{song.relation}}</p>
+                                    </div>
                                 </div>
+                                
                             </div>
-                            
                         </div>
-                    </div>
-                    {% endif%}
-                {% endfor %}
+                        {% endif%}
+                    {% endfor %}
+                </div>
             </div>
-        </div>
-        <div class="container heading mt-5">
-            <h2><span>Ending</span></h2>
-        </div>
-        <div class="container text-secondary">
-            <div class="row row-cols-auto">
-                {% for song in songs %}
-                    {% if 'ED' in song.relation %}
-                    <div class="col mb-2 mt-3">
-                        <div class="card">
-                            <div class="card-horizontal">
-                    
-                                <div class="card-body">
-                                    <h4 class="card-title text-dark">{{song.title}}</h4>
-                                    <p class="card-text text-dark">{{song.interpreter}}</p>
-                                    <p class="card-text text-muted">{{song.relation}}</p>
+        {% endif %}
+        {% if display == "all" or display == "ending" %}
+            <div class="container heading mt-5">
+                <h2><span>Ending</span></h2>
+            </div>
+            <div class="container text-secondary">
+                <div class="row row-cols-auto">
+                    {% for song in songs %}
+                        {% if 'ED' in song.relation %}
+                        <div class="col mb-2 mt-3">
+                            <div class="card">
+                                <div class="card-horizontal">
+                        
+                                    <div class="card-body">
+                                        <h4 class="card-title text-dark">{{song.title}}</h4>
+                                        <p class="card-text text-dark">{{song.interpreter}}</p>
+                                        <p class="card-text text-muted">{{song.relation}}</p>
+                                    </div>
                                 </div>
+                                
                             </div>
-                            
                         </div>
-                    </div>
-                    {% endif%}
-                {% endfor %}
+                        {% endif%}
+                    {% endfor %}
+                </div>
             </div>
-        </div>
-        <div class="container heading mt-5">
-            <h2><span>OST</span></h2>
-        </div>
-        <div class="container text-secondary pb-5">
-            <div class="row text-center text-white">
-                <p>Aucun son n'est enregistré dans cette catégorie. <a href="{{ url_for('request_song') }}">Ajouter</a> les votres !</p>
+        {% endif %}
+        {% if display == "all" or display == "ost" %}
+            <div class="container heading mt-5">
+                <h2><span>OST</span></h2>
             </div>
-        </div>
+            <div class="container text-secondary pb-5">
+                <div class="row text-center text-white">
+                    <p>Aucun son n'est enregistré dans cette catégorie. <a href="{{ url_for('request_song') }}">Ajouter</a> les votres !</p>
+                </div>
+            </div>
+        {% endif %}
     </div>
 
 </div>
