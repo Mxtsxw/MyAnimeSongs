@@ -107,7 +107,6 @@ html, body{
  }
 
 
-.active{
-    text-decoration: underline;
+.type-nav .active{
     border-bottom: solid 2px #0a58ca;
 }
