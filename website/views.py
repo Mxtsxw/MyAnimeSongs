@@ -144,6 +144,7 @@ class RequestSongForm(FlaskForm):
     
     accept = SubmitField("Accepter la demande")
     refuse = SubmitField("Rejeter la demande")
+    delete = SubmitField("Supprimer la demande")
         
 @app.route("/request/song", methods=['GET', 'POST'])
 @login_required
@@ -160,8 +161,7 @@ def request_song():
             ytb_url = form.ytb_url.data,
             spoty_url = form.spoty_url.data,
             anime_name = form.anime.data,
-            user_id = current_user.id,
-            status_id = 2
+            user_id = current_user.id
         )
         
         return redirect(url_for("profile_request"))
@@ -172,7 +172,7 @@ def request_song():
         form = form,
         animes = get_animes()
     )
-    
+
 @app.route("/profile/request")
 @login_required
 def profile_request():
@@ -181,6 +181,30 @@ def profile_request():
         "profile-request.html",
         user = current_user,
         song_requests = get_song_requests_by_user(current_user.username)
+    )
+    
+    
+class RequestForm(FlaskForm):
+    delete = SubmitField("Supprimer la demande")
+
+@app.route("/profile/request/song/<int:id>", methods=['GET', 'POST'])
+@login_required
+def profile_request_song(id):
+    
+    request = get_song_request(id)
+    form = RequestForm()
+    
+    if form.validate_on_submit():
+        
+        if form.delete.data:
+            delete_song_requests(request)
+            return redirect(url_for("profile_request"))
+    
+    return render_template(
+        "profile-request-song.html",
+        user = current_user,
+        request = request,
+        form = form
     )
     
 @app.route("/administration/request")

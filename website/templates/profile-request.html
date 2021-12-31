@@ -10,11 +10,12 @@
 
     <li>
         <ul>
-            <li>id : {{ request.id }}</li>
+            <a href="{{ url_for('profile_request_song', id = request.id) }}"> {{ request.id }}</a>
             <li>title : {{ request.title }}</li>
             <li>relation : {{ request.relation }}</li>
             <li>interpreter : {{ request.interpreter }}</li>
             <li>anime : {{ request.anime }}</li>
+            <li>Statut : Demande {{ request.status }}</li>
         </ul>
     </li>
 

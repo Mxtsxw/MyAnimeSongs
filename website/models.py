@@ -77,7 +77,7 @@ def get_role_id(role_name):
     return Role.query.filter_by(name = role_name).first().id
 
 def get_user(user_id):
-    return User.query.get_or_404(id)(int(user_id))
+    return User.query.get_or_404(int(user_id))
 
 def get_user_by_username(username):
     return User.query.filter_by(username = username).first()
@@ -107,10 +107,9 @@ class SongRequest(db.Model):
     user = db.relationship("User", backref = db.backref("song_requests", lazy = "dynamic"))
     status_id = db.Column(db.Integer, db.ForeignKey("status.id"))
     status = db.relationship("Status", backref = db.backref("requests", lazy = "dynamic"))
-    message = db.Column(db.String(300))
 
     def __repr__(self):
-        return "<Song Request (%d) %s %s %s %s>" % (self.id, self.title, self.user, self.status, self.message)
+        return "<Song Request (%d) %s %s %s>" % (self.id, self.title, self.user, self.status)
 
 class Status(db.Model):
     id = db.Column(db.Integer, primary_key = True)
@@ -128,7 +127,8 @@ def create_song_request(title, interpreter, relation, ytb_url, spoty_url, anime_
         ytb_url = ytb_url,
         spoty_url = spoty_url,
         anime_id = anime_id,
-        user_id = user_id
+        user_id = user_id,
+        status_id = 2
     )
     db.session.add(obj)
     db.session.commit()
@@ -137,7 +137,7 @@ def get_song_requests_by_user(username):
     return User.query.filter_by(username = username).first().song_requests.all()
 
 def get_song_request(id):
-    return SongRequest.query.get_or_404(id)(id)
+    return SongRequest.query.get_or_404(id)
 
 def get_song_requests():
     return SongRequest.query.all()
@@ -147,10 +147,11 @@ def delete_song_requests(request):
     db.session.commit()
     
 def get_status_by_name(name):
-    return Status.query.filter_by(name = name).first().id
+    return Status.query.filter_by(name = name).first()
 
 def get_status_by_id(id):
     return Status.query.get(id)
 
 def set_status(songRequest, name):
     songRequest.status_id = get_status_by_name(name).id
+    db.session.commit()
