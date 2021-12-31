@@ -1,4 +1,5 @@
 from enum import unique
+from os import name
 from sqlalchemy.orm import backref
 from .app import db
 from flask_login import UserMixin
@@ -104,9 +105,19 @@ class SongRequest(db.Model):
     anime = db.relationship("Anime")
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
     user = db.relationship("User", backref = db.backref("song_requests", lazy = "dynamic"))
+    status_id = db.Column(db.Integer, db.ForeignKey("status.id"))
+    status = db.relationship("Status", backref = db.backref("requests", lazy = "dynamic"))
+    message = db.Column(db.String(300))
 
     def __repr__(self):
-        return "<Song Request (%d) %s %s>" % (self.id, self.title, self.user)
+        return "<Song Request (%d) %s %s %s %s>" % (self.id, self.title, self.user, self.status, self.message)
+
+class Status(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    name = db.Column(db.String(40), unique = True)
+    
+    def __repr__(self):
+        return "<Status (%d) %s>" % (self.id, self.name)
     
 def create_song_request(title, interpreter, relation, ytb_url, spoty_url, anime_name, user_id):
     anime_id = get_anime_by_name(anime_name).id
