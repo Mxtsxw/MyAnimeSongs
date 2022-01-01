@@ -170,6 +170,45 @@ def request_song():
         form = form,
         animes = get_animes()
     )
+    
+def anime_already_exist(form, field):
+    for anime in get_animes():
+        if anime.name == field.data:
+            raise ValidationError("L'anime est déjà dans la base de données")
+
+class RequestAnimeForm(FlaskForm):
+    name = StringField("Nom", validators = [InputRequired(message = "Champ obligatoire"), Length(max = 80), anime_already_exist],
+                        render_kw = {"placeholder": "Haikyuu - Saison 4"})
+    img_url = StringField("URL Youtube", validators = [InputRequired(message = "Champ obligatoire"), Length(max = 120, message = "Ne peux pas faire plus de 120 caractères")],
+                          render_kw = {"placeholder": "https://kbimages1-a.akamaihd.net/41c745b0-f165-4aa8-b2b1-f96cfdb6e594/353/569/90/False/haikyu-les-as-du-volley-chapitre-1.jpg"})
+    submit = SubmitField("Envoyer la demande")
+    
+    # administration part
+    
+    accept = SubmitField("Accepter la demande")
+    refuse = SubmitField("Rejeter la demande")
+
+@app.route("/request/anime", methods=['GET', 'POST'])
+@login_required
+def request_anime():
+    
+    form = RequestAnimeForm()
+    
+    if form.validate_on_submit():
+        
+        create_anime_request(
+            name = form.name.data,
+            img_url = form.img_url.data,
+            user_id = current_user.id
+        )
+        
+        return redirect(url_for("profile_request"))
+    
+    return render_template(
+        "request-anime.html",
+        user = current_user,
+        form = form
+    )
 
 @app.route("/profile/request")
 @login_required
@@ -178,7 +217,8 @@ def profile_request():
     return render_template(
         "profile-request.html",
         user = current_user,
-        song_requests = get_song_requests_by_user(current_user)
+        song_requests = get_song_requests_by_user(current_user),
+        anime_requests = get_anime_requests_by_user(current_user)
     )
 
 @app.route("/administration/request", methods = ['GET', 'POST'])
@@ -265,6 +305,18 @@ def profile_request_song_delete(id):
     
     if request:
         if request in get_song_requests_by_user(current_user):
-            delete_song_requests(request)
+            delete_request(request)
+    
+    return redirect(url_for("profile_request"))
+
+@app.route("/profile/request/anime/<int:id>/delete", methods = ['GET', 'POST'])
+@login_required
+def profile_request_anime_delete(id):
+    
+    request = get_anime_request(id)
+    
+    if request:
+        if request in get_anime_requests_by_user(current_user):
+            delete_request(request)
     
     return redirect(url_for("profile_request"))

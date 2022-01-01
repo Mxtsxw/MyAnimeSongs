@@ -145,7 +145,7 @@ def get_song_request(id):
 def get_song_requests():
     return SongRequest.query.all()
 
-def delete_song_requests(request):
+def delete_request(request):
     db.session.delete(request)
     db.session.commit()
     
@@ -170,3 +170,26 @@ class AnimeRequest(db.Model):
 
     def __repr__(self):
         return "<Anime Request (%d) %s %s %s>" % (self.id, self.name, self.user, self.status)
+    
+def create_anime_request(name, img_url, user_id):
+    obj = AnimeRequest(
+        name = name,
+        img_url = img_url,
+        user_id = user_id,
+        status_id = 2
+    )
+    db.session.add(obj)
+    db.session.commit()
+    
+def create_anime(name):
+    obj = Anime(
+        name = name
+    )
+    db.session.add(obj)
+    db.session.commit()
+    
+def get_anime_requests_by_user(user):
+    return user.anime_requests.all()
+
+def get_anime_request(id):
+    return AnimeRequest.query.get_or_404(id)

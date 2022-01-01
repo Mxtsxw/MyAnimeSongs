@@ -41,6 +41,38 @@
 
         </li>
         {% endfor %}
+
+        {% for request in anime_requests %}
+        <li class="list-group-item mt-2 mb-2">
+
+            <div class="d-flex justify-content-between mb-2">
+                <h5 class="mb-1 mt-1">Demande n°{{ request.id }}</h5>
+                {% if request.status.id == 2 %}
+                    <a class="btn btn-danger mt-2 mb-2" href="{{ url_for('profile_request_anime_delete', id = request.id) }}" role="button">Annuler</a>
+                {% endif %}
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    Animé : {{ request.name }}
+                </div>
+                <div class="col">
+                    <p class = "
+                        {% if request.status.id == 1 %}
+                        text-danger
+                        {% elif request.status.id == 2 %}
+                        text-warning
+                        {% else %}
+                        text-success
+                        {% endif %}
+                    ">
+                        {{ request.status.name }}
+                    </p>
+                </div>
+            </div>
+
+        </li>
+        {% endfor %}
     </ul>
 
        
