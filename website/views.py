@@ -1,9 +1,8 @@
 from flask.app import Flask
 from werkzeug import datastructures
-from werkzeug.wrappers import request
 from wtforms.fields.simple import HiddenField, SubmitField
 from .app import app, login_manager
-from flask import render_template, url_for, redirect
+from flask import render_template, url_for, redirect, request
 from flask_wtf import FlaskForm
 from wtforms import StringField, SelectField, PasswordField, BooleanField
 from wtforms.validators import DataRequired, InputRequired, Length, Email, URL, ValidationError
@@ -206,12 +205,15 @@ def profile_request_song(id):
         form = form
     )
     
-@app.route("/administration/request")
+@app.route("/administration/request", methods = ['GET', 'POST'])
 @login_required
 def administration_request():
     
     if not current_user.role.name == "Administrateur":
         return redirect(url_for("home"))
+    
+    if request.method == "POST":
+        print("salut")
         
     return render_template(
         "administration-request.html",
@@ -219,7 +221,7 @@ def administration_request():
         song_requests = get_song_requests()
     )
     
-@app.route("/administration/request/song/<int:id>", methods=['GET', 'POST'])
+@app.route("/administration/request/song/<int:id>", methods = ['GET', 'POST'])
 @login_required
 def administration_request_song(id):
     
@@ -264,3 +266,17 @@ def administration_request_song(id):
         request = request,
         form = form
     )
+    
+@app.route("/administration/request/song/<int:id>/delete", methods = ['GET', 'POST'])
+@login_required
+def administration_request_song_delete(id):
+    
+    if not current_user.role.name == "Administrateur":
+        return redirect(url_for("home"))
+    
+    request = get_song_request(id)
+    
+    if request:
+        delete_song_requests(request)
+    
+    return redirect(url_for("administration_request"))

@@ -12,7 +12,11 @@
                     <h5 class="mb-1 mt-1">Demande n°{{ request.id }}</h5>
                     <p class="mb-0 justify">Par {{ request.user.username }}</p>
                 </div>
+                    {% if request.status.id == 2 %}
                 <a class="btn btn-primary mt-2 mb-2" href="{{ url_for('administration_request_song', id = request.id) }}" role="button">Traiter</a>
+                {% else %}
+                    <a class="btn btn-danger mt-2 mb-2" href="{{ url_for('administration_request_song_delete', id = request.id) }}" role="button">Supprimer</a>
+                {% endif %}
             </div>
 
             <div class="row">
@@ -26,7 +30,17 @@
                     Relation : {{ request.relation }}
                 </div>
                 <div class="col">
-                    Status : {{ request.status.name }}
+                    <p class = "
+                        {% if request.status.id == 1 %}
+                        text-danger
+                        {% elif request.status.id == 2 %}
+                        text-warning
+                        {% else %}
+                        text-success
+                        {% endif %}
+                    ">
+                        {{ request.status.name }}
+                    </p>
                 </div>
             </div>
 
