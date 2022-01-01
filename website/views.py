@@ -293,7 +293,7 @@ def administration_request_song_delete(id):
     request = get_song_request(id)
     
     if request:
-        delete_song_requests(request)
+        delete_request(request)
     
     return redirect(url_for("administration_request"))
 
