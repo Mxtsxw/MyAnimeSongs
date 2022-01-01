@@ -1,41 +1,43 @@
 {% extends "base.html" %}
 {% block main %}
-<div class="container">
 
-    <h1>Demande de son</h1>
-
-    <ul>
-
-    {% for request in song_requests %}
-
-    <li>
-        <ul>
-            <li>
-
-            <a href="{{ url_for('administration_request_song', id = request.id) }}"> {{ request.id }}</a>
-
-            </li>
-
-            <li>title : {{ request.title }}</li>
-            <li>relation : {{ request.relation }}</li>
-            <li>interpreter : {{ request.interpreter }}</li>
-            <li>anime : {{ request.anime }}</li>
-
-        </ul>
-    </li>
-
-    {% endfor %}
-
-    </ul>
-
+<div class="container w-75 mt-3">
     <ul class="list-group list-group-flush">
 
         {% for request in song_requests %}
-        <li class="list-group-item">
-            
+        <li class="list-group-item mt-2 mb-2">
+
+            <div class="d-flex justify-content-between mb-2">
+                <div >
+                    <h5 class="mb-1 mt-1">Demande n°{{ request.id }}</h5>
+                    <p class="mb-0 justify">Par {{ request.user.username }}</p>
+                </div>
+                <a class="btn btn-primary mt-2 mb-2" href="{{ url_for('administration_request_song', id = request.id) }}" role="button">Traiter</a>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    Animé : {{ request.anime.name }}
+                </div>
+                <div class="col">
+                    Titre : {{ request.title }}
+                </div>
+                <div class="col">
+                    Relation : {{ request.relation }}
+                </div>
+                <div class="col">
+                    Status : {{ request.status.name }}
+                </div>
+            </div>
+
         </li>
         {% endfor %}
-      </ul>
+    </ul>
+
+       
+     </div>
 
 </div>
+
+
 {% endblock %}
