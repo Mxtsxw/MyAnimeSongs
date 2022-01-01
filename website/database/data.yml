@@ -1765,3 +1765,51 @@
   interpreter: Tia
   ytb_url: I5xBgZZKH04
   spoty_url: https://open.spotify.com/embed/track/034c3CHMQ2STRC6GPXXhl6
+
+- anime: Bungou Stray Dogs
+  relation: OP1
+  img: bsd01.jpg
+  title: TRASH CANDY
+  interpreter: GRANRODEO
+  ytb_url: tvHqaimwcKE
+  spoty_url: https://open.spotify.com/embed/track/0FuFovPx3x77CRFtt22Q3H
+
+- anime: Bungou Stray Dogs
+  relation: ED1
+  img: bsd01.jpg
+  title: Namae wo Yobu yo
+  interpreter: Luck Life
+  ytb_url: -cFvEPfhMdo
+  spoty_url: https://open.spotify.com/embed/artist/35AeYLIKrorZDAxsb40vVZ
+
+- anime: Bungou Stray Dogs - Saison 2
+  relation: OP1
+  img: bsd02.jpg
+  title: Reason Living
+  interpreter: SCREEN mode
+  ytb_url: qrcDm4Pr3Ig
+  spoty_url: https://open.spotify.com/embed/track/2gLgkVniFLbKiklW4taLOj
+
+- anime: Bungou Stray Dogs - Saison 2
+  relation: ED1
+  img: bsd02.jpg
+  title: Kaze ga Fuku Machi
+  interpreter: Luck Life
+  ytb_url: YJkr6rSsdM0
+  spoty_url: https://open.spotify.com/embed/track/6XVkBZ5DTEpAUqJMtPNyJe
+
+- anime: Bungou Stray Dogs - Saison 3
+  relation: OP1
+  img: bsd03.jpg
+  title: Setsuna no Ai
+  interpreter: GRANRODEO
+  ytb_url: fBC-ZCH_htA
+  spoty_url: https://open.spotify.com/embed/track/6GppTDfQGwYVT8N9mtUQA8
+
+- anime: Bungou Stray Dogs - Saison 3
+  relation: ED1
+  img: bsd03.jpg
+  title: Lily
+  interpreter: Luck Life
+  ytb_url: bxbXUMy4kok
+  spoty_url: https://open.spotify.com/embed/track/6Bt6EU8gtqCCiz18Z19mfn
