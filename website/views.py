@@ -178,7 +178,7 @@ def profile_request():
     return render_template(
         "profile-request.html",
         user = current_user,
-        song_requests = get_song_requests_by_user(current_user.username)
+        song_requests = get_song_requests_by_user(current_user)
     )
     
     
@@ -288,7 +288,7 @@ def profile_request_song_delete(id):
     request = get_song_request(id)
     
     if request:
-        if request in get_song_requests_by_user(current_user.username):
+        if request in get_song_requests_by_user(current_user):
             delete_song_requests(request)
     
     return redirect(url_for("profile_request"))
