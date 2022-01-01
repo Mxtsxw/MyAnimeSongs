@@ -106,7 +106,7 @@ class SongRequest(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
     user = db.relationship("User", backref = db.backref("song_requests", lazy = "dynamic"))
     status_id = db.Column(db.Integer, db.ForeignKey("status.id"))
-    status = db.relationship("Status", backref = db.backref("requests", lazy = "dynamic"))
+    status = db.relationship("Status", backref = db.backref("song_requests", lazy = "dynamic"))
 
     def __repr__(self):
         return "<Song Request (%d) %s %s %s>" % (self.id, self.title, self.user, self.status)
@@ -133,8 +133,11 @@ def create_song_request(title, interpreter, relation, ytb_url, spoty_url, anime_
     db.session.add(obj)
     db.session.commit()
     
-def get_song_requests_by_user(username):
+def get_song_requests_by_username(username):
     return User.query.filter_by(username = username).first().song_requests.all()
+
+def get_song_requests_by_user(user):
+    return user.song_requests.all()
 
 def get_song_request(id):
     return SongRequest.query.get_or_404(id)
@@ -155,3 +158,15 @@ def get_status_by_id(id):
 def set_status(songRequest, name):
     songRequest.status_id = get_status_by_name(name).id
     db.session.commit()
+    
+class AnimeRequest(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    name = db.Column(db.String(200))
+    img_url = db.Column(db.String(200))
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
+    user = db.relationship("User", backref = db.backref("anime_requests", lazy = "dynamic"))
+    status_id = db.Column(db.Integer, db.ForeignKey("status.id"))
+    status = db.relationship("Status", backref = db.backref("anime_requests", lazy = "dynamic"))
+
+    def __repr__(self):
+        return "<Anime Request (%d) %s %s %s>" % (self.id, self.name, self.user, self.status)
