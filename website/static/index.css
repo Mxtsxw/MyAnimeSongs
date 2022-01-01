@@ -2,6 +2,11 @@ html, body{
     box-sizing: border-box;
 }
 
+/* global */
+
+
+/* - */
+
 .crop {
     width: 150px;
     height: 200px;
@@ -120,4 +125,8 @@ html, body{
 
 #bottom-pad-frame{
     background-color: #212529;
+}
+
+a{
+    text-decoration: none;
 }
