@@ -6,7 +6,6 @@ const launcher = (url) => {
     adjustFrame = document.getElementById("bottom-pad-frame");
     adjustFrame.style.height = '0';
     frame = document.getElementById("spotify-frame");
-    frame.innerHTML = ""
     frame.innerHTML = `<iframe class='spotify-embed' src="${url}" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>`
 
     
