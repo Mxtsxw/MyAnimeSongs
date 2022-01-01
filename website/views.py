@@ -180,31 +180,7 @@ def profile_request():
         user = current_user,
         song_requests = get_song_requests_by_user(current_user)
     )
-    
-    
-class RequestForm(FlaskForm):
-    delete = SubmitField("Supprimer la demande")
 
-@app.route("/profile/request/song/<int:id>", methods=['GET', 'POST'])
-@login_required
-def profile_request_song(id):
-    
-    request = get_song_request(id)
-    form = RequestForm()
-    
-    if form.validate_on_submit():
-        
-        if form.delete.data:
-            delete_song_requests(request)
-            return redirect(url_for("profile_request"))
-    
-    return render_template(
-        "profile-request-song.html",
-        user = current_user,
-        request = request,
-        form = form
-    )
-    
 @app.route("/administration/request", methods = ['GET', 'POST'])
 @login_required
 def administration_request():
