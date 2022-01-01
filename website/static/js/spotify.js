@@ -1,10 +1,14 @@
-console.log("Spotify script has launched")
+console.log("Spotify script has been loaded")
 
-const launcher = () => {
+const launcher = (url) => {
+    // Function - Set and display the Spotify embed
+    // Add 'margin' to the bottom
+    adjustFrame = document.getElementById("pad-frame");
+    adjustFrame.style.height = '0';
     frame = document.getElementById("spotify-frame");
+    frame.innerHTML = ""
+    frame.innerHTML = `<iframe class='spotify-embed' src="${url}" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>`
 
-    content = doc.createElement('p');
-    content.innerHtml = "New html";
-
-    frame.appendChild(content);
+    
+    adjustFrame.style.height = `80px`;
 }

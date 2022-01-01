@@ -38,7 +38,7 @@
                 <div class="row row-cols-auto">
                     {% for song in songs %}
                     {% if 'OP' in song.relation %}
-                        <div class="col mb-2 mt-3">
+                        <div class="col mb-2 mt-3" onclick="launcher( '{{ song.spoty_url }}' ) ">
                             <div class="card">
                                 <div class="card-horizontal">
                         
@@ -64,7 +64,7 @@
                 <div class="row row-cols-auto">
                     {% for song in songs %}
                         {% if 'ED' in song.relation %}
-                        <div class="col mb-2 mt-3">
+                        <div class="col mb-2 mt-3" onclick="launcher( '{{ song.spoty_url }}' ) ">
                             <div class="card">
                                 <div class="card-horizontal">
                                     <div class="card-body">
@@ -91,8 +91,10 @@
                 </div>
             </div>
         {% endif %}
+        
     </div>
-    <div id="spotify-frame">
+    <div id="pad-frame"></div>
+    <div id="spotify-frame" class="spotify-embed">
 
     </div>
 
@@ -104,4 +106,7 @@
     TODO:
     - Trouver un moyen de verifier la presence d'ED/OP/OST
     - Afficher message pour request lorsque qu'aucun son n'est disponible
+
+    - Youtube overlay
+    - Minimize overlay
 -->

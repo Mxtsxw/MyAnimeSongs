@@ -110,3 +110,10 @@ html, body{
 .type-nav .active{
     border-bottom: solid 2px #0a58ca;
 }
+
+.spotify-embed{
+    position: fixed;
+    overflow-y: scroll;
+    width: 100%;
+    bottom: 0;
+}
