@@ -280,3 +280,15 @@ def administration_request_song_delete(id):
         delete_song_requests(request)
     
     return redirect(url_for("administration_request"))
+
+@app.route("/profile/request/song/<int:id>/delete", methods = ['GET', 'POST'])
+@login_required
+def profile_request_song_delete(id):
+    
+    request = get_song_request(id)
+    
+    if request:
+        if request in get_song_requests_by_user(current_user.username):
+            delete_song_requests(request)
+    
+    return redirect(url_for("profile_request"))
