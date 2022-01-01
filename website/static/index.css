@@ -117,3 +117,7 @@ html, body{
     width: 100%;
     bottom: 0;
 }
+
+#bottom-pad-frame{
+    background-color: #212529;
+}

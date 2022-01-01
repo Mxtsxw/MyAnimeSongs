@@ -3,7 +3,7 @@ console.log("Spotify script has been loaded")
 const launcher = (url) => {
     // Function - Set and display the Spotify embed
     // Add 'margin' to the bottom
-    adjustFrame = document.getElementById("pad-frame");
+    adjustFrame = document.getElementById("bottom-pad-frame");
     adjustFrame.style.height = '0';
     frame = document.getElementById("spotify-frame");
     frame.innerHTML = ""
