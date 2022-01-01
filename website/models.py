@@ -193,3 +193,6 @@ def get_anime_requests_by_user(user):
 
 def get_anime_request(id):
     return AnimeRequest.query.get_or_404(id)
+
+def get_anime_requests():
+    return AnimeRequest.query.all()
