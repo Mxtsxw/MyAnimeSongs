@@ -1,4 +1,5 @@
 from enum import unique
+from os import name
 from sqlalchemy.orm import backref
 from .app import db
 from flask_login import UserMixin
@@ -88,7 +89,7 @@ def get_role_id(role_name):
     return Role.query.filter_by(name = role_name).first().id
 
 def get_user(user_id):
-    return User.query.get(int(user_id))
+    return User.query.get_or_404(int(user_id))
 
 def get_user_by_username(username):
     return User.query.filter_by(username = username).first()
@@ -116,9 +117,18 @@ class SongRequest(db.Model):
     anime = db.relationship("Anime")
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
     user = db.relationship("User", backref = db.backref("song_requests", lazy = "dynamic"))
+    status_id = db.Column(db.Integer, db.ForeignKey("status.id"))
+    status = db.relationship("Status", backref = db.backref("song_requests", lazy = "dynamic"))
 
     def __repr__(self):
-        return "<Song Request (%d) %s %s>" % (self.id, self.title, self.user)
+        return "<Song Request (%d) %s %s %s>" % (self.id, self.title, self.user, self.status)
+
+class Status(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    name = db.Column(db.String(40), unique = True)
+    
+    def __repr__(self):
+        return "<Status (%d) %s>" % (self.id, self.name)
     
 def create_song_request(title, interpreter, relation, ytb_url, spoty_url, anime_name, user_id):
     anime_id = get_anime_by_name(anime_name).id
@@ -129,20 +139,72 @@ def create_song_request(title, interpreter, relation, ytb_url, spoty_url, anime_
         ytb_url = ytb_url,
         spoty_url = spoty_url,
         anime_id = anime_id,
-        user_id = user_id
+        user_id = user_id,
+        status_id = 2
     )
     db.session.add(obj)
     db.session.commit()
     
-def get_song_requests_by_user(username):
+def get_song_requests_by_username(username):
     return User.query.filter_by(username = username).first().song_requests.all()
 
+def get_song_requests_by_user(user):
+    return user.song_requests.all()
+
 def get_song_request(id):
-    return SongRequest.query.get(id)
+    return SongRequest.query.get_or_404(id)
 
 def get_song_requests():
     return SongRequest.query.all()
 
-def delete_song_requests(request):
+def delete_request(request):
     db.session.delete(request)
     db.session.commit()
+    
+def get_status_by_name(name):
+    return Status.query.filter_by(name = name).first()
+
+def get_status_by_id(id):
+    return Status.query.get(id)
+
+def set_status(songRequest, name):
+    songRequest.status_id = get_status_by_name(name).id
+    db.session.commit()
+    
+class AnimeRequest(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    name = db.Column(db.String(200))
+    img_url = db.Column(db.String(200))
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
+    user = db.relationship("User", backref = db.backref("anime_requests", lazy = "dynamic"))
+    status_id = db.Column(db.Integer, db.ForeignKey("status.id"))
+    status = db.relationship("Status", backref = db.backref("anime_requests", lazy = "dynamic"))
+
+    def __repr__(self):
+        return "<Anime Request (%d) %s %s %s>" % (self.id, self.name, self.user, self.status)
+    
+def create_anime_request(name, img_url, user_id):
+    obj = AnimeRequest(
+        name = name,
+        img_url = img_url,
+        user_id = user_id,
+        status_id = 2
+    )
+    db.session.add(obj)
+    db.session.commit()
+    
+def create_anime(name):
+    obj = Anime(
+        name = name
+    )
+    db.session.add(obj)
+    db.session.commit()
+    
+def get_anime_requests_by_user(user):
+    return user.anime_requests.all()
+
+def get_anime_request(id):
+    return AnimeRequest.query.get_or_404(id)
+
+def get_anime_requests():
+    return AnimeRequest.query.all()

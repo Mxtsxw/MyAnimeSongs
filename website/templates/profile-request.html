@@ -1,26 +1,84 @@
 {% extends "base.html" %}
 {% block main %}
-<div class="container">
 
-    <h1>Demande de son</h1>
+<div class="container w-75 mt-3">
+    <ul class="list-group list-group-flush">
 
-    <ul>
+        {% for request in song_requests %}
+        <li class="list-group-item mt-2 mb-2">
 
-    {% for request in song_requests %}
+            <div class="d-flex justify-content-between mb-2">
+                <h5 class="mb-1 mt-1">Demande n°{{ request.id }}</h5>
+                {% if request.status.id == 2 %}
+                    <a class="btn btn-danger mt-2 mb-2" href="{{ url_for('profile_request_song_delete', id = request.id) }}" role="button">Annuler</a>
+                {% endif %}
+            </div>
 
-    <li>
-        <ul>
-            <li>id : {{ request.id }}</li>
-            <li>title : {{ request.title }}</li>
-            <li>relation : {{ request.relation }}</li>
-            <li>interpreter : {{ request.interpreter }}</li>
-            <li>anime : {{ request.anime }}</li>
-        </ul>
-    </li>
+            <div class="row">
+                <div class="col">
+                    Animé : {{ request.anime.name }}
+                </div>
+                <div class="col">
+                    Titre : {{ request.title }}
+                </div>
+                <div class="col">
+                    Relation : {{ request.relation }}
+                </div>
+                <div class="col">
+                    <p class = "
+                        {% if request.status.id == 1 %}
+                        text-danger
+                        {% elif request.status.id == 2 %}
+                        text-warning
+                        {% else %}
+                        text-success
+                        {% endif %}
+                    ">
+                        {{ request.status.name }}
+                    </p>
+                </div>
+            </div>
 
-    {% endfor %}
+        </li>
+        {% endfor %}
 
+        {% for request in anime_requests %}
+        <li class="list-group-item mt-2 mb-2">
+
+            <div class="d-flex justify-content-between mb-2">
+                <h5 class="mb-1 mt-1">Demande n°{{ request.id }}</h5>
+                {% if request.status.id == 2 %}
+                    <a class="btn btn-danger mt-2 mb-2" href="{{ url_for('profile_request_anime_delete', id = request.id) }}" role="button">Annuler</a>
+                {% endif %}
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    Animé : {{ request.name }}
+                </div>
+                <div class="col">
+                    <p class = "
+                        {% if request.status.id == 1 %}
+                        text-danger
+                        {% elif request.status.id == 2 %}
+                        text-warning
+                        {% else %}
+                        text-success
+                        {% endif %}
+                    ">
+                        {{ request.status.name }}
+                    </p>
+                </div>
+            </div>
+
+        </li>
+        {% endfor %}
     </ul>
 
+       
+     </div>
+
 </div>
+
+
 {% endblock %}

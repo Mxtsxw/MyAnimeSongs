@@ -704,7 +704,7 @@
 
 - anime: Steins;Gate the Movie
   relation: ED1
-  img: sgMOVIE.jpg
+  img: sg03.jpg
   title: Anata no Eranda Kono Toki wo
   interpreter: Ayane (J-Pop)
   ytb_url: dmmnx4VQmPU
@@ -736,7 +736,7 @@
 
 - anime: Demon Slayer the Movie
   relation: ED1
-  img: knyMOVIE.jpg
+  img: kny04.jpg
   title: Homura
   interpreter: LiSA
   ytb_url: 4DxL6IKmXx4
@@ -1437,3 +1437,547 @@
   interpreter: Swimy
   ytb_url: 5JR-ViN9k1A
   spoty_url: https://open.spotify.com/embed/track/1oifj4ZzYNNDvkM9mByhsM
+
+- anime: Blue Period
+  relation: OP1
+  img: blueperiod01.jpg
+  title: EVERBLUE
+  interpreter: Omoinotake
+  ytb_url: _91LQQzrz4E
+  spoty_url: https://open.spotify.com/embed/track/5RmtuRIe8FJg9FRegwCqzW
+
+- anime: Blue Period
+  relation: ED1
+  img: blueperiod01.jpg
+  title: Replica
+  interpreter: mol-74
+  ytb_url: EVDvr-JI12Y
+  spoty_url: https://open.spotify.com/embed/track/2s76sMNt8XFC0rtNe6JfoL
+
+- anime: Link Click
+  relation: OP1
+  img: linkclick01.jpg
+  title: Dive Back In Time
+  interpreter: Bai Sha JAWS
+  ytb_url: w_DUwS3H5FE
+  spoty_url: https://open.spotify.com/embed/track/32Hog8WWaPie3RRlTCU5CN
+
+- anime: Link Click
+  relation: ED1
+  img: linkclick01.jpg
+  title: OverThink
+  interpreter: Fan Ka
+  ytb_url: vARwccCqNCA
+  spoty_url: https://open.spotify.com/embed/episode/2UDA4esUKwa2YRvq5mBlup
+
+- anime: No Game, No Life
+  relation: OP1
+  img: ngnl01.jpg
+  title: This game
+  interpreter: Suzuki Konomi
+  ytb_url: 6CBp4qylX6I
+  spoty_url: https://open.spotify.com/embed/track/3COSRKvFPnpnnorNF4oaMf
+
+- anime: No Game, No Life
+  relation: ED1
+  img: ngnl01.jpg
+  title: Oración
+  interpreter: Kayano Ai
+  ytb_url: -vmp_AL4Q88
+  spoty_url: https://open.spotify.com/embed/track/4PsntMiQmUhDBE6pYQKXbV
+
+- anime: L'Attaque des Titans
+  relation: OP1
+  img: snk01.jpg
+  title: Guren no Yumiya
+  interpreter: Linked Horizon
+  ytb_url: 8OkpRK2_gVs
+  spoty_url: https://open.spotify.com/embed/track/70p3HYq9iHZisJqpDmWd1U
+
+- anime: L'Attaque des Titans
+  relation: ED1
+  img: snk01.jpg
+  title: Utsukushiki Zankoku na Sekai
+  interpreter: Hikasa Yoko
+  ytb_url: kWUCdTngVjk
+  spoty_url: https://open.spotify.com/embed/track/3hdbzikxtK3sY5MT5wAAan
+
+- anime: L'Attaque des Titans
+  relation: OP2
+  img: snk01.jpg
+  title: Jiyuu no Tsubasa
+  interpreter: Linked Horizon
+  ytb_url: PbWFpzi8C94
+  spoty_url: https://open.spotify.com/embed/track/188vCXc4bAejLqGhpEVBGT
+
+- anime: L'Attaque des Titans
+  relation: ED2
+  img: snk01.jpg
+  title: Great escape
+  interpreter: cinema staff
+  ytb_url: Iu82air2_2E
+  spoty_url: https://open.spotify.com/embed/track/0iXYLrcgvd9u6ATFMIHMpD
+
+- anime: L'Attaque des Titans
+  relation: OST
+  img: snk01.jpg
+  title: Attack on Titan
+  interpreter: Hiroyuki Sawano
+  ytb_url: zroFzv7sFis
+  spoty_url: https://open.spotify.com/embed/track/2SkMb96GLmSLSUUSUDxPnz
+
+- anime: L'Attaque des Titans
+  relation: OST
+  img: snk01.jpg
+  title: Counter Attack-Mankind
+  interpreter: Hiroyuki Sawano
+  ytb_url: icSrzREkNJM
+  spoty_url: https://open.spotify.com/embed/track/6XmNcprzkzM7GmElM2gp2A
+
+- anime: L'Attaque des Titans
+  relation: OST
+  img: snk01.jpg
+  title: Vogel im Kafig
+  interpreter: Hiroyuki Sawano
+  ytb_url: H76_uW1Fnso
+  spoty_url: https://open.spotify.com/embed/track/4jgXksxQpPeveHQBcVSOMX
+
+- anime: L'Attaque des Titans
+  relation: OST
+  img: snk01.jpg
+  title: Army-Attack
+  interpreter: Hiroyuki Sawano
+  ytb_url: bDJk3DQO864
+  spoty_url: https://open.spotify.com/embed/track/0gPZ269ODI0mlH7ZP0kSx3
+
+- anime: L'Attaque des Titans
+  relation: OST
+  img: snk01.jpg
+  title: Call your name
+  interpreter: Hiroyuki Sawano
+  ytb_url: oLyXJHsYCq8
+  spoty_url: https://open.spotify.com/embed/track/2LYhS0VbCzbE6alAI3Q7Ot
+
+- anime: L'Attaque des Titans - Saison 2
+  relation: OP1
+  img: snk02.jpg
+  title: Shinzou wo Sasageyo!
+  interpreter: Linked Horizon
+  ytb_url: LKP-vZvjbh8
+  spoty_url: https://open.spotify.com/embed/track/5uraJqtCBvLpwt3VeomZdq
+
+- anime: L'Attaque des Titans - Saison 2
+  relation: ED1
+  img: snk02.jpg
+  title: Yuugure no Tori
+  interpreter: Shinsei Kamattechan
+  ytb_url: rbfHY8mkhT8
+  spoty_url: https://open.spotify.com/embed/track/0ALVjqa35c93VuOb5bOlAV
+
+- anime: L'Attaque des Titans - Saison 2
+  relation: OST
+  img: snk02.jpg
+  title: You See Big Girl
+  interpreter: Hiroyuki Sawano
+  ytb_url: vy63u2hKoPE
+  spoty_url: https://open.spotify.com/embed/track/4dHOnPucB5VBYq3gjRtYy9
+
+- anime: L'Attaque des Titans - Saison 2
+  relation: OST
+  img: snk02.jpg
+  title: Call of Silence
+  interpreter: Hiroyuki Sawano
+  ytb_url: vy63u2hKoPE
+  spoty_url: https://open.spotify.com/embed/track/7k1HoUdskuBhyWvm7hPctM
+
+- anime: L'Attaque des Titans - Saison 2
+  relation: OST
+  img: snk02.jpg
+  title: Attack on D
+  interpreter: Hiroyuki Sawano
+  ytb_url: c7NMfDeIMHs
+  spoty_url: https://open.spotify.com/embed/track/5JplicqqzvRQKrSE7PiAUE
+
+- anime: L'Attaque des Titans - Saison 2
+  relation: OST
+  img: snk02.jpg
+  title: Ymniam
+  interpreter: Hiroyuki Sawano
+  ytb_url: c7NMfDeIMHs
+  spoty_url: https://open.spotify.com/embed/track/5OfUP11rGtbgzXuDNBBSSK
+
+- anime: L'Attaque des Titans - Saison 3
+  relation: OP1
+  img: snk03.jpg
+  title: Red Swan
+  interpreter: YOSHIKI
+  ytb_url: swwUoExDIng
+  spoty_url: https://open.spotify.com/embed/track/0zvN9oq95bIEQjvfcdeZlX
+
+- anime: L'Attaque des Titans - Saison 3
+  relation: ED1
+  img: snk03.jpg
+  title: Akatsuki no Requiem
+  interpreter: Linked Horizon
+  ytb_url: o05UK9lXtC0
+  spoty_url: https://open.spotify.com/embed/track/2vH8JFJKfkAgZs1GFlOzGh
+
+- anime: L'Attaque des Titans - Saison 3
+  relation: OP2
+  img: snk03.jpg
+  title: Shoukei to Shikabane no Michi
+  interpreter: Linked Horizon
+  ytb_url: jhYg5NrN-r8
+  spoty_url: https://open.spotify.com/embed/track/7lcTpZtdTyfiIgVIpmTVut
+
+- anime: L'Attaque des Titans - Saison 3
+  relation: ED2
+  img: snk03.jpg
+  title: Name of Love
+  interpreter: cinema staff
+  ytb_url: BhULcbxVUbo
+  spoty_url: https://open.spotify.com/embed/track/1y9QiBBJynizfLbYjHM2Sg
+
+- anime: L'Attaque des Titans - Saison 3
+  relation: OST
+  img: snk03.jpg
+  title: Call your name (Gv)
+  interpreter: Hiroyuki Sawano
+  ytb_url: kH7I1--dKxI
+  spoty_url: https://open.spotify.com/embed/track/4HFytekNqRCDsyX2MlaglV
+
+- anime: L'Attaque des Titans - Saison 3
+  relation: OST
+  img: snk03.jpg
+  title: T-Kt
+  interpreter: Hiroyuki Sawano
+  ytb_url: mpqY5n4wZhM
+  spoty_url: https://open.spotify.com/embed/track/4EZytiJfGIKolH85Nc6G8Q
+
+- anime: L'Attaque des Titans - Saison 3
+  relation: OST
+  img: snk03.jpg
+  title: K21
+  interpreter: Hiroyuki Sawano
+  ytb_url: 3mBoCY_8wEA
+  spoty_url: https://open.spotify.com/embed/track/5bdc03rlZHi6hz0eVONVmb
+
+- anime: L'Attaque des Titans - Saison Finale
+  relation: OP1
+  img: snk04.jpg
+  title: Boku no Sensou
+  interpreter: Shinsei Kamattechan
+  ytb_url: 6TolbTZXDjI
+  spoty_url: https://open.spotify.com/embed/track/3KhwEuqLNjHfsKaBDo1yVh
+
+- anime: L'Attaque des Titans - Saison Finale
+  relation: ED1
+  img: snk04.jpg
+  title: Shougeki
+  interpreter: Ando Yuko
+  ytb_url: AZl8UDsqsoM
+  spoty_url: https://open.spotify.com/embed/track/5QwAdWCnauw0GpDzM3glrO
+
+- anime: L'Attaque des Titans - Saison Finale
+  relation: OST
+  img: snk04.jpg
+  title: Ashes on The Fire
+  interpreter: Kohta Yamamoto
+  ytb_url: am8dr5lNMjc
+  spoty_url: https://open.spotify.com/embed/track/5ArBY68oLECgcHXDGFxa7u
+
+- anime: L'Attaque des Titans - Saison Finale
+  relation: OST
+  img: snk04.jpg
+  title: Friendships
+  interpreter: Kohta Yamamoto
+  ytb_url: w0F5II37UoA
+  spoty_url: https://open.spotify.com/embed/track/1igELbGnNA8bRiZiUC2w67
+
+- anime: L'Attaque des Titans - Saison Finale
+  relation: OST
+  img: snk04.jpg
+  title: The Other Side of the Sea
+  interpreter: Kohta Yamamoto
+  ytb_url: d32pE1Z-SVg
+  spoty_url: https://open.spotify.com/embed/track/6lpuacrTTu38mGNdjOfqmI
+
+- anime: L'Attaque des Titans - Saison Finale
+  relation: OST
+  img: snk04.jpg
+  title: Splinter Wolf
+  interpreter: Kohta Yamamoto
+  ytb_url: zCFslj-GRes
+  spoty_url: https://open.spotify.com/embed/track/7z8HxlmDrDoQsKlzEGZw3B
+
+- anime: L'Attaque des Titans - Saison Finale
+  relation: OST
+  img: snk04.jpg
+  title: The Successor
+  interpreter: Kohta Yamamoto
+  ytb_url: yEzGstCfs4k
+  spoty_url: https://open.spotify.com/embed/track/6zZMkdffj7cXvp7vfKGR9a
+
+- anime: L'Attaque des Titans - Saison Finale
+  relation: OST
+  img: snk04.jpg
+  title: The Warrios
+  interpreter: Kohta Yamamoto
+  ytb_url: 1c3cioci1L4
+  spoty_url: https://open.spotify.com/embed/track/153HayymdEUNcKanP2gsus
+
+- anime: L'Attaque des Titans - Saison Finale
+  relation: OST
+  img: snk04.jpg
+  title: The Fall of Marley
+  interpreter: Kohta Yamamoto
+  ytb_url: SWB24Lvc6to
+  spoty_url: https://open.spotify.com/embed/track/1zNbFFcVYQNa8t3luFhtvu
+
+- anime: Noragami
+  relation: OP1
+  img: noragami01.jpg
+  title: Goya no Machiawase
+  interpreter: Hello Sleepwalkers
+  ytb_url: gWCnKoEgfP0
+  spoty_url: https://open.spotify.com/embed/track/5s0AxcVJJD2YYPstMb61ro
+
+- anime: Noragami
+  relation: ED1
+  img: noragami01.jpg
+  title: Heart Realize
+  interpreter: Tia
+  ytb_url: ew40UXWn5HI
+  spoty_url: https://open.spotify.com/embed/track/683BwxNnoUdR610Rqlq1NJ
+
+- anime: Noragami ARAGOTO
+  relation: OP1
+  img: noragami02.jpg
+  title: Kyouran Hey Kids!!
+  interpreter: THE ORAL CIGARETTES
+  ytb_url: 3oFTHxkOzjE
+  spoty_url: https://open.spotify.com/embed/track/38kcwx5znepLWCIBID0Bwm
+
+- anime: Noragami ARAGOTO
+  relation: ED1
+  img: noragami02.jpg
+  title: Nirvana
+  interpreter: Tia
+  ytb_url: I5xBgZZKH04
+  spoty_url: https://open.spotify.com/embed/track/034c3CHMQ2STRC6GPXXhl6
+
+- anime: Bungou Stray Dogs
+  relation: OP1
+  img: bsd01.jpg
+  title: TRASH CANDY
+  interpreter: GRANRODEO
+  ytb_url: tvHqaimwcKE
+  spoty_url: https://open.spotify.com/embed/track/0FuFovPx3x77CRFtt22Q3H
+
+- anime: Bungou Stray Dogs
+  relation: ED1
+  img: bsd01.jpg
+  title: Namae wo Yobu yo
+  interpreter: Luck Life
+  ytb_url: -cFvEPfhMdo
+  spoty_url: https://open.spotify.com/embed/artist/35AeYLIKrorZDAxsb40vVZ
+
+- anime: Bungou Stray Dogs - Saison 2
+  relation: OP1
+  img: bsd02.jpg
+  title: Reason Living
+  interpreter: SCREEN mode
+  ytb_url: qrcDm4Pr3Ig
+  spoty_url: https://open.spotify.com/embed/track/2gLgkVniFLbKiklW4taLOj
+
+- anime: Bungou Stray Dogs - Saison 2
+  relation: ED1
+  img: bsd02.jpg
+  title: Kaze ga Fuku Machi
+  interpreter: Luck Life
+  ytb_url: YJkr6rSsdM0
+  spoty_url: https://open.spotify.com/embed/track/6XVkBZ5DTEpAUqJMtPNyJe
+
+- anime: Bungou Stray Dogs - Saison 3
+  relation: OP1
+  img: bsd03.jpg
+  title: Setsuna no Ai
+  interpreter: GRANRODEO
+  ytb_url: fBC-ZCH_htA
+  spoty_url: https://open.spotify.com/embed/track/6GppTDfQGwYVT8N9mtUQA8
+
+- anime: Bungou Stray Dogs - Saison 3
+  relation: ED1
+  img: bsd03.jpg
+  title: Lily
+  interpreter: Luck Life
+  ytb_url: bxbXUMy4kok
+  spoty_url: https://open.spotify.com/embed/track/6Bt6EU8gtqCCiz18Z19mfn
+
+- anime: Wonder Egg Priority
+  relation: OP1
+  img: wep01.jpg
+  title: Sudachi no Uta
+  interpreter: Anemoneria
+  ytb_url: ckXtZrTzJbM
+  spoty_url: https://open.spotify.com/embed/track/4o8ZA7sEHawMmnBtW34B8W
+
+- anime: Wonder Egg Priority
+  relation: ED1
+  img: wep01.jpg
+  title: Life is Cider
+  interpreter: Anemoneria
+  ytb_url: jJe_lCPvPLg
+  spoty_url: https://open.spotify.com/embed/track/0U3JBftbH2K1rzaMM2fav3
+
+- anime: Cowboy Bebop
+  relation: OP1
+  img: cowboybebop01.jpg
+  title: Tank!
+  interpreter: SEATBELTS
+  ytb_url: UFFa0QoHWvE
+  spoty_url: https://open.spotify.com/embed/track/2Wi5ubKr8zSk8L3CLemyS4
+
+- anime: Cowboy Bebop
+  relation: ED1
+  img: cowboybebop01.jpg
+  title: The Real Folk Blues
+  interpreter: Yamane Mai
+  ytb_url: eyI635o2pmk
+  spoty_url: https://open.spotify.com/embed/track/5Cmf3LmbLd9g79rS55X7qK
+
+- anime: Haikyu !!
+  relation: OP1
+  img: haikyu01.jpg
+  title: Imagination
+  interpreter: SPYAIR
+  ytb_url: JOGp2c7-cKc
+  spoty_url: https://open.spotify.com/embed/track/0RRFR09sDU4CyQIE4VkhDp
+
+- anime: Haikyu !!
+  relation: OP2
+  img: haikyu01.jpg
+  title: Ah Yeah!!
+  interpreter: Sukima Switch
+  ytb_url: yk-xwUm7sbo
+  spoty_url: https://open.spotify.com/embed/track/3LXpZ28ebxPHH1aUc9167L
+
+- anime: Haikyu !!
+  relation: ED1
+  img: haikyu01.jpg
+  title: Tenchi Gaeshi
+  interpreter: NICO Touches the Walls
+  ytb_url: Eaiz6KPt83c
+  spoty_url: https://open.spotify.com/embed/track/01Bjn3lj74LedUImE5ceFe
+
+- anime: Haikyu !!
+  relation: ED2
+  img: haikyu01.jpg
+  title: LEO
+  interpreter: tacica
+  ytb_url: X0Njn4USIfs
+  spoty_url: https://open.spotify.com/embed/track/5QYRO7CyyFaEh4RRv4G9Cp
+
+- anime: Haikyu !! - Saison 2
+  relation: OP1
+  img: haikyu02.jpg
+  title: I'm・A・Believer
+  interpreter: SPYAIR
+  ytb_url: ZW7Ykl3QljQ
+  spoty_url: https://open.spotify.com/embed/track/1cwyVFkkRiuNxBf69SAP9H
+
+- anime: Haikyu !! - Saison 2
+  relation: OP2
+  img: haikyu02.jpg
+  title: FLY HIGH!!
+  interpreter: BURNOUT SYNDROMES
+  ytb_url: txgg-fbVjf4
+  spoty_url: https://open.spotify.com/embed/track/44ljoaRrogXke0S4U8iekW
+
+- anime: Haikyu !! - Saison 2
+  relation: ED1
+  img: haikyu02.jpg
+  title: Climber
+  interpreter: Galileo Galilei
+  ytb_url: j3xN-tJj-W8
+  spoty_url: https://open.spotify.com/embed/track/0var06tEoXUqS76RScrCCP
+
+- anime: Haikyu !! - Saison 2
+  relation: ED2
+  img: haikyu02.jpg
+  title: Hatsunetsu
+  interpreter: tacica
+  ytb_url: BuZu-zXyWCw
+  spoty_url: https://open.spotify.com/embed/track/5y1Cit0l2kMNsU9U2qW2OL
+
+- anime: Haikyu !! - Saison 3
+  relation: OP1
+  img: haikyu03.jpg
+  title: Hikari Are
+  interpreter: BURNOUT SYNDROMES
+  ytb_url: dfMb37KGqdE
+  spoty_url: https://open.spotify.com/embed/track/2KP76NyUIH8XNvWa84lRPi
+
+- anime: Haikyu !! - Saison 3
+  relation: ED1
+  img: haikyu03.jpg
+  title: Mashi Mashi
+  interpreter: NICO Touches the Walls
+  ytb_url: mOix7HyVI-4
+  spoty_url: https://open.spotify.com/embed/track/6c6WreivKNC4zXb00lUJtI
+
+- anime: Haikyu !! - To the TOP (S4)
+  relation: OP1
+  img: haikyu04.jpg
+  title: BURNOUT SYNDROMES
+  interpreter: NICO Touches the Walls
+  ytb_url: z-jjO0iXJ3k
+  spoty_url: https://open.spotify.com/embed/track/7yMCljF3pdi6zn9Qz98L2m
+
+- anime: Haikyu !! - To the TOP (S4)
+  relation: ED1
+  img: haikyu04.jpg
+  title: Kessen Spirit
+  interpreter: CHiCO
+  ytb_url: 9-EZxRJmSHg
+  spoty_url: https://open.spotify.com/embed/track/1HHOkD7fuNCBnImFrlDRVi
+
+- anime: The God of High School
+  relation: OP1
+  img: ghs01.jpg
+  title: Contradiction
+  interpreter: KSUKE
+  ytb_url: UW_-eBc0U7U
+  spoty_url: https://open.spotify.com/embed/track/2yuyPke3xjantGgapFPH3e
+
+- anime: The God of High School
+  relation: ED1
+  img: ghs01.jpg
+  title: WIN
+  interpreter: CIX
+  ytb_url: inIGCPeiJ40
+  spoty_url: https://open.spotify.com/embed/track/7apQPgVEiRpAIFe8VaeB7h
+
+- anime: The God of High School
+  relation: OST
+  img: ghs01.jpg
+  title: SEOUL TEAM
+  interpreter: Alisa Okehazama
+  ytb_url: oTcLtezkXLo
+  spoty_url: https://open.spotify.com/embed/track/5KJjmWq04NGO3f4p9c2Stb
+
+- anime: Domestic Girlfriend
+  relation: OP1
+  img: dg01.jpg
+  title: Kawaki wo Ameku
+  interpreter: Minami
+  ytb_url: Ua5UARWRYLA
+  spoty_url: https://open.spotify.com/embed/track/1gUAX2ImxDsB3YDcyxMXlB
+
+- anime: Domestic Girlfriend
+  relation: ED1
+  img: dg01.jpg
+  title: Wagamama
+  interpreter: Takigawa Alisa
+  ytb_url: leIePUmcqUc
+  spoty_url: https://open.spotify.com/embed/track/6QKCqaDyP2Pazrpk2lbAq4

@@ -1,11 +1,10 @@
 import click
 import yaml
 from .app import app, db
-from .models import Anime, Song, Role, User
+from .models import Anime, Song, Role, User, Status
 import os.path
 
 @app.cli.command()
-
 def create_db():
     '''Create the tables and populates them with data.yml'''
 
@@ -44,6 +43,12 @@ def create_db():
 
     db.session.commit()
     
+    for status in ["Rejetée", "En attente", "Acceptée"]:
+        obj = Status(name = status)
+        db.session.add(obj)
+
+    db.session.commit()
+    
     if app.config['ENV'] != "production":
         
         from werkzeug.security import generate_password_hash
@@ -60,7 +65,6 @@ def create_db():
     
         
 @app.cli.command()
-
 def remove_db():
     '''Remove database/songs.db file'''
     if os.path.exists("website/database/songs.db"):
