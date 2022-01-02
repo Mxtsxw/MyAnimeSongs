@@ -2,6 +2,11 @@ html, body{
     box-sizing: border-box;
 }
 
+/* global */
+
+
+/* - */
+
 .crop {
     width: 150px;
     height: 200px;
@@ -105,3 +110,23 @@ html, body{
      background:#212529; 
      padding-right: 1em; 
  }
+
+
+.type-nav .active{
+    border-bottom: solid 2px #0a58ca;
+}
+
+.spotify-embed{
+    position: fixed;
+    overflow-y: scroll;
+    width: 100%;
+    bottom: 0;
+}
+
+#bottom-pad-frame{
+    background-color: #212529;
+}
+
+a{
+    text-decoration: none;
+}

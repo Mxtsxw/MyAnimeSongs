@@ -19,7 +19,7 @@
                 
                 <h1>MyAnimeSongs</h1>
                 <p>Retrouvez toutes les bandes sons de vos animes favoris</p>
-                <p><a class="btn btn-lg btn-primary" href="#">Connectez-vous</a></p>
+                <p><a class="btn btn-lg btn-primary" href="{{url_for('login')}}">Connectez-vous</a></p>
               </div>
             </div>
           </div>
@@ -60,9 +60,12 @@
     
     <div class="py-5">
         <div class="container d-flex flex-column align-items-center">
-            <h3 class="mb-3 align-self-start"><a href="/search/anime/trending" class="title text-secondary ">ANIMES</a></h3> 
-            <div class="row">
+            <h3 class="mb-3 align-self-start"><a href="/search/anime/trending" class="title text-secondary">ANIMES</a></h3> 
+            <div class="row row-cols-auto">
                 {% for anime in animes %}
+<<<<<<< website/templates/index.html
+                <a class="text-dark" href="{{ url_for('anime', id=anime.id) }}" style="text-decoration: none;">
+                  
                 <div class="col mb-2">
                     <div class="card border-0 d.flex flex-column align-items-center">
                         {% if anime.img %}
@@ -75,6 +78,7 @@
                         </div>
                     </div>
                 </div>
+>>>>>>> website/templates/index.html
                 {% endfor %}
             </div>
             <nav aria-label="...">

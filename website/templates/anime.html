@@ -2,88 +2,110 @@
 {% block main %}
 
 <div class="container-fluid px-0 hero">
-    <div class="banner" style="background: url( {{ url_for('static', filename='images/yourname01.jpg') }} ); background-repeat: no-repeat; background-size: cover;">
+    <div class="banner" style="background: url( {{ url_for('static', filename='images/'+anime.img) }} ); background-repeat: no-repeat; background-size: cover; opacity: 1;">
         <!-- Set the banner background -->
     </div>
     <div class="banner-content container">
-        <div class="img-placeholder shadow">
-            <img src="{{ url_for('static', filename='images/yourlieinapril01.jpg') }}" alt="Anime cover" class="banner-img rounded">
+        <div class="img-placeholder shadow rounded">
+            <img src="{{ url_for('static', filename='images/'+anime.img) }}" alt="Anime cover" class="banner-img rounded">
         </div>
         <div class="desc">
-            <h3>Anime Name</h3>
+            <h3>{{ anime.name }}</h3>
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis molestiae fuga non rerum quis repellendus veritatis 
                 modi corrupti minima doloribus explicabo, dolore asperiores nostrum eveniet quos quaerat voluptatem quasi beatae.</p>    
         </div>
     </div>
     <div class="container-fluid bg-dark">
-        <ul class="nav justify-content-center text-uppercase pt-3">
+        <ul class="nav justify-content-center text-uppercase pt-3 type-nav">
             <li class="nav-item px-2">
-              <a class="nav-link active" href="#">Tous</a>
+              <a class="nav-link {% if display == 'all' %} active {% endif %}" href="{{ url_for('anime', id=anime.id) }}">Tous</a>
             </li>
             <li class="nav-item px-2">
-              <a class="nav-link" href="#">Opening</a>
+              <a class="nav-link {% if display == 'opening' %} active {% endif %}" href="{{ url_for('anime_opening', id=anime.id) }}">Opening</a>
+            </li>
+            <li class="nav-item px-2"> 
+              <a class="nav-link {% if display == 'ending' %} active {% endif %}" href="{{ url_for('anime_ending', id=anime.id) }}">Ending</a>
             </li>
             <li class="nav-item px-2">
-              <a class="nav-link" href="#">Ending</a>
-            </li>
-            <li class="nav-item px-2">
-              <a class="nav-link" href="#">OST</a>
+              <a class="nav-link {% if display == 'ost' %} active {% endif %}" href="{{ url_for('anime_ost', id=anime.id) }}">OST</a>
             </li>
         </ul>
-        <div class="container heading mt-5">
-            <h2><span>Opening</span></h2>
-        </div>
-        <div class="container text-secondary">
-            <div class="row">
-                {% for i in range(7) %}
-                <div class="col mb-2 mt-3">
-                    <div class="card">
-                        <div class="card-horizontal">
-                   
-                            <div class="card-body">
-                                <h4 class="card-title text-dark">Song Name</h4>
-                                <p class="card-text text-dark">Artist</p>
-                                <p class="card-text text-muted">Relation</p>
+        {% if display == "all" or display == "opening" %}
+            <div class="container heading mt-5">
+                <h2><span>Opening</span></h2>
+            </div>
+            <div class="container text-secondary">
+                <div class="row row-cols-auto">
+                    {% for song in songs %}
+                    {% if 'OP' in song.relation %}
+                        <div class="col mb-2 mt-3" onclick="launcher( '{{ song.spoty_url }}' ) ">
+                            <div class="card">
+                                <div class="card-horizontal">
+                        
+                                    <div class="card-body">
+                                        <h4 class="card-title text-dark">{{song.title}}</h4>
+                                        <p class="card-text text-dark">{{song.interpreter}}</p>
+                                        <p class="card-text text-muted">{{song.relation}}</p>
+                                    </div>
+                                </div>
+                                
                             </div>
                         </div>
-                        
-                    </div>
+                        {% endif%}
+                    {% endfor %}
                 </div>
-                {% endfor %}
             </div>
-        </div>
-        <div class="container heading mt-5">
-            <h2><span>Ending</span></h2>
-        </div>
-        <div class="container text-secondary">
-            <div class="row">
-                {% for i in range(10) %}
-                <div class="col mb-2 mt-3">
-                    <div class="card">
-                        <div class="card-horizontal">
-                   
-                            <div class="card-body">
-                                <h4 class="card-title text-dark">Song Name</h4>
-                                <p class="card-text text-dark">Artist</p>
-                                <p class="card-text text-muted">Relation</p>
+        {% endif %}
+        {% if display == "all" or display == "ending" %}
+            <div class="container heading mt-5">
+                <h2><span>Ending</span></h2>
+            </div>
+            <div class="container text-secondary">
+                <div class="row row-cols-auto">
+                    {% for song in songs %}
+                        {% if 'ED' in song.relation %}
+                        <div class="col mb-2 mt-3" onclick="launcher( '{{ song.spoty_url }}' ) ">
+                            <div class="card">
+                                <div class="card-horizontal">
+                                    <div class="card-body">
+                                        <h4 class="card-title text-dark">{{song.title}}</h4>
+                                        <p class="card-text text-dark">{{song.interpreter}}</p>
+                                        <p class="card-text text-muted">{{song.relation}}</p>
+                                    </div>
+                                </div>
+                                
                             </div>
                         </div>
-                        
-                    </div>
+                        {% endif%}
+                    {% endfor %}
                 </div>
-                {% endfor %}
             </div>
-        </div>
-        <div class="container heading mt-5">
-            <h2><span>OST</span></h2>
-        </div>
-        <div class="container text-secondary pb-5">
-            <div class="row text-center text-white">
-                <p>Aucun son n'est enregistré dans cette catégorie. <a href="{{ url_for('request_song') }}">Ajouter</a> les votres !</p>
+        {% endif %}
+        {% if display == "all" or display == "ost" %}
+            <div class="container heading mt-5">
+                <h2><span>OST</span></h2>
             </div>
-        </div>
+            <div class="container text-secondary pb-5">
+                <div class="row text-center text-white">
+                    <p>Aucun son n'est enregistré dans cette catégorie. <a href="{{ url_for('request_song') }}">Ajouter</a> les votres !</p>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+    <div id="bottom-pad-frame"></div>
+    <div id="spotify-frame" class="spotify-embed">
+
     </div>
 
 </div>
 
 {% endblock %}
+
+<!-- 
+    TODO:
+    - Trouver un moyen de verifier la presence d'ED/OP/OST
+    - Afficher message pour request lorsque qu'aucun son n'est disponible
+
+    - Youtube overlay
+    - Minimize overlay
+-->
