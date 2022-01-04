@@ -12,8 +12,11 @@
             </div>
             <div class="desc">
                 <h3>{{ anime.name }}</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis molestiae fuga non rerum quis repellendus veritatis 
-                    modi corrupti minima doloribus explicabo, dolore asperiores nostrum eveniet quos quaerat voluptatem quasi beatae.</p>    
+                <p>
+                    {% if anime.text %}
+                    {{ anime.text }}
+                    {% endif %}
+                </p>    
             </div>
         </div>
     </div>
