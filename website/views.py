@@ -174,6 +174,8 @@ class RequestSongForm(FlaskForm):
     
     accept = SubmitField("Accepter la demande")
     refuse = SubmitField("Rejeter la demande")
+    modify = SubmitField("Modifier")
+    delete = SubmitField("Supprimer")
         
 @app.route("/request/song", methods=['GET', 'POST'])
 @login_required
@@ -225,6 +227,9 @@ class RequestAnimeForm(FlaskForm):
     
     accept = SubmitField("Accepter la demande")
     refuse = SubmitField("Rejeter la demande")
+    modify = SubmitField("Modifier")
+    delete = SubmitField("Supprimer")
+
 
 @app.route("/request/anime", methods=['GET', 'POST'])
 @login_required
@@ -410,3 +415,51 @@ def administration_request_anime_delete(id):
         delete_request(request)
     
     return redirect(url_for("administration_request"))
+
+
+@app.route("/administration/edit/song/<int:id>", methods = ['GET', 'POST'])
+@login_required
+def administration_edit_song(id):
+
+    if not current_user.role.name == "Administrateur":
+        return redirect(url_for("home"))
+
+    song = get_song(id)
+        
+    form = RequestSongForm()
+    
+    form.anime.render_kw["value"] = song.anime.name
+    form.title.render_kw["value"] = song.title
+    form.relation.render_kw["value"] = song.relation
+    form.interpreter.render_kw["value"] = song.interpreter
+    form.ytb_url.render_kw["value"] = song.ytb_url
+    form.spoty_url.render_kw["value"] = song.spoty_url
+    
+    return render_template(
+        "administration-edit-song.html",
+        user = current_user,
+        song = song,
+        form = form
+    )
+
+
+@app.route("/administration/edit/anime/<int:id>", methods = ['GET', 'POST'])
+@login_required
+def administration_edit_anime(id):
+    
+    if not current_user.role.name == "Administrateur":
+        return redirect(url_for("home"))
+
+    anime = get_anime(id)
+
+    form = RequestAnimeForm()
+
+    form.name.render_kw["value"] = anime.name
+    form.img_url.render_kw["value"] = anime.img
+
+    return render_template(
+        "administration-edit-anime.html",
+        user = current_user,
+        anime = anime,
+        form = form
+    )
