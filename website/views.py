@@ -116,7 +116,9 @@ def anime(id):
         "anime.html",
         user = current_user,
         anime = get_anime(id),
-        songs = get_songs_anime(id),
+        op = get_opening_by_anime_id(id),
+        ed = get_ending_by_anime_id(id),
+        ost = get_ost_by_anime_id(id),
         display = "all"
     )
 
@@ -126,7 +128,7 @@ def anime_opening(id):
         "anime.html",
         user = current_user,
         anime = get_anime(id),
-        songs = get_songs_anime(id),
+        songs = get_opening_by_anime_id(id),
         display = "opening"
     )
 
@@ -136,7 +138,7 @@ def anime_ending(id):
         "anime.html",
         user = current_user,
         anime = get_anime(id),
-        songs = get_songs_anime(id),
+        songs = get_ending_by_anime_id(id),
         display = "ending"
     )
 
@@ -146,7 +148,7 @@ def anime_ost(id):
         "anime.html",
         user = current_user,
         anime = get_anime(id),
-        songs = get_songs_anime(id),
+        songs = get_ost_by_anime_id(id),
         display = "ost"
     )
     
