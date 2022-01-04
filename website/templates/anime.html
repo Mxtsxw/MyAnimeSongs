@@ -1,35 +1,39 @@
 {% extends "base.html" %}
 {% block main %}
 
-<div class="container-fluid px-0 hero h-100">
-    <div class="banner" style="background: url( {{ url_for('static', filename='images/'+anime.img) }} ); background-repeat: no-repeat; background-size: cover; opacity: 1;">
-        <!-- Set the banner background -->
-    </div>
-    <div class="banner-content container">
-        <div class="img-placeholder shadow rounded">
-            <img src="{{ url_for('static', filename='images/'+anime.img) }}" alt="Anime cover" class="banner-img rounded">
+<div class="container-fluid px-0 min-vh-100 d-flex flex-column">
+    <div class="hero-banner ">
+        <div class="banner" style="background: url( {{ url_for('static', filename='images/'+anime.img) }} ); background-repeat: no-repeat; background-size: cover; opacity: 1;">
+            <!-- Set the banner background -->
         </div>
-        <div class="desc">
-            <h3>{{ anime.name }}</h3>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis molestiae fuga non rerum quis repellendus veritatis 
-                modi corrupti minima doloribus explicabo, dolore asperiores nostrum eveniet quos quaerat voluptatem quasi beatae.</p>    
+        <div class="banner-content container">
+            <div class="img-placeholder shadow rounded">
+                <img src="{{ url_for('static', filename='images/'+anime.img) }}" alt="Anime cover" class="banner-img rounded">
+            </div>
+            <div class="desc">
+                <h3>{{ anime.name }}</h3>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis molestiae fuga non rerum quis repellendus veritatis 
+                    modi corrupti minima doloribus explicabo, dolore asperiores nostrum eveniet quos quaerat voluptatem quasi beatae.</p>    
+            </div>
         </div>
     </div>
-    <div class="container-fluid bg-dark h-100">
-        <ul class="nav justify-content-center text-uppercase pt-3 type-nav">
-            <li class="nav-item px-2">
-              <a class="nav-link {% if display == 'all' %} active {% endif %}" href="{{ url_for('anime', id=anime.id) }}">Tous</a>
-            </li>
-            <li class="nav-item px-2">
-              <a class="nav-link {% if display == 'opening' %} active {% endif %}" href="{{ url_for('anime_opening', id=anime.id) }}">Opening</a>
-            </li>
-            <li class="nav-item px-2"> 
-              <a class="nav-link {% if display == 'ending' %} active {% endif %}" href="{{ url_for('anime_ending', id=anime.id) }}">Ending</a>
-            </li>
-            <li class="nav-item px-2">
-              <a class="nav-link {% if display == 'ost' %} active {% endif %}" href="{{ url_for('anime_ost', id=anime.id) }}">OST</a>
-            </li>
-        </ul>
+    <div class="container-fluid bg-dark flex-grow-1">
+        <nav>
+            <ul class="nav justify-content-center text-uppercase pt-3 type-nav">
+                <li class="nav-item px-2">
+                  <a class="nav-link {% if display == 'all' %} active {% endif %}" href="{{ url_for('anime', id=anime.id) }}">Tous</a>
+                </li>
+                <li class="nav-item px-2">
+                  <a class="nav-link {% if display == 'opening' %} active {% endif %}" href="{{ url_for('anime_opening', id=anime.id) }}">Opening</a>
+                </li>
+                <li class="nav-item px-2"> 
+                  <a class="nav-link {% if display == 'ending' %} active {% endif %}" href="{{ url_for('anime_ending', id=anime.id) }}">Ending</a>
+                </li>
+                <li class="nav-item px-2">
+                  <a class="nav-link {% if display == 'ost' %} active {% endif %}" href="{{ url_for('anime_ost', id=anime.id) }}">OST</a>
+                </li>
+            </ul>
+        </nav>
         {% if display != "all" %}
             {% if display == "opening" %}
                 <div class="container heading mt-5">
@@ -44,18 +48,21 @@
                     <h2><span>OST</span></h2>
                 </div>
             {% endif %}
-            <div class="container text-secondary h-100">
+            <div class="container text-secondary">
                 <div class="row row-cols-auto">
                     {% if songs|length %}
                         {% for song in songs %}
-                        <div class="col mb-2 mt-3" onclick="launcher( '{{ song.spoty_url }}' ) ">
+                        <div class="col mb-2 mt-3">
                             <div class="card h-100">
                                 <div class="card-horizontal">
                         
                                     <div class="card-body">
                                         <h4 class="card-title text-dark">{{song.title}}</h4>
                                         <p class="card-text text-dark">{{song.interpreter}}</p>
-                                        <p class="card-text text-muted">{{song.relation}}</p>
+                                        <p class="card-text text-muted d-inline-block">{{song.relation}}</p>
+                                        <p class="card-text text-muted d-inline-block"> • </p>
+                                        <i class="fa fa-youtube-play play-btn" onclick="on( '{{ song.ytb_url }}' )" style="font-size:24px;color:red"></i>
+                                        <i class="fa fa-spotify play-btn" onclick="launcher( '{{ song.spoty_url }}' ) " style="font-size:24px; color: #1DB954; vertical-align: baseline;"></i>
                                     </div>
                                 </div>
                                 
@@ -165,11 +172,10 @@
         {% endif %}
     </div>
     <div id="bottom-pad-frame"></div>
-    <div id="spotify-frame" class="spotify-embed">
-
-    </div>
-
+    <div id="spotify-frame" class="spotify-embed"></div>
 </div>
+
+<div id="overlay" onclick="off()"></div> 
 
 {% endblock %}
 
