@@ -52,17 +52,16 @@ def get_songs():
 def get_song(id):
     return Song.query.get_or_404(id)
 
-# NEED HELP - pour faire les queries
-def get_opening(id):
-    pass 
 
-def get_ending(id):
-    pass 
+def get_opening_by_anime_id(id):
+    return Song.query.filter_by(anime_id = id).filter(Song.relation.contains("OP")).all()  
 
-def get_ost(id):
-    pass
+def get_ending_by_anime_id(id):
+    return Song.query.filter_by(anime_id = id).filter(Song.relation.contains("ED")).all() 
 
-# Ou bien faire une fonction globale qui prend en parametre le type relation qu'on veut
+def get_ost_by_anime_id(id):
+    return Song.query.filter_by(anime_id = id, relation = "OST").all()
+
 
 def get_anime_by_name(name):
     return Anime.query.filter_by(name = name).first()
