@@ -226,6 +226,8 @@ class RequestAnimeForm(FlaskForm):
     accept = SubmitField("Accepter la demande")
     refuse = SubmitField("Rejeter la demande")
     modify = SubmitField("Modifier")
+    delete = SubmitField("Supprimer")
+
 
 @app.route("/request/anime", methods=['GET', 'POST'])
 @login_required
@@ -438,3 +440,24 @@ def administration_edit_song(id):
         form = form
     )
 
+
+@app.route("/administration/edit/anime/<int:id>", methods = ['GET', 'POST'])
+@login_required
+def administration_edit_anime(id):
+    
+    if not current_user.role.name == "Administrateur":
+        return redirect(url_for("home"))
+
+    anime = get_anime(id)
+
+    form = RequestAnimeForm()
+
+    form.name.render_kw["value"] = anime.name
+    form.img_url.render_kw["value"] = anime.img
+
+    return render_template(
+        "administration-edit-anime.html",
+        user = current_user,
+        anime = anime,
+        form = form
+    )
