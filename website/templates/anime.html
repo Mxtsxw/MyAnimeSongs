@@ -52,15 +52,17 @@
                 <div class="row row-cols-auto">
                     {% if songs|length %}
                         {% for song in songs %}
-                        <div class="col mb-2 mt-3" onclick="launcher( '{{ song.spoty_url }}' ) ">
+                        <div class="col mb-2 mt-3">
                             <div class="card h-100">
                                 <div class="card-horizontal">
                         
                                     <div class="card-body">
                                         <h4 class="card-title text-dark">{{song.title}}</h4>
                                         <p class="card-text text-dark">{{song.interpreter}}</p>
-                                        <p class="card-text text-muted">{{song.relation}}</p>
-                                        <button onclick="on()">Play on youtube</button>
+                                        <p class="card-text text-muted d-inline-block">{{song.relation}}</p>
+                                        <p class="card-text text-muted d-inline-block"> • </p>
+                                        <i class="fa fa-youtube-play play-btn" onclick="on( '{{ song.ytb_url }}' )" style="font-size:24px;color:red"></i>
+                                        <i class="fa fa-spotify play-btn" onclick="launcher( '{{ song.spoty_url }}' ) " style="font-size:24px; color: #1DB954; vertical-align: baseline;"></i>
                                     </div>
                                 </div>
                                 
@@ -171,10 +173,9 @@
     </div>
     <div id="bottom-pad-frame"></div>
     <div id="spotify-frame" class="spotify-embed"></div>
-
 </div>
 
-<div id="overlay"></div> 
+<div id="overlay" onclick="off()"></div> 
 
 {% endblock %}
 
