@@ -54,13 +54,13 @@ def get_song(id):
 
 
 def get_opening_by_anime_id(id):
-    Song.query.filter_by(anime_id = id).filter(Song.relation.contains("OP")).all()  
+    return Song.query.filter_by(anime_id = id).filter(Song.relation.contains("OP")).all()  
 
 def get_ending_by_anime_id(id):
-    Song.query.filter_by(anime_id = id).filter(Song.relation.contains("ED")).all() 
+    return Song.query.filter_by(anime_id = id).filter(Song.relation.contains("ED")).all() 
 
 def get_ost_by_anime_id(id):
-    Song.query.filter_by(anime_id = id, relation = "OST").all()
+    return Song.query.filter_by(anime_id = id, relation = "OST").all()
 
 
 def get_anime_by_name(name):
