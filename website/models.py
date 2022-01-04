@@ -8,6 +8,7 @@ class Anime(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String(200))
     img = db.Column(db.String(200))
+    text = db.Column(db.String(500))
     
     def __repr__(self):
         return "<Anime (%d) %s>" % (self.id, self.name)
