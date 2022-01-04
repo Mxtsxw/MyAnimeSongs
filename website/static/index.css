@@ -1,5 +1,6 @@
 html, body{
     box-sizing: border-box;
+    height: 100%;
 }
 
 /* global */
@@ -43,7 +44,6 @@ html, body{
 
 .card a{
     text-decoration: none;
-    
 }
 
 .title{
@@ -125,8 +125,4 @@ html, body{
 
 #bottom-pad-frame{
     background-color: #212529;
-}
-
-a{
-    text-decoration: none;
 }
