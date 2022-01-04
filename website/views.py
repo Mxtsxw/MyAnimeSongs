@@ -178,6 +178,13 @@ class RequestSongForm(FlaskForm):
 def request_song():
     
     form = RequestSongForm()
+
+    form.anime.render_kw["value"] = ""
+    form.title.render_kw["value"] = ""
+    form.relation.render_kw["value"] = ""
+    form.interpreter.render_kw["value"] = ""
+    form.ytb_url.render_kw["value"] = ""
+    form.spoty_url.render_kw["value"] = ""
     
     if form.validate_on_submit():
         
