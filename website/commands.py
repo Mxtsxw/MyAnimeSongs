@@ -10,13 +10,14 @@ def create_db():
 
     db.create_all()
     songs = yaml.load(open("website/database/data.yml"), Loader = yaml.SafeLoader)
+    descriptions = yaml.load(open("website/database/desc.yml"), Loader = yaml.SafeLoader)
     
     animes = dict()
     
     for song in songs:
         anime = song["anime"]
         if anime not in animes:
-            obj = Anime(name = anime, img = song["img"])
+            obj = Anime(name = anime, img = song["img"], text = descriptions[anime])
             db.session.add(obj)
             animes[anime] = obj
     
