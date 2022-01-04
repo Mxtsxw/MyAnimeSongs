@@ -56,6 +56,7 @@
                                         <h4 class="card-title text-dark">{{song.title}}</h4>
                                         <p class="card-text text-dark">{{song.interpreter}}</p>
                                         <p class="card-text text-muted">{{song.relation}}</p>
+                                        <button onclick="on()">Play on youtube</button>
                                     </div>
                                 </div>
                                 
@@ -170,6 +171,8 @@
     </div>
 
 </div>
+
+<div id="overlay"></div> 
 
 {% endblock %}
 
