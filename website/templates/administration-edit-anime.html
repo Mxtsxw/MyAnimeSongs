@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block main %}
+<div class="w-75 container mt-3">
+
+    
+<div class="w-75 container mt-3">
+
+    <form action="" method="post" class = "needs-validation" novalidate>
+
+        {{ form.hidden_tag() }}
+
+        <div class="mb-3">
+
+            {{ form.name.label(class_ = "form-label") }}
+
+            {% if not form.name.errors %}
+
+            {{ form.name(class_ = "form-control") }}
+
+            {% else %}
+
+            {{ form.name(class_ = "form-control is-invalid") }}
+            <p class="mt-1 mb-0 invalid">{{ form.name.errors[0] }}</p>
+
+            {% endif %}
+
+        </div>
+
+
+        <div class="mb-3">
+
+            {{ form.img_url.label(class_ = "form-label") }}
+
+            {% if not form.img_url.errors %}
+
+            {{ form.img_url(class_ = "form-control mb-3") }}
+
+            {% else %}
+
+            {{ form.img_url(class_ = "form-control is-invalid") }}
+            <p class="mt-1 invalid">{{ form.img_url.errors[0] }}</p>
+
+            {% endif %}
+
+        </div>
+
+        <div class="mb-3">
+            {{ form.modify(class_="btn btn-success") }}
+            {{ form.delete(class_="btn btn-danger") }}
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock %}
