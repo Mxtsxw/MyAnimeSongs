@@ -483,7 +483,7 @@ def administration_edit_anime(id):
 
     form.name.render_kw["value"] = anime.name
     form.img_url.render_kw["value"] = anime.img
-    form.text.data = anime.text
+    form.text.render_kw["value"] = anime.text
 
     if form.validate_on_submit():
         if form.modify.data:
