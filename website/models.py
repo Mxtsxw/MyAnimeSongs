@@ -214,6 +214,22 @@ class Favorites(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
     user = db.relationship("User", backref = db.backref("favorites", lazy = "dynamic"))
     song_id = db.Column(db.Integer, db.ForeignKey("song.id"))
+    song = db.relationship("Song")
 
     def __repr__(self):
-        return "<Favoris (%d) %s %s>" % (self.id, self.user, self.song_id)
+        return "<Favoris (%d) %s %s>" % (self.id, self.user, self.song)
+
+def add_favorite(user_id, song_id):
+    obj = Favorites(
+        user_id = user_id,
+        song_id = song_id
+    )
+    db.session.add(obj)
+    db.session.commit()
+
+def remove_favorite(favorite):
+    db.session.delete(favorite)
+    db.session.commit()
+
+def get_favorites_of_user(user):
+    return user.favorites.all()
