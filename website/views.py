@@ -471,5 +471,5 @@ def profile_favorites():
     return render_template(
         "profile-favorites.html",
         user = current_user,
-        favorites = get_favorites_of_user(current_user)
+        favorites = get_favorites_of_user(get_user(current_user.id))
     )
