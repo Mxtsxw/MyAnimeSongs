@@ -144,6 +144,12 @@ html, body{
     top: 50%;
     left: 50%;
     translate: -50% -50%;
+    width: 75%;
+    min-width: 480px;
+    min-height: 270px;
+    max-width: 960px;
+    max-height: 540px;
+    aspect-ratio: 16 / 9;
 }
 
 .play-btn{
