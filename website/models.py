@@ -1,5 +1,6 @@
 from enum import unique
 from os import name
+from re import search
 from sqlalchemy.orm import backref
 from .app import db
 from flask_login import UserMixin
@@ -208,3 +209,6 @@ def get_anime_request(id):
 
 def get_anime_requests():
     return AnimeRequest.query.all()
+
+def get_anime_by_filter(tag):
+    return Anime.query.filter(Anime.name.like(f'%{tag}%')).all()
