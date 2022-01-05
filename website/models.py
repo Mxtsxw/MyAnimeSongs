@@ -208,3 +208,12 @@ def get_anime_request(id):
 
 def get_anime_requests():
     return AnimeRequest.query.all()
+
+class Favorites(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
+    user = db.relationship("User", backref = db.backref("favorites", lazy = "dynamic"))
+    song_id = db.Column(db.Integer, db.ForeignKey("song.id"))
+
+    def __repr__(self):
+        return "<Favoris (%d) %s %s>" % (self.id, self.user, self.song_id)
