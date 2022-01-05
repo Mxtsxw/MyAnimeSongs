@@ -209,14 +209,12 @@ def get_anime_request(id):
 def get_anime_requests():
     return AnimeRequest.query.all()
 
-def edit_song(title,relation,interpreter,ytb_url,spoty_url):
-    obj = Song(
-        title = title,
-        relation = relation,
-        interpreter = interpreter,
-        ytb_url = ytb_url,
-        spoty_url = spoty_url
-    )
-
+def edit_song(title, interpreter, relation, ytb_url, spoty_url, song): 
+    song.title = title
+    song.interpreter = interpreter
+    song.relation = relation
+    song.ytb_url = ytb_url
+    song.spoty_url = spoty_url
+    
     db.session.commit()
         
