@@ -58,8 +58,8 @@ def make_soup(url):
 def dump_yaml(filename, data):
     with open(filename, 'w') as outfile:
         yaml.dump(data, outfile, allow_unicode = True)
-        
-if __name__ == "__main__":
+
+def main():
     animes = dict()
     songs = get_songs("website/database/data.yml")
     for song in songs:
@@ -71,4 +71,7 @@ if __name__ == "__main__":
                 description = make_soup(url)
                 animes[song["anime"]] = description
             
-    dump_yaml("desc.yml", animes)            
+    dump_yaml("desc.yml", animes)
+        
+if __name__ == "__main__":
+    main()            
