@@ -100,17 +100,28 @@ def logout():
     logout_user()
     return redirect(url_for("home"))
 
-@app.route("/")
+class SearchForm(FlaskForm):
+    search = StringField(render_kw = {"placeholder": "Rechercher..."})
+    submit = SubmitField("Rechercher")
+
+@app.route("/", methods=['GET', 'POST'])
 def home():
+    
+    search = SearchForm()
+    if search.validate_on_submit():
+        animes = get_anime_by_filter(search.search.data)
+    else:
+        animes = get_animes()        
     
     return render_template(
         "index.html",
         user = current_user,
         title = "My Anime Songs",
-        animes = get_animes()
+        animes = animes,
+        form = search
     )
 
-@app.route("/anime/<id>")
+@app.route("/anime/<id>", methods=['GET', 'POST'])
 def anime(id):
     return render_template(
         "anime.html",
