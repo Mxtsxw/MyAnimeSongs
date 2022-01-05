@@ -436,13 +436,25 @@ def administration_edit_song(id):
     form.spoty_url.render_kw["value"] = song.spoty_url
     
     if form.validate_on_submit():
-        song.title = form.title.data
-        song.relation = form.relation.data
-        song.interpreter = form.interpreter.data
-        song.ytb_url = form.ytb_url.data
-        song.spoty_url = form.spoty_url.data
+        if form.modify.data:
+            edit_song(
+                title=song.title,
+                relation=song.relation,
+                interpreter=song.interpreter,
+                ytb_url=song.ytb_url,
+                spoty_url=song.spoty_url
+            )
 
-        db.session.commit()
+            #set_status(song, "Acceptée")
+
+        # song.title = form.title.data
+        # song.relation = form.relation.data
+        # song.interpreter = form.interpreter.data
+        # song.ytb_url = form.ytb_url.data
+        # song.spoty_url = form.spoty_url.data
+        # db.session.commit()
+
+
         return redirect(url_for("home"))
 
     return render_template(
