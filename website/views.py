@@ -438,25 +438,20 @@ def administration_edit_song(id):
     if form.validate_on_submit():
         if form.modify.data:
             edit_song(
-                title=song.title,
-                relation=song.relation,
-                interpreter=song.interpreter,
-                ytb_url=song.ytb_url,
-                spoty_url=song.spoty_url
+                form.title.data,
+                form.interpreter.data,
+                form.relation.data,
+                form.ytb_url.data,
+                form.spoty_url.data,
+                song
             )
+            set_status(song, "Acceptée")
 
-            #set_status(song, "Acceptée")
-
-        # song.title = form.title.data
-        # song.relation = form.relation.data
-        # song.interpreter = form.interpreter.data
-        # song.ytb_url = form.ytb_url.data
-        # song.spoty_url = form.spoty_url.data
-        # db.session.commit()
-
+        else:
+            set_status(request, "Rejetée")
 
         return redirect(url_for("home"))
-
+    
     return render_template(
         "administration-edit-song.html",
         user = current_user,
