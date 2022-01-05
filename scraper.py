@@ -8,7 +8,7 @@ load_dotenv(dotenv_path = "config")
 
 API_KEY = os.getenv("API_KEY")
 SEARCH_ENGINE_ID = os.getenv("SEARCH_ENGINE_ID")
-EXCLUSIONS = ["ost", "actualite", "persos", "paroles"]
+EXCLUSIONS = ["ost", "actualite", "persos", "paroles", "episode"]
 
 class RequestException(Exception):
 
