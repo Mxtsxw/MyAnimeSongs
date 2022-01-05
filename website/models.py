@@ -1,5 +1,6 @@
 from enum import unique
 from os import name
+from re import search
 from sqlalchemy.orm import backref
 from .app import db
 from flask_login import UserMixin
@@ -215,6 +216,35 @@ def edit_song(title, interpreter, relation, ytb_url, spoty_url, song):
     song.relation = relation
     song.ytb_url = ytb_url
     song.spoty_url = spoty_url
-    
     db.session.commit()
         
+def get_anime_by_filter(tag):
+    return Anime.query.filter(Anime.name.like(f'%{tag}%')).all()
+
+class Favorites(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
+    user = db.relationship("User", backref = db.backref("favorites", lazy = "dynamic"))
+    song_id = db.Column(db.Integer, db.ForeignKey("song.id"))
+    song = db.relationship("Song")
+
+    def __repr__(self):
+        return "<Favoris (%d) %s %s>" % (self.id, self.user, self.song)
+
+def add_favorite(user_id, song_id):
+    obj = Favorites(
+        user_id = user_id,
+        song_id = song_id
+    )
+    db.session.add(obj)
+    db.session.commit()
+
+def remove_favorite(favorite):
+    db.session.delete(favorite)
+    db.session.commit()
+
+def get_favorites_of_user(user):
+    return user.favorites.all()
+
+def get_favorites_songs_of_user(user):
+    return [favorite.song for favorite in get_favorites_of_user(user)]
