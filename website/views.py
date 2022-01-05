@@ -463,3 +463,13 @@ def administration_edit_anime(id):
         anime = anime,
         form = form
     )
+
+@app.route("/profile/favorites")
+@login_required
+def profile_favorites():
+
+    return render_template(
+        "profile-favorites.html",
+        user = current_user,
+        favorites = get_favorites_of_user(current_user)
+    )
