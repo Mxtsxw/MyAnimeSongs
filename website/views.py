@@ -1,7 +1,7 @@
 from flask.app import Flask
 from werkzeug import datastructures
 from wtforms.fields.simple import HiddenField, SubmitField
-from .app import app, login_manager
+from .app import app, login_manager, db
 from flask import render_template, url_for, redirect, request
 from flask_wtf import FlaskForm
 from wtforms import StringField, SelectField, PasswordField, BooleanField
@@ -435,6 +435,16 @@ def administration_edit_song(id):
     form.ytb_url.render_kw["value"] = song.ytb_url
     form.spoty_url.render_kw["value"] = song.spoty_url
     
+    if form.validate_on_submit():
+        song.title = form.title.data
+        song.relation = form.relation.data
+        song.interpreter = form.interpreter.data
+        song.ytb_url = form.ytb_url.data
+        song.spoty_url = form.spoty_url.data
+
+        db.session.commit()
+        return redirect(url_for("home"))
+
     return render_template(
         "administration-edit-song.html",
         user = current_user,
