@@ -45,6 +45,23 @@
         </div>
 
         <div class="mb-3">
+
+            {{ form.text.label(class_ = "form-label") }}
+
+            {% if not form.text.errors %}
+
+            {{ form.text(class_ = "form-control mb-3") }}
+
+            {% else %}
+
+            {{ form.text(class_ = "form-control is-invalid") }}
+            <p class="mt-1 invalid">{{ form.text.errors[0] }}</p>
+
+            {% endif %}
+
+        </div>
+
+        <div class="mb-3">
             {{ form.modify(class_="btn btn-success") }}
             {{ form.delete(class_="btn btn-danger") }}
         </div>
