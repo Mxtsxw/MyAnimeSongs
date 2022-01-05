@@ -233,3 +233,6 @@ def remove_favorite(favorite):
 
 def get_favorites_of_user(user):
     return user.favorites.all()
+
+def get_favorites_songs_of_user(user):
+    return [favorite.song for favorite in get_favorites_of_user(user)]
