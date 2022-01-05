@@ -210,6 +210,14 @@ def get_anime_request(id):
 def get_anime_requests():
     return AnimeRequest.query.all()
 
+def edit_song(title, interpreter, relation, ytb_url, spoty_url, song): 
+    song.title = title
+    song.interpreter = interpreter
+    song.relation = relation
+    song.ytb_url = ytb_url
+    song.spoty_url = spoty_url
+    db.session.commit()
+        
 def get_anime_by_filter(tag):
     return Anime.query.filter(Anime.name.like(f'%{tag}%')).all()
 
