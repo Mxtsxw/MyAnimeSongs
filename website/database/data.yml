@@ -1470,7 +1470,7 @@
   ytb_url: vARwccCqNCA
   spoty_url: https://open.spotify.com/embed/episode/2UDA4esUKwa2YRvq5mBlup
 
-- anime: No Game, No Life
+- anime: No Game No Life
   relation: OP1
   img: ngnl01.jpg
   title: This game
@@ -1478,7 +1478,7 @@
   ytb_url: 6CBp4qylX6I
   spoty_url: https://open.spotify.com/embed/track/3COSRKvFPnpnnorNF4oaMf
 
-- anime: No Game, No Life
+- anime: No Game No Life
   relation: ED1
   img: ngnl01.jpg
   title: Oración
@@ -1981,3 +1981,29 @@
   interpreter: Takigawa Alisa
   ytb_url: leIePUmcqUc
   spoty_url: https://open.spotify.com/embed/track/6QKCqaDyP2Pazrpk2lbAq4
+
+- anime: No Game No Life Zero
+  relation: ED1
+  img: ngnl02.jpg
+  title: THERE IS A REASON
+  interpreter: Suzuki Konomi
+  ytb_url: wrpRv1pyV6I
+  spoty_url: https://open.spotify.com/embed/track/6SNCknOsuLaUTmWS3vjcPS
+
+- anime: Horimiya
+  relation: OP1
+  img: horimiya01.jpg
+  title: Iro Kosui
+  interpreter: Yoh Kamiyama
+  ytb_url: 8iP8xXXdvoU
+  spoty_url: https://open.spotify.com/embed/track/7FpABRyv5TaZz0llkhjPgc
+
+- anime: Horimiya
+  relation: ED1
+  img: horimiya01.jpg
+  title: Yakusoku
+  interpreter: Friends(2015)
+  ytb_url: fOcRSrIrGnI
+  spoty_url: https://open.spotify.com/embed/track/4aIKUD4BQloOqK4ChkaE5A
+
+  
