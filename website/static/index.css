@@ -79,11 +79,6 @@ html, body{
 .banner-content-collapse{
     display: flex;
     padding: .5em;
-<<<<<<< HEAD
-
-=======
-    max-height: 250px;
->>>>>>> origin
 }
 
 .banner-img{
@@ -171,7 +166,6 @@ html, body{
 .play-btn{
     cursor: pointer;
 }
-<<<<<<< HEAD
 
 .readmore {
     position: relative;
@@ -211,5 +205,3 @@ html, body{
     content:"Read less";
   }
   
-=======
->>>>>>> origin
