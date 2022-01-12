@@ -79,7 +79,6 @@ html, body{
 .banner-content-collapse{
     display: flex;
     padding: .5em;
-
 }
 
 .banner-img{
@@ -141,6 +140,12 @@ html, body{
     bottom: 0;
     background-color: rgba(0,0,0,0.7); /* Black background with opacity */
     z-index: 3; /* Specify a stack order in case you're using a different order for other elements */
+}
+
+.box-on-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .box-on-center {
