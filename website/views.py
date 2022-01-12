@@ -1,10 +1,10 @@
 from flask.app import Flask
 from werkzeug import datastructures
 from wtforms.fields.simple import HiddenField, SubmitField
-from .app import app, login_manager
+from .app import app, login_manager, db
 from flask import render_template, url_for, redirect, request
 from flask_wtf import FlaskForm
-from wtforms import StringField, SelectField, PasswordField, BooleanField
+from wtforms import StringField, SelectField, PasswordField, BooleanField, TextAreaField
 from wtforms.validators import DataRequired, InputRequired, Length, Email, URL, ValidationError
 from website.models import *
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -100,17 +100,28 @@ def logout():
     logout_user()
     return redirect(url_for("home"))
 
-@app.route("/")
+class SearchForm(FlaskForm):
+    search = StringField(render_kw = {"placeholder": "Rechercher..."})
+    submit = SubmitField("Rechercher")
+
+@app.route("/", methods=['GET', 'POST'])
 def home():
+    
+    search = SearchForm()
+    if search.validate_on_submit():
+        animes = get_anime_by_filter(search.search.data)
+    else:
+        animes = get_animes()        
     
     return render_template(
         "index.html",
         user = current_user,
         title = "My Anime Songs",
-        animes = get_animes()
+        animes = animes,
+        form = search
     )
 
-@app.route("/anime/<id>")
+@app.route("/anime/<id>", methods=['GET', 'POST'])
 def anime(id):
     return render_template(
         "anime.html",
@@ -221,15 +232,29 @@ class RequestAnimeForm(FlaskForm):
                         render_kw = {"placeholder": "Haikyuu - Saison 4"})
     img_url = StringField("URL d'une miniature", validators = [InputRequired(message = "Champ obligatoire"), Length(max = 120, message = "Ne peux pas faire plus de 120 caractères")],
                           render_kw = {"placeholder": "https://kbimages1-a.akamaihd.net/41c745b0-f165-4aa8-b2b1-f96cfdb6e594/353/569/90/False/haikyu-les-as-du-volley-chapitre-1.jpg"})
+    text = TextAreaField("Description de l'anime", validators = [InputRequired(message= "Champ obligatoire"), Length(max = 1000)],
+                          render_kw = {"placeholder": "Le héros meurt à la fin..."})
     submit = SubmitField("Envoyer la demande")
     
     # administration part
-    
+
     accept = SubmitField("Accepter la demande")
     refuse = SubmitField("Rejeter la demande")
     modify = SubmitField("Modifier")
     delete = SubmitField("Supprimer")
 
+class EditAnimeForm(FlaskForm):
+    name = StringField("Nom", validators = [InputRequired(message = "Champ obligatoire"), Length(max = 80), is_anime],
+                        render_kw = {"placeholder": "Haikyuu - Saison 4"})
+    img_url = StringField("URL d'une miniature", validators = [InputRequired(message = "Champ obligatoire"), Length(max = 120, message = "Ne peux pas faire plus de 120 caractères")],
+                          render_kw = {"placeholder": "https://kbimages1-a.akamaihd.net/41c745b0-f165-4aa8-b2b1-f96cfdb6e594/353/569/90/False/haikyu-les-as-du-volley-chapitre-1.jpg"})
+    text = TextAreaField("Description de l'anime", validators = [InputRequired(message= "Champ obligatoire"), Length(max = 1000)],
+                          render_kw = {"placeholder": "Le héros meurt à la fin..."})
+    
+    # administration part
+
+    modify = SubmitField("Modifier")
+    delete = SubmitField("Supprimer")
 
 @app.route("/request/anime", methods=['GET', 'POST'])
 @login_required
@@ -435,6 +460,19 @@ def administration_edit_song(id):
     form.ytb_url.render_kw["value"] = song.ytb_url
     form.spoty_url.render_kw["value"] = song.spoty_url
     
+    if form.validate_on_submit():
+        if form.modify.data:
+            edit_song(
+                form.title.data,
+                form.interpreter.data,
+                form.relation.data,
+                form.ytb_url.data,
+                form.spoty_url.data,
+                song
+            )
+
+        return redirect(url_for("home"))
+    
     return render_template(
         "administration-edit-song.html",
         user = current_user,
@@ -452,14 +490,35 @@ def administration_edit_anime(id):
 
     anime = get_anime(id)
 
-    form = RequestAnimeForm()
+    form = EditAnimeForm()
 
     form.name.render_kw["value"] = anime.name
     form.img_url.render_kw["value"] = anime.img
+    form.text.render_kw["value"] = anime.text
+
+    if form.validate_on_submit():
+        if form.modify.data:
+            edit_anime(
+                form.img_url.data,
+                form.text.data,
+                anime
+            )
+
+        return redirect(url_for("home"))
 
     return render_template(
         "administration-edit-anime.html",
         user = current_user,
         anime = anime,
         form = form
+    )
+
+@app.route("/profile/favorites")
+@login_required
+def profile_favorites():
+
+    return render_template(
+        "profile-favorites.html",
+        user = current_user,
+        favorites = get_favorites_of_user(get_user(current_user.id))
     )

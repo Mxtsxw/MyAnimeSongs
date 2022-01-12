@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block main %}
+
+{% for favorite in favorites %}
+
+<div class="col mb-2 mt-3">
+    <div class="card h-100">
+        <div class="card-horizontal">
+            <div class="card-body">
+                <h4 class="card-title text-dark">{{favorite.song.title}}</h4>
+                <p class="card-text text-dark">{{favorite.song.interpreter}}</p>
+                <p class="card-text text-muted d-inline-block">{{favorite.song.relation}}</p>
+                <p class="card-text text-muted d-inline-block"> • </p>
+                <i class="fa fa-youtube-play play-btn" onclick="on( '{{ favorite.song.ytb_url }}' )" style="font-size:24px;color:red"></i>
+                <i class="fa fa-spotify play-btn" onclick="launcher( '{{ favorite.song.spoty_url }}' ) " style="font-size:24px; color: #1DB954; vertical-align: baseline;"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endfor %}
+
+<div id="bottom-pad-frame"></div>
+
+<div id="spotify-frame" class="spotify-embed"></div>
+
+<div id="overlay" onclick="off()"></div> 
+
+{% endblock %}
+
+<!-- 
+    TODO:
+    - Trouver un moyen de verifier la presence d'ED/OP/OST
+    - Afficher message pour request lorsque qu'aucun son n'est disponible
+
+    - Youtube overlay
+    - Minimize overlay
+-->

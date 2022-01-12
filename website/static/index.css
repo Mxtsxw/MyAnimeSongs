@@ -19,7 +19,7 @@ html, body{
 }
 
 .carousel-item{
-    height: 500px;
+    height: 450px;
 }
 
 .carousel-bg{
@@ -76,9 +76,10 @@ html, body{
     width: 100%;
 }
 
-.banner-content{
+.banner-content-collapse{
     display: flex;
     padding: .5em;
+    max-height: 250px;
 }
 
 .banner-img{
@@ -139,11 +140,19 @@ html, body{
     z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
 }
 
+.box-on-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #ytplayer{
-    position: relative;
-    top: 50%;
-    left: 50%;
-    translate: -50% -50%;
+    min-width: 480px;
+    min-height: 270px;
+    max-width: 960px;
+    max-height: 540px;
+    width: 75%;
+    aspect-ratio: 16 / 9;
 }
 
 .play-btn{
