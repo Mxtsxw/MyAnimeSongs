@@ -79,7 +79,11 @@ html, body{
 .banner-content-collapse{
     display: flex;
     padding: .5em;
+<<<<<<< HEAD
 
+=======
+    max-height: 250px;
+>>>>>>> origin
 }
 
 .banner-img{
@@ -149,6 +153,12 @@ html, body{
     align-items: center;
 }
 
+.box-on-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #ytplayer{
     min-width: 480px;
     min-height: 270px;
@@ -161,6 +171,7 @@ html, body{
 .play-btn{
     cursor: pointer;
 }
+<<<<<<< HEAD
 
 .readmore {
     position: relative;
@@ -200,3 +211,5 @@ html, body{
     content:"Read less";
   }
   
+=======
+>>>>>>> origin
