@@ -6,17 +6,20 @@
         <div class="banner" style="background: url( {{ url_for('static', filename='images/'+anime.img) }} ); background-repeat: no-repeat; background-size: cover; opacity: 1;">
             <!-- Set the banner background -->
         </div>
-        <div class="banner-content container">
+        <div class="banner-content-collapse container">
             <div class="img-placeholder shadow rounded">
                 <img src="{{ url_for('static', filename='images/'+anime.img) }}" alt="Anime cover" class="banner-img rounded">
             </div>
-            <div class="desc">
+            <div id="desc" class="desc">
                 <h3>{{ anime.name }}</h3>
-                <p>
-                    {% if anime.text %}
-                    {{ anime.text }}
-                    {% endif %}
-                </p>    
+                <div class="desc-text-container">
+                    <p id="desc-text" class="readmore">
+                        {% if anime.text %}
+                        {{ anime.text }}
+                        {% endif %}
+                    </p>  
+                    <span class="readmore-link" id="readmore-link"></span> 
+                </div>  
             </div>
         </div>
     </div>

@@ -133,7 +133,7 @@ def anime(id):
         display = "all"
     )
 
-@app.route("/anime/<id>/opening")
+@app.route("/anime/<id>/opening", methods=['GET', 'POST'])
 def anime_opening(id):
     return render_template(
         "anime.html",
@@ -143,7 +143,7 @@ def anime_opening(id):
         display = "opening"
     )
 
-@app.route("/anime/<id>/ending")
+@app.route("/anime/<id>/ending", methods=['GET', 'POST'])
 def anime_ending(id):
     return render_template(
         "anime.html",
@@ -153,7 +153,7 @@ def anime_ending(id):
         display = "ending"
     )
 
-@app.route("/anime/<id>/ost")
+@app.route("/anime/<id>/ost", methods=['GET', 'POST'])
 def anime_ost(id):
     return render_template(
         "anime.html",
