@@ -211,3 +211,9 @@ html, body{
     content:"Réduire";
   }
   
+.star{
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    font-size: 20px;
+}
