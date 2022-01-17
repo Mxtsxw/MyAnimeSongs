@@ -62,7 +62,7 @@
                             <div class="card h-100">
                                 <div class="card-horizontal">
                                     {% if user.is_authenticated %}
-                                        {% if song in favorites %}
+                                        {% if song.id in favorites %}
                                         <a href="" class="star checked"><span class="fa fa-star"></span></a>
                                         {% else %}
                                         <a href="" class="star"><span class="fa fa-star"></span></a>
@@ -102,10 +102,10 @@
                             <div class="card h-100">
                                 <div class="card-horizontal">
                                     {% if user.is_authenticated %}
-                                        {% if song in favorites %}
+                                        {% if song.id in favorites %}
                                         <a href="" class="star checked"><span class="fa fa-star"></span></a>
                                         {% else %}
-                                        <a href="" class="star"><span class="fa fa-star"></span></a>
+                                        <a href="{{ url_for('profile_favorites_add', page=1, id=song.id) }}" class="star"><span class="fa fa-star"></span></a>
                                         {% endif %}
                                     {% endif %}
                                     <div class="card-body">
@@ -141,7 +141,7 @@
                             <div class="card h-100">
                                 <div class="card-horizontal">
                                     {% if user.is_authenticated %}
-                                        {% if song in favorites %}
+                                        {% if song.id in favorites %}
                                         <a href="" class="star checked"><span class="fa fa-star"></span></a>
                                         {% else %}
                                         <a href="" class="star"><span class="fa fa-star"></span></a>
@@ -180,8 +180,8 @@
                             <div class="card h-100">
                                 <div class="card-horizontal">
                                     {% if user.is_authenticated %}
-                                        {% if song in favorites %}
-                                        <a href="" class="star checked"><span class="fa fa-star"></span></a>
+                                        {% if song.id in favorites %}
+                                        <a href="{{ url_for('profile_favorites_add') }}" class="star checked"><span class="fa fa-star"></span></a>
                                         {% else %}
                                         <a href="" class="star"><span class="fa fa-star"></span></a>
                                         {% endif %}
