@@ -111,13 +111,15 @@ def home():
     if search.validate_on_submit():
         animes = get_anime_by_filter(search.search.data)
     else:
-        animes = get_animes()        
+        animes = get_animes()     
+
+    page = request.args.get('page', 1, type=int)
     
     return render_template(
         "index.html",
         user = current_user,
         title = "My Anime Songs",
-        animes = animes,
+        animes = get_animes_pagination(page, 18),
         form = search
     )
 
