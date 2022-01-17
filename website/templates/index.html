@@ -93,11 +93,24 @@
                     <li class="page-item">
                     <a class="page-link" href="{{ url_for('home', page=animes.prev_num) }}" tabindex="-1">Previous</a>
                     </li>
-                    <li class="page-item active"><a class="page-link" href="{{ url_for('home', page=1) }}">1</a></li>
-                    <li class="page-item">
-                    <a class="page-link" href="{{ url_for('home', page=2) }}">2</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="{{ url_for('home', page=3) }}">3</a></li>
+
+                    {% for page_num in animes.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+
+                      {% if page_num %}
+
+                        {% if animes.page == page_num %}
+
+                          <li class="page-item active"><a class="page-link" href="{{ url_for('home', page=page_num) }}">{{ page_num }}</a></li>
+
+                        {% else %}
+
+                          <li class="page-item"><a class="page-link" href="{{ url_for('home', page=page_num) }}">{{ page_num }}</a></li>
+
+                        {% endif %}
+                      {% else %}
+                            ...
+                      {% endif %}
+                    {% endfor %}
                     <li class="page-item">
                     <a class="page-link" href="{{ url_for('home', page=animes.next_num) }}">Next</a>
                     </li>
@@ -107,35 +120,4 @@
     </div>
 
 {% endblock %}
-
-<!-- <div>
-    <ul>
-        {% for anime in animes.items %}
-        <li>
-            <p>{{ anime.name }}</p>
-    
-            <div class="crop">
-                <img src="{{ url_for('static', filename='images/'+anime.img) }}" alt="{{ anime.name }} image">
-            </div>
-
-            <ul>
-                {% for song in anime.songs %}
-                <li>
-                    <p>Titre : {{ song.title }}    {{ song.relation}}</p>
-                    <p>Interprète : {{ song.interpreter }}</p>
-                    <iframe id="ytplayer" type="text/html" width="640" height="360"
-                    src="http://www.youtube.com/embed/{{ song.ytb_url }}"
-                    loading="lazy"></iframe>
-                    <iframe width="300" height="360"
-                    src="{{ song.spoty_url }}" 
-                    allowtransparency="true" allow="encrypted-media"
-                    loading="lazy"></iframe>
-                </li>
-                {% endfor %}
-            </ul>
-        </li>
-        {% endfor %}
-    </ul>
-</div> -->
-        
         
