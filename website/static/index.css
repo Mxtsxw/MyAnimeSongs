@@ -230,3 +230,8 @@ html, body{
 .star.checked:hover{
     color: red;
 }
+
+.title-header{
+    display: flex;
+    justify-content: space-between;
+}
