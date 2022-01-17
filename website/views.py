@@ -522,3 +522,11 @@ def profile_favorites():
         user = current_user,
         favorites = get_favorites_of_user(get_user(current_user.id))
     )
+
+@app.route("/songs/all/")
+def songs():
+    return render_template(
+        "songs.html",
+        user = current_user,
+        songs = get_songs()
+    )
