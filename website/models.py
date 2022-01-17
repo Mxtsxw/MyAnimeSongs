@@ -229,8 +229,8 @@ def edit_user(email, password, userEdit):
 
     db.session.commit()
 
-def get_anime_by_filter(tag):
-    return Anime.query.filter(Anime.name.like(f'%{tag}%')).all()
+def get_anime_by_filter(tag, page, rows_per_page):
+    return Anime.query.filter(Anime.name.like(f'%{tag}%')).paginate(page = page, per_page = rows_per_page)
 
 class Favorites(db.Model):
     id = db.Column(db.Integer, primary_key = True)
@@ -259,4 +259,7 @@ def get_favorites_of_user(user):
 
 def get_favorites_songs_of_user(user):
     return [favorite.song for favorite in get_favorites_of_user(user)]
+
+def get_animes_pagination(page, rows_per_page):
+    return Anime.query.paginate(page = page, per_page = rows_per_page)
 
