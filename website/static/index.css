@@ -236,6 +236,20 @@ html, body{
     justify-content: space-between;
 }
 
+/* footer */
+
+footer{
+    background-color: #e5e6e7!important;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+footer div{
+    display: grid;
+    margin-right: 20px;
+    padding: 10px;
+}
 .offset{
     position: relative;
     top: -150px;
