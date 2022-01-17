@@ -141,6 +141,9 @@ def home():
 
 @app.route("/anime/<id>", methods=['GET', 'POST'])
 def anime(id):
+    
+    print(get_favorites_of_user(get_user(current_user.id)))
+    
     return render_template(
         "anime.html",
         user = current_user,
@@ -148,7 +151,8 @@ def anime(id):
         op = get_opening_by_anime_id(id),
         ed = get_ending_by_anime_id(id),
         ost = get_ost_by_anime_id(id),
-        display = "all"
+        display = "all",
+        favorites = get_favorites_songs_of_user(get_user(current_user.id))
     )
 
 @app.route("/anime/<id>/opening", methods=['GET', 'POST'])
@@ -574,3 +578,15 @@ def songs():
         user = current_user,
         songs = get_songs()
     )
+    
+@app.route("/profile/favorites/<int:page>/add/<int:id>", methods = ['GET', 'POST'])
+@login_required
+def profile_favorites_add(page, id):
+    add_favorite(current_user.id, id)
+    return redirect(url_for("profile_favorites"))
+
+@app.route("/profile/favorites/<int:page>/delete/<int:id>", methods = ['GET', 'POST'])
+@login_required
+def profile_favorites_delete(page, id):
+    remove_favorite()
+    return redirect(url_for("profile_favorites"))
