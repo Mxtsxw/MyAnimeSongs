@@ -27,16 +27,16 @@
         <nav>
             <ul class="nav justify-content-center text-uppercase pt-3 type-nav">
                 <li class="nav-item px-2">
-                  <a class="nav-link link-primary {% if display == 'all' %} active {% endif %}" href="{{ url_for('anime', id=anime.id) }}">Tous</a>
+                  <a class="nav-link link-light {% if display == 'all' %} active {% endif %}" href="{{ url_for('anime', id=anime.id) }}">Tous</a>
                 </li>
                 <li class="nav-item px-2">
-                  <a class="nav-link link-primary {% if display == 'opening' %} active {% endif %}" href="{{ url_for('anime_opening', id=anime.id) }}">Opening</a>
+                  <a class="nav-link link-light {% if display == 'opening' %} active {% endif %}" href="{{ url_for('anime_opening', id=anime.id) }}">Opening</a>
                 </li>
                 <li class="nav-item px-2"> 
-                  <a class="nav-link link-primary {% if display == 'ending' %} active {% endif %}" href="{{ url_for('anime_ending', id=anime.id) }}">Ending</a>
+                  <a class="nav-link link-light {% if display == 'ending' %} active {% endif %}" href="{{ url_for('anime_ending', id=anime.id) }}">Ending</a>
                 </li>
                 <li class="nav-item px-2">
-                  <a class="nav-link link-primary {% if display == 'ost' %} active {% endif %}" href="{{ url_for('anime_ost', id=anime.id) }}">OST</a>
+                  <a class="nav-link link-light {% if display == 'ost' %} active {% endif %}" href="{{ url_for('anime_ost', id=anime.id) }}">OST</a>
                 </li>
             </ul>
         </nav>
