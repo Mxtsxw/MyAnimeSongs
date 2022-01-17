@@ -223,6 +223,12 @@ def edit_anime(img_url, text, anime):
 
     db.session.commit()
 
+def edit_user(email, password, userEdit):
+    userEdit.email = email
+    userEdit.password = password
+
+    db.session.commit()
+
 def get_anime_by_filter(tag):
     return Anime.query.filter(Anime.name.like(f'%{tag}%')).all()
 
