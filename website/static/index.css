@@ -235,3 +235,12 @@ html, body{
     display: flex;
     justify-content: space-between;
 }
+
+.offset{
+    position: relative;
+    top: -150px;
+}
+
+.bg-custom{
+    background-color: #EDF1F5;
+}
