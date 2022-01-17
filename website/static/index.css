@@ -214,6 +214,7 @@ html, body{
   .readmore-link.expand:after{
     content:"Réduire";
     color: #007BFF;
+    top: 0;
   }
   
 .star{
