@@ -48,7 +48,25 @@ class RegisterForm(FlaskForm):
     password_confirmation = PasswordField('Confirmer votre mot de passe', validators = [InputRequired(message = "Confirmation obligatoire"), same_passwords],
                                                            id = "floatingPassword", render_kw = {"placeholder": "Azerty20"})
     
+    
     submit = SubmitField("S'inscrire")
+
+
+class EditForm(FlaskForm):
+    email = StringField("Email", validators = [InputRequired(message = "L'Email est obligatoire"),
+                                               Email(message="Email invalide", check_deliverability = True),
+                                               Length(max = 50, message = "L'Email ne doit pas faire plus de 50 caractères"),
+                                               ],
+                                               id = "floatingInput", render_kw = {"placeholder": "baptiste@gmail.com"})
+
+    password = PasswordField('Mot de passe', validators = [InputRequired(message = "Le mot de passe est obligatoire"),
+                                                           Length(min = 8, max = 80, message = "Le mot de passe doit faire entre 8 et 80 caractères")],
+                                                           id = "floatingPassword", render_kw = {"placeholder": "Azerty20"})
+    
+    password_confirmation = PasswordField('Confirmer votre mot de passe', validators = [InputRequired(message = "Confirmation obligatoire"), same_passwords],
+                                                           id = "floatingPassword", render_kw = {"placeholder": "Azerty20"})
+    
+    modify = SubmitField("Modifier")
     
 @login_manager.user_loader
 def load_user(user_id):
@@ -521,4 +539,30 @@ def profile_favorites():
         "profile-favorites.html",
         user = current_user,
         favorites = get_favorites_of_user(get_user(current_user.id))
+    )
+
+@app.route("/profile/settings", methods = ['GET', 'POST'])
+@login_required
+def profile_settings():
+
+    userEdit = get_user(current_user.id)
+
+    form = EditForm()
+
+    form.email.render_kw["value"] = userEdit.email
+    form.password.render_kw["value"] = userEdit.password
+
+    if form.validate_on_submit():
+        if form.modify.data:
+
+            hashed_password = generate_password_hash(form.password.data, method="sha256")
+            new_user = edit_user(email = form.email.data, password = hashed_password, userEdit = userEdit)
+
+            return redirect(url_for("home"))
+
+    return render_template(
+        "profile-settings.html",
+        user = current_user,
+        form = form,
+        userEdit = userEdit
     )
