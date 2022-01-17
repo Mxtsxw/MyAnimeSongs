@@ -216,4 +216,17 @@ html, body{
     right: 10px;
     top: 5px;
     font-size: 20px;
+    color: silver
+}
+
+.star:hover{
+    color: orange;
+}
+
+.star.checked{
+    color: orange;
+}
+
+.star.checked:hover{
+    color: red;
 }
