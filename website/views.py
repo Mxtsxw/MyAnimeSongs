@@ -574,3 +574,11 @@ def songs():
         user = current_user,
         songs = get_songs()
     )
+
+@app.route("/animes/all/")
+def animes():
+    return render_template(
+        "animes.html",
+        user = current_user,
+        animes = get_animes()
+    )
