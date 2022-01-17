@@ -5,13 +5,13 @@
 
 <div class="container-fluid bg-custom">
     <div class="container offset ">
-        <h1 class="text-center text-white bg-dark pb-4">Catalogues</h1>
+        <h1 class="text-center text-white bg-dark pb-4">Catalogue - Animes</h1>
         <div class="row row-cols-auto">
 
             {% for anime in animes %}
             <a class="text-decoration-none text-dark mb-4" href="{{ url_for('anime', id=anime.id) }}">
               <div class="col">
-                <div class="card border-0 d.flex flex-column align-items-center">
+                <div class="card border-0 d.flex flex-column align-items-center" style="background-color: #edf1f5;">
                   {% if anime.img %}
                   <img class="img-responsive rounded" src="{{ url_for('static', filename='images/'+anime.img) }}">
                   {% else %}

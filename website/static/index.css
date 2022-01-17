@@ -79,6 +79,7 @@ html, body{
 .banner-content-collapse{
     display: flex;
     padding: .5em;
+    min-height: 250px;
 }
 
 .banner-img{
@@ -114,7 +115,7 @@ html, body{
 
 
 .type-nav .active{
-    border-bottom: solid 2px #0a58ca;
+    border-bottom: solid 2px #F9FAFB;
 }
 
 .spotify-embed{
@@ -206,9 +207,14 @@ html, body{
   
   .readmore-link:after {
     content:"Lire plus";
+    position: relative;
+    top: 45px;
+    color: #007BFF;
   }
   .readmore-link.expand:after{
     content:"Réduire";
+    color: #007BFF;
+    top: 0;
   }
   
 .star{
