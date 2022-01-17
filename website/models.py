@@ -254,3 +254,6 @@ def get_favorites_of_user(user):
 def get_favorites_songs_of_user(user):
     return [favorite.song for favorite in get_favorites_of_user(user)]
 
+def get_animes_pagination(page, rows_per_page):
+    return Anime.query.paginate(page = page, per_page = rows_per_page)
+
