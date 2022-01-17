@@ -566,3 +566,11 @@ def profile_settings():
         form = form,
         userEdit = userEdit
     )
+        
+@app.route("/songs/all/")
+def songs():
+    return render_template(
+        "songs.html",
+        user = current_user,
+        songs = get_songs()
+    )
