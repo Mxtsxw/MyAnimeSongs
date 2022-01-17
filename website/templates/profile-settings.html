@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block main %}
+
+
+    <div class="container mt-3">
+        
+        <form action="" method="post" class = "needs-validation" novalidate>
+            {{ form.hidden_tag() }}
+
+            <div class="form-floating mb-3">
+
+
+                {% if form.email.errors %}
+
+                {{ form.email(class_="form-control is-invalid") }}
+                <label for="floatingInput" class="form_label" >{{ form.email.errors[0] }}</label>
+
+                {% else %}
+
+                {{ form.email(class_="form-control") }}
+                {{ form.email.label(class_="form-label") }}
+
+                {% endif %}
+
+            </div>
+
+            <div class="form-floating mb-3">
+
+                {% if form.password.errors %}
+
+                {{ form.password(class_="form-control is-invalid") }}
+                <label for="passwordInput" class="form_label" >{{ form.password.errors[0] }}</label>
+
+                {% else %}
+
+                {{ form.password(class_="form-control") }}
+                {{ form.password.label(class_="form-label") }}
+
+                {% endif %}
+
+            </div>
+
+            <div class="form-floating mb-3">
+
+                {% if form.password_confirmation.errors %}
+
+                {{ form.password_confirmation(class_="form-control is-invalid") }}
+                <label for="passwordInput" class="form_label" >{{ form.password_confirmation.errors[0] }}</label>
+
+                {% else %}
+
+                {{ form.password_confirmation(class_="form-control") }}
+                {{ form.password_confirmation.label(class_="form-label") }}
+
+                {% endif %}
+
+            </div>
+
+            <div class="mb-3">
+                {{ form.modify(class_="btn btn-success") }}
+            </div>
+
+        </form>
+
+    </div>
+
+{% endblock %}
