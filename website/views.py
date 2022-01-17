@@ -105,13 +105,13 @@ class SearchForm(FlaskForm):
     submit = SubmitField("Rechercher")
 
 @app.route("/", methods=['GET', 'POST'])
-def home():
-    
+def home(): 
+    page = request.args.get('page', 1, type=int)
     search = SearchForm()
     if search.validate_on_submit():
-        animes = get_anime_by_filter(search.search.data)
+        animes = get_anime_by_filter(search.search.data, 1, 18)
     else:
-        animes = get_animes()        
+        animes = get_animes_pagination(page, 18) 
     
     return render_template(
         "index.html",
