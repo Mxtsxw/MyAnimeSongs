@@ -2055,7 +2055,7 @@
   spoty_url: https://open.spotify.com/embed/track/4cDm9C5jhBiIyYxVhQmMwB
 
 - anime: L'Attaque des Titans - Saison Finale Part.2
-  relation: OP
+  relation: OP1
   img: snk05.jpg
   title : The Rumbling
   interpreter: SiM (groupe)
@@ -2063,7 +2063,7 @@
   spoty_url: https://open.spotify.com/embed/track/0KCSJzsQVxkloxoT7dyrqV
 
 - anime: L'Attaque des Titans - Saison Finale Part.2
-  relation: ED
+  relation: ED1
   img: snk05.jpg
   title : Devil's Child
   interpreter: Higuchi Ai
@@ -2071,7 +2071,7 @@
   spoty_url: https://open.spotify.com/embed/track/5cRKj1kynNFqiliT2ndZ3y
 
 - anime: Takt Op. Destiny
-  relation: OP
+  relation: OP1
   img: takt01.jpg
   title : takt
   interpreter: ryo [supercell]
@@ -2079,7 +2079,7 @@
   spoty_url: https://open.spotify.com/embed/track/6YSFQShQdR87tMaQEtUfHo
 
 - anime: Takt Op. Destiny
-  relation: ED
+  relation: ED1
   img: takt01.jpg
   title : SYMPHONIA
   interpreter: Nakashima Mika
@@ -2117,3 +2117,68 @@
   interpreter: milet
   ytb_url: hAxArbf2rSc
   spoty_url: https://open.spotify.com/embed/track/1qZC7gWAR5blkKT1DI4niR
+
+- anime: Noblesse
+  relation: OP1
+  img: noblesse01.jpg
+  title : BREAKING DAWN
+  interpreter: Kim Jae Joong
+  ytb_url: qucHV2LTfs4
+  spoty_url: https://open.spotify.com/embed/track/0DbmX7br0YRZ09c4XVpJxr
+
+- anime: Noblesse
+  relation: ED1
+  img: noblesse01.jpg
+  title : Etoile
+  interpreter: OH MY GIRL
+  ytb_url: YJ4AxYpb9pg
+  spoty_url: https://open.spotify.com/embed/track/6LgX94vnLQ4JZTMojQ3D30
+
+- anime: Violet Evergarden
+  relation: OP1
+  img: violet01.jpg
+  title : Sincerly
+  interpreter: \TRUE
+  ytb_url: BGn6WOw6BtA
+  spoty_url: https://open.spotify.com/embed/track/4thBZp9kEDqeSwLtwcAZgk
+
+- anime: Violet Evergarden
+  relation: ED1
+  img: violet01.jpg
+  title : Michishirube
+  interpreter: Chihara Minori
+  ytb_url: OCc8LKU-hwg
+  spoty_url: https://open.spotify.com/embed/track/5KpUgOcUVkO1nA8H50pf9q
+
+- anime: King's Avatar
+  relation: OP1
+  img: ka01.jpg
+  title : Xin Yang
+  interpreter: Zhang Jie
+  ytb_url: FvaZJeQNf_c
+  spoty_url: 
+
+- anime: King's Avatar Saison 2
+  relation: OP1
+  img: ka02.jpg
+  title : Glory Break
+  interpreter: 南征北战NZBZ
+  ytb_url: ESowVnT4Y6c
+  spoty_url: 
+
+- anime: King's Avatar Saison 2
+  relation: ED1
+  img: ka02.jpg
+  title : Our Glory Road
+  interpreter: Mario
+  ytb_url: bYdUtun9s38
+  spoty_url: 
+
+- anime: King's Avatar:For the Glory
+  relation: OP1
+  img: kaMovie01.jpg
+  title : Glory Peak
+  interpreter: 阿云嘎 / 郑云龙
+  ytb_url: 9k02XT_8xIY
+  spoty_url: https://open.spotify.com/embed/track/4lQeZ5YrqjT52Q4nMKtUXi
+
