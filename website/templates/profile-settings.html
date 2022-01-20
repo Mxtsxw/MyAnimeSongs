@@ -26,15 +26,15 @@
 
             <div class="form-floating mb-3">
 
-                {% if form.password.errors %}
+                {% if form.passwordL.errors %}
 
-                {{ form.password(class_="form-control is-invalid") }}
-                <label for="passwordInput" class="form_label" >{{ form.password.errors[0] }}</label>
+                {{ form.passwordL(class_="form-control is-invalid") }}
+                <label for="passwordInput" class="form_label" >{{ form.passwordL.errors[0] }}</label>
 
                 {% else %}
 
-                {{ form.password(class_="form-control") }}
-                {{ form.passwords.label(class_="form-label") }}
+                {{ form.passwordL(class_="form-control") }}
+                {{ form.passwordL.label(class_="form-label") }}
 
                 {% endif %}
 

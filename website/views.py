@@ -559,17 +559,13 @@ def profile_settings():
     userEdit = get_user(current_user.id)
 
     form = EditForm()
-
     form.email.render_kw["value"] = userEdit.email
-    form.password.render_kw["value"] = userEdit.password
 
     if form.validate_on_submit():
         if check_password_hash(userEdit.password, form.passwordL.data):
             if form.modify.data:
-
                 hashed_password = generate_password_hash(form.password.data, method="sha256")
-                new_user = edit_user(email = form.email.data, password = hashed_password, userEdit = userEdit)
-
+                edit_user(email = form.email.data, password = hashed_password, userEdit = userEdit)
                 return redirect(url_for("home"))
 
     return render_template(
