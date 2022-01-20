@@ -249,8 +249,8 @@ def add_favorite(user_id, song_id):
     db.session.add(obj)
     db.session.commit()
 
-def remove_favorite(favorite):
-    db.session.delete(favorite)
+def remove_favorite(user_id, song_id):
+    db.session.delete(get_favorite(user_id, song_id))
     db.session.commit()
 
 def get_favorites_of_user(user):
