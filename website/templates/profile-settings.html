@@ -34,6 +34,30 @@
                 {% else %}
 
                 {{ form.password(class_="form-control") }}
+                {{ form.passwords.label(class_="form-label") }}
+
+                {% endif %}
+
+            </div>
+
+            <!-- {% if not valid %}
+
+            <div class="alert alert-danger" role="alert">
+                Mot de passe incorrect
+            </div>
+
+            {% endif %} -->
+
+            <div class="form-floating mb-3">
+
+                {% if form.password.errors %}
+
+                {{ form.password(class_="form-control is-invalid") }}
+                <label for="passwordInput" class="form_label" >{{ form.password.errors[0] }}</label>
+
+                {% else %}
+
+                {{ form.password(class_="form-control") }}
                 {{ form.password.label(class_="form-label") }}
 
                 {% endif %}
