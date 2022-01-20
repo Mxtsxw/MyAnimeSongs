@@ -34,7 +34,7 @@
                         Animes
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Tous</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('animes') }}">Tous</a></li>
                         </ul>
                     </li>
                     
@@ -120,12 +120,11 @@
     {% endblock %}
 
     <footer>
-        <nav>
-            <div>
-                <p>© 2022 My Anime Songs Tous droits réservé.</p>
+        <nav class="container-fluid d-flex justify-content-center footer">
+            <div class="pt-4">
+                <p>© 2022 My Anime Songs Tous droits réservés.</p>
                 <p>Baptiste Lambert | Matthieu Randriantsoa | François Zhu</p>
             </div>
-            
         </nav>
       </footer>
 

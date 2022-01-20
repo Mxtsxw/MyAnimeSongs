@@ -58,6 +58,10 @@ class EditForm(FlaskForm):
                                                Length(max = 50, message = "L'Email ne doit pas faire plus de 50 caractères"),
                                                ],
                                                id = "floatingInput", render_kw = {"placeholder": "baptiste@gmail.com"})
+    
+    passwordL = PasswordField('Ancien mot de passe', validators = [InputRequired(message = "Le mot de passe est obligatoire"),
+                                                           Length(min = 8, max = 80, message = "Le mot de passe doit faire entre 8 et 80 caractères")],
+                                                           id = "floatingPassword", render_kw = {"placeholder": "Azerty20"})
 
     password = PasswordField('Mot de passe', validators = [InputRequired(message = "Le mot de passe est obligatoire"),
                                                            Length(min = 8, max = 80, message = "Le mot de passe doit faire entre 8 et 80 caractères")],
@@ -560,12 +564,13 @@ def profile_settings():
     form.password.render_kw["value"] = userEdit.password
 
     if form.validate_on_submit():
-        if form.modify.data:
+        if check_password_hash(userEdit.password, form.passwordL.data):
+            if form.modify.data:
 
-            hashed_password = generate_password_hash(form.password.data, method="sha256")
-            new_user = edit_user(email = form.email.data, password = hashed_password, userEdit = userEdit)
+                hashed_password = generate_password_hash(form.password.data, method="sha256")
+                new_user = edit_user(email = form.email.data, password = hashed_password, userEdit = userEdit)
 
-            return redirect(url_for("home"))
+                return redirect(url_for("home"))
 
     return render_template(
         "profile-settings.html",
@@ -593,3 +598,11 @@ def profile_favorites_add(id_a, id):
 def profile_favorites_remove(id_a, id):
     remove_favorite(current_user.id, id)
     return redirect(url_for("anime", id = id_a))
+
+@app.route("/animes/all/")
+def animes():
+    return render_template(
+        "animes.html",
+        user = current_user,
+        animes = get_animes()
+    )
