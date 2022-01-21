@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block main %}
+<div>
 
 <div class="container-fluid px-0 min-vh-100 d-flex flex-column">
     <div class="hero-banner ">
@@ -9,6 +10,7 @@
         <div class="banner-content-collapse container">
             <div class="img-placeholder shadow rounded">
                 <img src="{{ url_for('static', filename='images/'+anime.img) }}" alt="Anime cover" class="banner-img rounded">
+                <a href="{{ url_for('administration_edit_anime', id = anime.id) }}"><span class="fa fa-gear"></span></a>
                 <a href="{{ url_for('anime_delete', id = anime.id) }}"><span class="fa fa-close"></span></a>
             </div>
             <div id="desc" class="desc">
@@ -22,6 +24,7 @@
                     <span class="readmore-link" id="readmore-link"></span> 
                 </div>  
             </div>
+        </div>
         <div class="container-fluid bg-dark flex-grow-1">
             <nav>
                 <ul class="nav justify-content-center text-uppercase pt-3 type-nav">
@@ -116,7 +119,8 @@
                                             <i class="fa fa-spotify play-btn" onclick="launcher( '{{ song.spoty_url }}' ) " style="font-size:24px; color: #1DB954; vertical-align: baseline;"></i>
                                             {% if user.is_authenticated %}
                                             {% if user.role.name == "Administrateur" %}
-                                            <p><a class="btn btn-lg btn-danger" href="{{ url_for('song_delete',id_a = anime.id, id=song.id) }}">Supprimer</a></p>
+                                            <a href="{{ url_for('administration_edit_song', id=song.id) }}"><span class="fa fa-gear"></span></a>
+                                            <a href="{{ url_for('song_delete',id_a = anime.id, id=song.id) }}"><span class="fa fa-close"></span></a>
                                             {% endif%}
                                             {% endif %}
                                         </div>
@@ -159,7 +163,8 @@
                                             <i class="fa fa-spotify play-btn" onclick="launcher( '{{ song.spoty_url }}' ) " style="font-size:24px; color: #1DB954; vertical-align: baseline;"></i>
                                             {% if user.is_authenticated %}
                                             {% if user.role.name == "Administrateur" %}
-                                            <p><a class="btn btn-lg btn-danger" href="{{ url_for('song_delete',id_a = anime.id, id=song.id) }}">Supprimer</a></p>
+                                            <a href="{{ url_for('administration_edit_song', id=song.id) }}"><span class="fa fa-gear"></span></a>
+                                            <a href="{{ url_for('song_delete',id_a = anime.id, id=song.id) }}"><span class="fa fa-close"></span></a>
                                             {% endif%}
                                             {% endif %}
                                         </div>
@@ -202,8 +207,8 @@
                                             <i class="fa fa-spotify play-btn" onclick="launcher( '{{ song.spoty_url }}' ) " style="font-size:24px; color: #1DB954; vertical-align: baseline;"></i>
                                             {% if user.is_authenticated %}
                                             {% if user.role.name == "Administrateur" %}
-                                            <p><a class="btn btn-lg btn-danger" href="{{ url_for('song_delete',id_a = anime.id, id=song.id) }}">Supprimer</a></p>
-                                            <p><a class="btn btn-lg btn-danger" href="{{ url_for('song_delete',id_a = anime.id, id=song.id) }}">Supprimer</a></p>
+                                            <a href="{{ url_for('administration_edit_song', id=song.id) }}"><span class="fa fa-gear"></span></a>
+                                            <a href="{{ url_for('song_delete',id_a = anime.id, id=song.id) }}"><span class="fa fa-close"></span></a>
                                             {% endif%}
                                             {% endif %}
                                         </div>
@@ -227,6 +232,7 @@
     </div>
     
     <div id="overlay" onclick="off()"></div> 
+</div>
 </div>
 
 {% endblock %}

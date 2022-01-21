@@ -623,3 +623,23 @@ def animes():
         animes = animes,
         form = search
     )
+
+@app.route("/anime/<int:id_a>/song/<int:id>/delete", methods = ['GET', 'POST'])
+@login_required
+def song_delete(id_a, id):
+
+    if not current_user.role.name == "Administrateur":
+        return redirect(url_for("anime", id = id_a))
+
+    remove_song(id)
+    return redirect(url_for("anime", id = id_a))
+
+@app.route("/anime/<int:id>/delete", methods = ['GET', 'POST'])
+@login_required
+def anime_delete(id):
+
+    if not current_user.role.name == "Administrateur":
+        return redirect(url_for("home"))
+
+    remove_anime(id)
+    return redirect(url_for("home"))

@@ -295,6 +295,7 @@ def remove_song(song_id):
     favoris = Favorites.query.filter(Favorites.song_id == song_id).all()
     for favori in favoris:
         db.session.delete(favori)
+    db.session.delete(get_song(song_id))
     db.session.commit()
 
 def remove_anime(anime_id):
