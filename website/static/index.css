@@ -4,7 +4,10 @@ html, body{
 }
 
 /* global */
-
+body{
+    display: flex;
+    flex-direction: column;
+}
 
 /* - */
 

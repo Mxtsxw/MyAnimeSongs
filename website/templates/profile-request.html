@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block main %}
 
-<div class="container w-75 mt-3">
+<div class="container w-75 mt-3 flex-grow-1">
     <ul class="list-group list-group-flush">
 
         {% for request in song_requests %}
@@ -74,11 +74,8 @@
         </li>
         {% endfor %}
     </ul>
-
-       
-     </div>
-
 </div>
+
 
 
 {% endblock %}

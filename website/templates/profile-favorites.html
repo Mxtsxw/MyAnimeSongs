@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 {% block main %}
 
-{% for favorite in favorites %}
+<div class="flex-grow-1">
+    {% for favorite in favorites %}
 
 <div class="col mb-2 mt-3">
     <div class="card h-100">
@@ -25,14 +26,7 @@
 <div id="spotify-frame" class="spotify-embed"></div>
 
 <div id="overlay" onclick="off()"></div> 
+</div>
 
 {% endblock %}
 
-<!-- 
-    TODO:
-    - Trouver un moyen de verifier la presence d'ED/OP/OST
-    - Afficher message pour request lorsque qu'aucun son n'est disponible
-
-    - Youtube overlay
-    - Minimize overlay
--->
