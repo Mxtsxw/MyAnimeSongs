@@ -115,11 +115,7 @@ html, body{
 
 
 .type-nav .active{
-<<<<<<< HEAD
-    border-bottom: solid 2px #F8F9FA;
-=======
     border-bottom: solid 2px #F9FAFB;
->>>>>>> 35e2f1dc0484cf8f1d2660da9cf8f623f504faa2
 }
 
 .spotify-embed{
@@ -211,15 +207,9 @@ html, body{
   
   .readmore-link:after {
     content:"Lire plus";
-<<<<<<< HEAD
-    color: #007BFF;
-    position: relative;
-    top: 45px;
-=======
     position: relative;
     top: 45px;
     color: #007BFF;
->>>>>>> 35e2f1dc0484cf8f1d2660da9cf8f623f504faa2
   }
   .readmore-link.expand:after{
     content:"Réduire";
