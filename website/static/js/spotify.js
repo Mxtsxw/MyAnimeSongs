@@ -9,5 +9,5 @@ const launcher = (url) => {
     frame.innerHTML = `<iframe class='spotify-embed' src="${url}" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>`
 
     
-    adjustFrame.style.height = `80px`;
+    adjustFrame.style.minHeight = `80px`;
 }
