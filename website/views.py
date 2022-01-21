@@ -585,7 +585,11 @@ def songs():
     elif tri == 2:
         songs = get_songs_by_name_pagination_descendant(page, 48)
     elif tri == 3:
-        songs = get_songs_by_relation_pagination(page, 48)
+        songs = get_op(page, 48)
+    elif tri == 4:
+        songs = get_ed(page, 48)
+    elif tri == 5:
+        songs = get_ost(page, 48)
     if search.validate_on_submit():
         songs = get_song_by_filter(search.search.data, 1, 48)
     elif not tri:

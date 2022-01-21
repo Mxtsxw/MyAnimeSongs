@@ -282,14 +282,14 @@ def get_songs_by_name_pagination_descendant(page, rows_per_page):
 def get_songs_by_relation_pagination(page, rows_per_page):
     return Song.query.order_by(Song.relation).paginate(page = page, per_page = rows_per_page)
 
-def get_ost():
-    Song.query.filter(Song.relation.like("OST")).all()
+def get_ost(page, rows_per_page):
+    return Song.query.filter(Song.relation.like("OST")).paginate(page = page, per_page = rows_per_page)
 
-def get_ed():
-    Song.query.filter(Song.relation.like("ED%")).all()
+def get_ed(page, rows_per_page):
+    return Song.query.filter(Song.relation.like("ED%")).paginate(page = page, per_page = rows_per_page)
 
-def get_op():
-    Song.query.filter(Song.relation.like("OP%")).all()
+def get_op(page, rows_per_page):
+    return Song.query.filter(Song.relation.like("OP%")).paginate(page = page, per_page = rows_per_page)
 
 def remove_song(song_id):
     favoris = Favorites.query.filter(Favorites.song_id == song_id).all()
@@ -299,5 +299,11 @@ def remove_song(song_id):
     db.session.commit()
 
 def remove_anime(anime_id):
+    songs = Song.query.filter(Song.anime_id == anime_id).all()
+    for song in songs:
+        favoris = Favorites.query.filter(Favorites.song_id == song.id).all()
+        for favori in favoris:
+            db.session.delete(favori)
+        db.session.delete(song)
     db.session.delete(get_anime(anime_id))
     db.session.commit()
