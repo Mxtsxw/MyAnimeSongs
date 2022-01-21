@@ -1,17 +1,23 @@
 {% extends "base.html" %}
 {% block main %}
-<div>
+<div class="d-flex">
 
 <div class="container-fluid px-0 min-vh-100 d-flex flex-column">
-    <div class="hero-banner ">
+    <div class="hero-banner">
         <div class="banner" style="background: url( {{ url_for('static', filename='images/'+anime.img) }} ); background-repeat: no-repeat; background-size: cover; opacity: 1;">
             <!-- Set the banner background image -->
         </div>
         <div class="banner-content-collapse container">
             <div class="img-placeholder shadow rounded">
                 <img src="{{ url_for('static', filename='images/'+anime.img) }}" alt="Anime cover" class="banner-img rounded">
-                <a href="{{ url_for('administration_edit_anime', id = anime.id) }}"><span class="fa fa-gear"></span></a>
-                <a href="{{ url_for('anime_delete', id = anime.id) }}"><span class="fa fa-close"></span></a>
+                {% if user.is_authenticated %}
+                    {% if user.role.name == "Administrateur" %}
+                    <div class="manage-icons bg-light rounded">
+                        <a href="{{ url_for('administration_edit_anime', id = anime.id) }}"><span class="fa fa-gear text-dark px-1"></span></a>
+                        <a href="{{ url_for('anime_delete', id = anime.id) }}"><span class="fa fa-trash-o text-dark px-1"></span></a>
+                    </div>
+                    {% endif %}
+                {% endif %}
             </div>
             <div id="desc" class="desc">
                 <h3>{{ anime.name }}</h3>
@@ -25,208 +31,222 @@
                 </div>  
             </div>
         </div>
-        <div class="container-fluid bg-dark flex-grow-1">
-            <nav>
-                <ul class="nav justify-content-center text-uppercase pt-3 type-nav">
-                    <li class="nav-item px-2">
-                      <a class="nav-link link-light {% if display == 'all' %} active {% endif %}" href="{{ url_for('anime', id=anime.id) }}">Tous</a>
-                    </li>
-                    <li class="nav-item px-2">
-                      <a class="nav-link link-light {% if display == 'opening' %} active {% endif %}" href="{{ url_for('anime_opening', id=anime.id) }}">Opening</a>
-                    </li>
-                    <li class="nav-item px-2"> 
-                      <a class="nav-link link-light {% if display == 'ending' %} active {% endif %}" href="{{ url_for('anime_ending', id=anime.id) }}">Ending</a>
-                    </li>
-                    <li class="nav-item px-2">
-                      <a class="nav-link link-light {% if display == 'ost' %} active {% endif %}" href="{{ url_for('anime_ost', id=anime.id) }}">OST</a>
-                    </li>
-                </ul>
-            </nav>
-            {% if display != "all" %}
-                {% if display == "opening" %}
-                    <div class="container heading mt-5">
-                        <h2><span>OPENING</span></h2>
-                    </div>
-                {% elif display == "ending" %}
-                    <div class="container heading mt-5">
-                        <h2><span>ENDING</span></h2>
-                    </div>
-                {% elif display == "ost" %}
-                    <div class="container heading mt-5">
-                        <h2><span>OST</span></h2>
-                    </div>
-                {% endif %}
-                <div class="container text-secondary">
-                    <div class="row row-cols-auto">
-                        {% if songs|length %}
-                            {% for song in songs %}
-                            <div class="col mb-2 mt-3">
-                                <div class="card h-100">
-                                    <div class="card-horizontal">
-                                        {% if user.is_authenticated %}
-                                            {% if song.id in favorites %}
-                                            <a href="" class="star checked"><span class="fa fa-star"></span></a>
-                                            {% else %}
-                                            <a href="" class="star"><span class="fa fa-star"></span></a>
-                                            {% endif %}
-                                        {% endif %}
-                                        <div class="card-body">
-                                            <h4 class="card-title text-dark">{{song.title}}</h4>
-                                            <p class="card-text text-dark">{{song.interpreter}}</p>
-                                            <p class="card-text text-muted d-inline-block">{{song.relation}}</p>
-                                            <p class="card-text text-muted d-inline-block"> • </p>
-                                            <i class="fa fa-youtube-play play-btn" onclick="on( '{{ song.ytb_url }}' )" style="font-size:24px;color:red"></i>
-                                            <i class="fa fa-spotify play-btn" onclick="launcher( '{{ song.spoty_url }}' ) " style="font-size:24px; color: #1DB954; vertical-align: baseline;"></i>
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                            {% endfor %}
-                        {% else %}
-                            <div class="container text-secondary pb-5">
-                                <div class="row text-center text-white">
-                                    <p>Aucun son n'est enregistré dans cette catégorie. <a href="{{ url_for('request_song') }}">Ajoutez</a> les votres !</p>
-                                </div>
-                            </div>
-                        {% endif %}
-                    </div>
-                </div>
-            {% else %}
+    </div>
+    <div class="container-fluid bg-dark flex-grow-1">
+        <nav>
+            <ul class="nav justify-content-center text-uppercase pt-3 type-nav">
+                <li class="nav-item px-2">
+                  <a class="nav-link link-light {% if display == 'all' %} active {% endif %}" href="{{ url_for('anime', id=anime.id) }}">Tous</a>
+                </li>
+                <li class="nav-item px-2">
+                  <a class="nav-link link-light {% if display == 'opening' %} active {% endif %}" href="{{ url_for('anime_opening', id=anime.id) }}">Opening</a>
+                </li>
+                <li class="nav-item px-2"> 
+                  <a class="nav-link link-light {% if display == 'ending' %} active {% endif %}" href="{{ url_for('anime_ending', id=anime.id) }}">Ending</a>
+                </li>
+                <li class="nav-item px-2">
+                  <a class="nav-link link-light {% if display == 'ost' %} active {% endif %}" href="{{ url_for('anime_ost', id=anime.id) }}">OST</a>
+                </li>
+            </ul>
+        </nav>
+        {% if display != "all" %}
+            {% if display == "opening" %}
                 <div class="container heading mt-5">
-                    <h2><span>Opening</span></h2>
+                    <h2><span>OPENING</span></h2>
                 </div>
-                <div class="container text-secondary">
-                    <div class="row row-cols-auto">
-                        {% if op|length %}
-                            {% for song in op %}
-                            <div class="col mb-2 mt-3">
-                                <div class="card h-100">
-                                    <div class="card-horizontal">
-                                        {% if user.is_authenticated %}
-                                            {% if song.id in favorites %}
-                                            <a href="{{ url_for('profile_favorites_remove', id_a=anime.id, id=song.id) }}" class="star checked"><span class="fa fa-star"></span></a>
-                                            {% else %}
-                                            <a href="{{ url_for('profile_favorites_add', id_a=anime.id, id=song.id) }}" class="star"><span class="fa fa-star"></span></a>
-                                            {% endif %}
-                                        {% endif %}
-                                        <div class="card-body">
-                                            <h4 class="card-title text-dark">{{song.title}}</h4>
-                                            <p class="card-text text-dark">{{song.interpreter}}</p>
-                                            <p class="card-text text-muted d-inline-block">{{song.relation}}</p>
-                                            <p class="card-text text-muted d-inline-block"> • </p>
-                                            <i class="fa fa-youtube-play play-btn" onclick="on( '{{ song.ytb_url }}' )" style="font-size:24px;color:red"></i>
-                                            <i class="fa fa-spotify play-btn" onclick="launcher( '{{ song.spoty_url }}' ) " style="font-size:24px; color: #1DB954; vertical-align: baseline;"></i>
-                                            {% if user.is_authenticated %}
-                                            {% if user.role.name == "Administrateur" %}
-                                            <a href="{{ url_for('administration_edit_song', id=song.id) }}"><span class="fa fa-gear"></span></a>
-                                            <a href="{{ url_for('song_delete',id_a = anime.id, id=song.id) }}"><span class="fa fa-close"></span></a>
-                                            {% endif%}
-                                            {% endif %}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            {% endfor %}
-                        {% else %}
-                            <div class="container text-secondary pb-5">
-                                <div class="row text-center text-white">
-                                    <p>Aucun son n'est enregistré dans cette catégorie. <a href="{{ url_for('request_song') }}">Ajoutez</a> les votres !</p>
-                                </div>
-                            </div>
-                        {% endif %}
-                    </div>
-                </div>
+            {% elif display == "ending" %}
                 <div class="container heading mt-5">
-                    <h2><span>Ending</span></h2>
+                    <h2><span>ENDING</span></h2>
                 </div>
-                <div class="container text-secondary">
-                    <div class="row row-cols-auto">
-                        {% if ed|length %}
-                            {% for song in ed %}
-                            <div class="col mb-2 mt-3">
-                                <div class="card h-100">
-                                    <div class="card-horizontal">
-                                        {% if user.is_authenticated %}
-                                            {% if song.id in favorites %}
-                                            <a href="{{ url_for('profile_favorites_remove', id_a=anime.id, id=song.id) }}" class="star checked"><span class="fa fa-star"></span></a>
-                                            {% else %}
-                                            <a href="{{ url_for('profile_favorites_add', id_a=anime.id, id=song.id) }}" class="star"><span class="fa fa-star"></span></a>
-                                            {% endif %}
-                                        {% endif %}
-                                        <div class="card-body">
-                                            <h4 class="card-title text-dark">{{song.title}}</h4>
-                                            <p class="card-text text-dark">{{song.interpreter}}</p>
-                                            <p class="card-text text-muted d-inline-block">{{song.relation}}</p>
-                                            <p class="card-text text-muted d-inline-block"> • </p>
-                                            <i class="fa fa-youtube-play play-btn" onclick="on( '{{ song.ytb_url }}' )" style="font-size:24px;color:red"></i>
-                                            <i class="fa fa-spotify play-btn" onclick="launcher( '{{ song.spoty_url }}' ) " style="font-size:24px; color: #1DB954; vertical-align: baseline;"></i>
-                                            {% if user.is_authenticated %}
-                                            {% if user.role.name == "Administrateur" %}
-                                            <a href="{{ url_for('administration_edit_song', id=song.id) }}"><span class="fa fa-gear"></span></a>
-                                            <a href="{{ url_for('song_delete',id_a = anime.id, id=song.id) }}"><span class="fa fa-close"></span></a>
-                                            {% endif%}
-                                            {% endif %}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            {% endfor %}
-                        {% else %}
-                            <div class="container text-secondary pb-5">
-                                <div class="row text-center text-white">
-                                    <p>Aucun son n'est enregistré dans cette catégorie. <a href="{{ url_for('request_song') }}">Ajoutez</a> les votres !</p>
-                                </div>
-                            </div>
-                        {% endif %}
-                    </div>
-                </div>
+            {% elif display == "ost" %}
                 <div class="container heading mt-5">
                     <h2><span>OST</span></h2>
                 </div>
-                <div class="container text-secondary">
-                    <div class="row row-cols-auto">
-                        {% if ost|length %}
-                            {% for song in ost %}
-                            <div class="col mb-2 mt-3">
-                                <div class="card h-100">
-                                    <div class="card-horizontal">
-                                        {% if user.is_authenticated %}
-                                            {% if song.id in favorites %}
-                                            <a href="{{ url_for('profile_favorites_remove', id_a=anime.id, id=song.id) }}" class="star checked"><span class="fa fa-star"></span></a>
-                                            {% else %}
-                                            <a href="{{ url_for('profile_favorites_add', id_a=anime.id, id=song.id) }}" class="star"><span class="fa fa-star"></span></a>
-                                            {% endif %}
+            {% endif %}
+            <div class="container text-secondary">
+                <div class="row row-cols-auto">
+                    {% if songs|length %}
+                        {% for song in songs %}
+                        <div class="col mb-2 mt-3">
+                            <div class="card h-100">
+                                <div class="card-horizontal">
+                                    {% if user.is_authenticated %}
+                                        {% if song.id in favorites %}
+                                        <a href="" class="star checked"><span class="fa fa-star"></span></a>
+                                        {% else %}
+                                        <a href="" class="star"><span class="fa fa-star"></span></a>
                                         {% endif %}
-                                        <div class="card-body">
-                                            <h4 class="card-title text-dark">{{song.title}}</h4>
-                                            <p class="card-text text-dark">{{song.interpreter}}</p>
-                                            <p class="card-text text-muted d-inline-block">{{song.relation}}</p>
-                                            <p class="card-text text-muted d-inline-block"> • </p>
-                                            <i class="fa fa-youtube-play play-btn" onclick="on( '{{ song.ytb_url }}' )" style="font-size:24px;color:red"></i>
-                                            <i class="fa fa-spotify play-btn" onclick="launcher( '{{ song.spoty_url }}' ) " style="font-size:24px; color: #1DB954; vertical-align: baseline;"></i>
-                                            {% if user.is_authenticated %}
-                                            {% if user.role.name == "Administrateur" %}
-                                            <a href="{{ url_for('administration_edit_song', id=song.id) }}"><span class="fa fa-gear"></span></a>
-                                            <a href="{{ url_for('song_delete',id_a = anime.id, id=song.id) }}"><span class="fa fa-close"></span></a>
-                                            {% endif%}
-                                            {% endif %}
+                                    {% endif %}
+                                    <div class="card-body">
+                                        <h4 class="card-title text-dark">{{song.title}}</h4>
+                                        <p class="card-text text-dark">{{song.interpreter}}</p>
+                                        <p class="card-text text-muted d-inline-block">{{song.relation}}</p>
+                                        <p class="card-text text-muted d-inline-block"> • </p>
+                                        <i class="fa fa-youtube-play play-btn" onclick="on( '{{ song.ytb_url }}' )" style="font-size:24px;color:red"></i>
+                                        <i class="fa fa-spotify play-btn" onclick="launcher( '{{ song.spoty_url }}' ) " style="font-size:24px; color: #1DB954; vertical-align: baseline;"></i>
+                                        {% if user.is_authenticated %}
+                                        {% if user.role.name == "Administrateur" %}
+                                        <div class="rounded ">
+                                            <a href="{{ url_for('administration_edit_song', id=song.id) }}"><span class="fa fa-gear px-1"></span></a>
+                                            <a href="{{ url_for('song_delete',id_a = anime.id, id=song.id) }}"><span class="fa fa-trash-o px-1"></span></a>
                                         </div>
+                                        {% endif%}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="container text-secondary pb-5">
+                            <div class="row text-center text-white">
+                                <p>Aucun son n'est enregistré dans cette catégorie. <a href="{{ url_for('request_song') }}">Ajoutez</a> les votres !</p>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        {% else %}
+            <div class="container heading mt-5">
+                <h2><span>Opening</span></h2>
+            </div>
+            <div class="container text-secondary">
+                <div class="row row-cols-auto">
+                    {% if op|length %}
+                        {% for song in op %}
+                        <div class="col mb-2 mt-3">
+                            <div class="card h-100">
+                                <div class="card-horizontal">
+                                    {% if user.is_authenticated %}
+                                        {% if song.id in favorites %}
+                                        <a href="{{ url_for('profile_favorites_remove', id_a=anime.id, id=song.id) }}" class="star checked"><span class="fa fa-star"></span></a>
+                                        {% else %}
+                                        <a href="{{ url_for('profile_favorites_add', id_a=anime.id, id=song.id) }}" class="star"><span class="fa fa-star"></span></a>
+                                        {% endif %}
+                                    {% endif %}
+                                    <div class="card-body">
+                                        <h4 class="card-title text-dark">{{song.title}}</h4>
+                                        <p class="card-text text-dark">{{song.interpreter}}</p>
+                                        <p class="card-text text-muted d-inline-block">{{song.relation}}</p>
+                                        <p class="card-text text-muted d-inline-block"> • </p>
+                                        <i class="fa fa-youtube-play play-btn" onclick="on( '{{ song.ytb_url }}' )" style="font-size:24px;color:red"></i>
+                                        <i class="fa fa-spotify play-btn" onclick="launcher( '{{ song.spoty_url }}' ) " style="font-size:24px; color: #1DB954; vertical-align: baseline;"></i>
+                                        {% if user.is_authenticated %}
+                                        {% if user.role.name == "Administrateur" %}
+                                        <div class="rounded ">
+                                            <a href="{{ url_for('administration_edit_song', id=song.id) }}"><span class="fa fa-gear px-1"></span></a>
+                                            <a href="{{ url_for('song_delete',id_a = anime.id, id=song.id) }}"><span class="fa fa-trash-o px-1"></span></a>
+                                        </div>
+                                        {% endif%}
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
-                            {% endfor %}
-                        {% else %}
-                            <div class="container text-secondary pb-5">
-                                <div class="row text-center text-white">
-                                    <p>Aucun son n'est enregistré dans cette catégorie. <a href="{{ url_for('request_song') }}">Ajoutez</a> les votres !</p>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="container text-secondary pb-5">
+                            <div class="row text-center text-white">
+                                <p>Aucun son n'est enregistré dans cette catégorie. <a href="{{ url_for('request_song') }}">Ajoutez</a> les votres !</p>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="container heading mt-5">
+                <h2><span>Ending</span></h2>
+            </div>
+            <div class="container text-secondary">
+                <div class="row row-cols-auto">
+                    {% if ed|length %}
+                        {% for song in ed %}
+                        <div class="col mb-2 mt-3">
+                            <div class="card h-100">
+                                <div class="card-horizontal">
+                                    {% if user.is_authenticated %}
+                                        {% if song.id in favorites %}
+                                        <a href="{{ url_for('profile_favorites_remove', id_a=anime.id, id=song.id) }}" class="star checked"><span class="fa fa-star"></span></a>
+                                        {% else %}
+                                        <a href="{{ url_for('profile_favorites_add', id_a=anime.id, id=song.id) }}" class="star"><span class="fa fa-star"></span></a>
+                                        {% endif %}
+                                    {% endif %}
+                                    <div class="card-body">
+                                        <h4 class="card-title text-dark">{{song.title}}</h4>
+                                        <p class="card-text text-dark">{{song.interpreter}}</p>
+                                        <p class="card-text text-muted d-inline-block">{{song.relation}}</p>
+                                        <p class="card-text text-muted d-inline-block"> • </p>
+                                        <i class="fa fa-youtube-play play-btn" onclick="on( '{{ song.ytb_url }}' )" style="font-size:24px;color:red"></i>
+                                        <i class="fa fa-spotify play-btn" onclick="launcher( '{{ song.spoty_url }}' ) " style="font-size:24px; color: #1DB954; vertical-align: baseline;"></i>
+                                        {% if user.is_authenticated %}
+                                        {% if user.role.name == "Administrateur" %}
+                                        <div class="rounded ">
+                                            <a href="{{ url_for('administration_edit_song', id=song.id) }}"><span class="fa fa-gear px-1"></span></a>
+                                            <a href="{{ url_for('song_delete',id_a = anime.id, id=song.id) }}"><span class="fa fa-trash-o px-1"></span></a>
+                                        </div>
+                                        {% endif%}
+                                        {% endif %}
+                                    </div>
                                 </div>
                             </div>
-                        {% endif %}
-                    </div>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="container text-secondary pb-5">
+                            <div class="row text-center text-white">
+                                <p>Aucun son n'est enregistré dans cette catégorie. <a href="{{ url_for('request_song') }}">Ajoutez</a> les votres !</p>
+                            </div>
+                        </div>
+                    {% endif %}
                 </div>
-            {% endif %}
-        </div>
+            </div>
+            <div class="container heading mt-5">
+                <h2><span>OST</span></h2>
+            </div>
+            <div class="container text-secondary">
+                <div class="row row-cols-auto">
+                    {% if ost|length %}
+                        {% for song in ost %}
+                        <div class="col mb-2 mt-3">
+                            <div class="card h-100">
+                                <div class="card-horizontal">
+                                    {% if user.is_authenticated %}
+                                        {% if song.id in favorites %}
+                                        <a href="{{ url_for('profile_favorites_remove', id_a=anime.id, id=song.id) }}" class="star checked"><span class="fa fa-star"></span></a>
+                                        {% else %}
+                                        <a href="{{ url_for('profile_favorites_add', id_a=anime.id, id=song.id) }}" class="star"><span class="fa fa-star"></span></a>
+                                        {% endif %}
+                                    {% endif %}
+                                    <div class="card-body">
+                                        <h4 class="card-title text-dark">{{song.title}}</h4>
+                                        <p class="card-text text-dark">{{song.interpreter}}</p>
+                                        <p class="card-text text-muted d-inline-block">{{song.relation}}</p>
+                                        <p class="card-text text-muted d-inline-block"> • </p>
+                                        <i class="fa fa-youtube-play play-btn" onclick="on( '{{ song.ytb_url }}' )" style="font-size:24px;color:red"></i>
+                                        <i class="fa fa-spotify play-btn" onclick="launcher( '{{ song.spoty_url }}' ) " style="font-size:24px; color: #1DB954; vertical-align: baseline;"></i>
+                                        {% if user.is_authenticated %}
+                                        {% if user.role.name == "Administrateur" %}
+                                        <div class="rounded ">
+                                            <a href="{{ url_for('administration_edit_song', id=song.id) }}"><span class="fa fa-gear px-1"></span></a>
+                                            <a href="{{ url_for('song_delete',id_a = anime.id, id=song.id) }}"><span class="fa fa-trash-o px-1"></span></a>
+                                        </div>
+                                        {% endif%}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="container text-secondary pb-5">
+                            <div class="row text-center text-white">
+                                <p>Aucun son n'est enregistré dans cette catégorie. <a href="{{ url_for('request_song') }}">Ajoutez</a> les votres !</p>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
     </div>
 </div>
 </div>

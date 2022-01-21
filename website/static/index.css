@@ -83,6 +83,7 @@ body{
     display: flex;
     padding: .5em;
     min-height: 250px;
+    position: relative;
 }
 
 .banner-img{
@@ -270,4 +271,10 @@ footer div{
 
 #spotify-frame{
     z-index: 10;
+}
+
+.manage-icons{
+    position: absolute;
+    top:  -110px;
+    left: 180px;
 }
