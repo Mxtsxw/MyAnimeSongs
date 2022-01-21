@@ -27,16 +27,16 @@
         <nav>
             <ul class="nav justify-content-center text-uppercase pt-3 type-nav">
                 <li class="nav-item px-2">
-                  <a class="nav-link text-light{% if display == 'all' %} active {% endif %}" href="{{ url_for('anime', id=anime.id) }}">Tous</a>
+                  <a class="nav-link link-light {% if display == 'all' %} active {% endif %}" href="{{ url_for('anime', id=anime.id) }}">Tous</a>
                 </li>
                 <li class="nav-item px-2">
-                  <a class="nav-link text-light {% if display == 'opening' %} active {% endif %}" href="{{ url_for('anime_opening', id=anime.id) }}">Opening</a>
+                  <a class="nav-link link-light {% if display == 'opening' %} active {% endif %}" href="{{ url_for('anime_opening', id=anime.id) }}">Opening</a>
                 </li>
                 <li class="nav-item px-2"> 
-                  <a class="nav-link text-light {% if display == 'ending' %} active {% endif %}" href="{{ url_for('anime_ending', id=anime.id) }}">Ending</a>
+                  <a class="nav-link link-light {% if display == 'ending' %} active {% endif %}" href="{{ url_for('anime_ending', id=anime.id) }}">Ending</a>
                 </li>
                 <li class="nav-item px-2">
-                  <a class="nav-link text-light {% if display == 'ost' %} active {% endif %}" href="{{ url_for('anime_ost', id=anime.id) }}">OST</a>
+                  <a class="nav-link link-light {% if display == 'ost' %} active {% endif %}" href="{{ url_for('anime_ost', id=anime.id) }}">OST</a>
                 </li>
             </ul>
         </nav>
@@ -62,10 +62,10 @@
                             <div class="card h-100">
                                 <div class="card-horizontal">
                                     {% if user.is_authenticated %}
-                                        {% if song in favorites %}
-                                        <a href="" class="star "><span class="fa fa-star"></span></a>
-                                        {% else %}
+                                        {% if song.id in favorites %}
                                         <a href="" class="star checked"><span class="fa fa-star"></span></a>
+                                        {% else %}
+                                        <a href="" class="star"><span class="fa fa-star"></span></a>
                                         {% endif %}
                                     {% endif %}
                                     <div class="card-body">
@@ -84,7 +84,11 @@
                     {% else %}
                         <div class="container text-secondary pb-5">
                             <div class="row text-center text-white">
+<<<<<<< HEAD
                                 <p>Aucun son n'est enregistré dans cette catégorie. <a href="{{ url_for('request_song') }}">ajoutez</a> les votres !</p>
+=======
+                                <p>Aucun son n'est enregistré dans cette catégorie. <a href="{{ url_for('request_song') }}">Ajoutez</a> les votres !</p>
+>>>>>>> 35e2f1dc0484cf8f1d2660da9cf8f623f504faa2
                             </div>
                         </div>
                     {% endif %}
@@ -102,10 +106,10 @@
                             <div class="card h-100">
                                 <div class="card-horizontal">
                                     {% if user.is_authenticated %}
-                                        {% if song in favorites %}
-                                        <a href="" class="star "><span class="fa fa-star"></span></a>
+                                        {% if song.id in favorites %}
+                                        <a href="{{ url_for('profile_favorites_remove', id_a=anime.id, id=song.id) }}" class="star checked"><span class="fa fa-star"></span></a>
                                         {% else %}
-                                        <a href="" class="star checked"><span class="fa fa-star"></span></a>
+                                        <a href="{{ url_for('profile_favorites_add', id_a=anime.id, id=song.id) }}" class="star"><span class="fa fa-star"></span></a>
                                         {% endif %}
                                     {% endif %}
                                     <div class="card-body">
@@ -124,7 +128,11 @@
                     {% else %}
                         <div class="container text-secondary pb-5">
                             <div class="row text-center text-white">
+<<<<<<< HEAD
                                 <p>Aucun son n'est enregistré dans cette catégorie. <a href="{{ url_for('request_song') }}">ajoutez</a> les votres !</p>
+=======
+                                <p>Aucun son n'est enregistré dans cette catégorie. <a href="{{ url_for('request_song') }}">Ajoutez</a> les votres !</p>
+>>>>>>> 35e2f1dc0484cf8f1d2660da9cf8f623f504faa2
                             </div>
                         </div>
                     {% endif %}
@@ -141,10 +149,10 @@
                             <div class="card h-100">
                                 <div class="card-horizontal">
                                     {% if user.is_authenticated %}
-                                        {% if song in favorites %}
-                                        <a href="" class="star "><span class="fa fa-star"></span></a>
+                                        {% if song.id in favorites %}
+                                        <a href="{{ url_for('profile_favorites_remove', id_a=anime.id, id=song.id) }}" class="star checked"><span class="fa fa-star"></span></a>
                                         {% else %}
-                                        <a href="" class="star checked"><span class="fa fa-star"></span></a>
+                                        <a href="{{ url_for('profile_favorites_add', id_a=anime.id, id=song.id) }}" class="star"><span class="fa fa-star"></span></a>
                                         {% endif %}
                                     {% endif %}
                                     <div class="card-body">
@@ -163,7 +171,11 @@
                     {% else %}
                         <div class="container text-secondary pb-5">
                             <div class="row text-center text-white">
+<<<<<<< HEAD
                                 <p>Aucun son n'est enregistré dans cette catégorie. <a href="{{ url_for('request_song') }}">ajoutez</a> les votres !</p>
+=======
+                                <p>Aucun son n'est enregistré dans cette catégorie. <a href="{{ url_for('request_song') }}">Ajoutez</a> les votres !</p>
+>>>>>>> 35e2f1dc0484cf8f1d2660da9cf8f623f504faa2
                             </div>
                         </div>
                     {% endif %}
@@ -180,10 +192,10 @@
                             <div class="card h-100">
                                 <div class="card-horizontal">
                                     {% if user.is_authenticated %}
-                                        {% if song in favorites %}
-                                        <a href="" class="star "><span class="fa fa-star"></span></a>
+                                        {% if song.id in favorites %}
+                                        <a href="{{ url_for('profile_favorites_remove', id_a=anime.id, id=song.id) }}" class="star checked"><span class="fa fa-star"></span></a>
                                         {% else %}
-                                        <a href="" class="star checked"><span class="fa fa-star"></span></a>
+                                        <a href="{{ url_for('profile_favorites_add', id_a=anime.id, id=song.id) }}" class="star"><span class="fa fa-star"></span></a>
                                         {% endif %}
                                     {% endif %}
                                     <div class="card-body">
@@ -202,7 +214,11 @@
                     {% else %}
                         <div class="container text-secondary pb-5">
                             <div class="row text-center text-white">
+<<<<<<< HEAD
                                 <p>Aucun son n'est enregistré dans cette catégorie. <a href="{{ url_for('request_song') }}">ajoutez</a> les votres !</p>
+=======
+                                <p>Aucun son n'est enregistré dans cette catégorie. <a href="{{ url_for('request_song') }}">Ajoutez</a> les votres !</p>
+>>>>>>> 35e2f1dc0484cf8f1d2660da9cf8f623f504faa2
                             </div>
                         </div>
                     {% endif %}

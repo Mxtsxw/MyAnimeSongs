@@ -233,14 +233,13 @@ def get_anime_by_filter(tag, page, rows_per_page):
     return Anime.query.filter(Anime.name.like(f'%{tag}%')).paginate(page = page, per_page = rows_per_page)
 
 class Favorites(db.Model):
-    id = db.Column(db.Integer, primary_key = True)
-    user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), primary_key = True)
     user = db.relationship("User", backref = db.backref("favorites", lazy = "dynamic"))
-    song_id = db.Column(db.Integer, db.ForeignKey("song.id"))
+    song_id = db.Column(db.Integer, db.ForeignKey("song.id"), primary_key = True)
     song = db.relationship("Song")
 
     def __repr__(self):
-        return "<Favoris (%d) %s %s>" % (self.id, self.user, self.song)
+        return "<Favoris %s %s>" % (self.user, self.song)
 
 def add_favorite(user_id, song_id):
     obj = Favorites(
@@ -250,15 +249,19 @@ def add_favorite(user_id, song_id):
     db.session.add(obj)
     db.session.commit()
 
-def remove_favorite(favorite):
-    db.session.delete(favorite)
+def remove_favorite(user_id, song_id):
+    db.session.delete(get_favorite(user_id, song_id))
     db.session.commit()
 
 def get_favorites_of_user(user):
     return user.favorites.all()
 
+def get_favorite(user_id, song_id):
+    return Favorites.query.filter(Favorites.song_id == song_id and Favorites.user_id == user_id).first()
+
 def get_favorites_songs_of_user(user):
-    return [favorite.song for favorite in get_favorites_of_user(user)]
+    print([favorite.song.id for favorite in get_favorites_of_user(user)])
+    return [favorite.song.id for favorite in get_favorites_of_user(user)]
 
 def get_animes_pagination(page, rows_per_page):
     return Anime.query.paginate(page = page, per_page = rows_per_page)

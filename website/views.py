@@ -58,6 +58,10 @@ class EditForm(FlaskForm):
                                                Length(max = 50, message = "L'Email ne doit pas faire plus de 50 caractères"),
                                                ],
                                                id = "floatingInput", render_kw = {"placeholder": "baptiste@gmail.com"})
+    
+    passwordL = PasswordField('Ancien mot de passe', validators = [InputRequired(message = "Le mot de passe est obligatoire"),
+                                                           Length(min = 8, max = 80, message = "Le mot de passe doit faire entre 8 et 80 caractères")],
+                                                           id = "floatingPassword", render_kw = {"placeholder": "Azerty20"})
 
     password = PasswordField('Mot de passe', validators = [InputRequired(message = "Le mot de passe est obligatoire"),
                                                            Length(min = 8, max = 80, message = "Le mot de passe doit faire entre 8 et 80 caractères")],
@@ -141,6 +145,12 @@ def home():
 
 @app.route("/anime/<id>", methods=['GET', 'POST'])
 def anime(id):
+
+    favorites = []
+
+    if current_user.is_authenticated:
+        favorites = get_favorites_songs_of_user(get_user(current_user.id))
+
     return render_template(
         "anime.html",
         user = current_user,
@@ -148,7 +158,8 @@ def anime(id):
         op = get_opening_by_anime_id(id),
         ed = get_ending_by_anime_id(id),
         ost = get_ost_by_anime_id(id),
-        display = "all"
+        display = "all",
+        favorites = favorites
     )
 
 @app.route("/anime/<id>/opening", methods=['GET', 'POST'])
@@ -548,17 +559,14 @@ def profile_settings():
     userEdit = get_user(current_user.id)
 
     form = EditForm()
-
     form.email.render_kw["value"] = userEdit.email
-    form.password.render_kw["value"] = userEdit.password
 
     if form.validate_on_submit():
-        if form.modify.data:
-
-            hashed_password = generate_password_hash(form.password.data, method="sha256")
-            new_user = edit_user(email = form.email.data, password = hashed_password, userEdit = userEdit)
-
-            return redirect(url_for("home"))
+        if check_password_hash(userEdit.password, form.passwordL.data):
+            if form.modify.data:
+                hashed_password = generate_password_hash(form.password.data, method="sha256")
+                edit_user(email = form.email.data, password = hashed_password, userEdit = userEdit)
+                return redirect(url_for("home"))
 
     return render_template(
         "profile-settings.html",
@@ -574,6 +582,18 @@ def songs():
         user = current_user,
         songs = get_songs()
     )
+    
+@app.route("/anime/<int:id_a>/add/<int:id>", methods = ['GET', 'POST'])
+@login_required
+def profile_favorites_add(id_a, id):
+    add_favorite(current_user.id, id)
+    return redirect(url_for("anime", id = id_a))
+
+@app.route("/anime/<int:id_a>/delete/<int:id>", methods = ['GET', 'POST'])
+@login_required
+def profile_favorites_remove(id_a, id):
+    remove_favorite(current_user.id, id)
+    return redirect(url_for("anime", id = id_a))
 
 @app.route("/animes/all/")
 def animes():
