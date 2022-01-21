@@ -4,24 +4,24 @@
 <div class="flex-grow-1">
     
     <div class="container">
-        {% for favorite in favorites %}
-
-    <div class="col mb-2 mt-3">
-        <div class="card h-100">
-            <div class="card-horizontal">
-                <div class="card-body">
-                    <h4 class="card-title text-dark">{{favorite.song.title}}</h4>
-                    <p class="card-text text-dark">{{favorite.song.interpreter}}</p>
-                    <p class="card-text text-muted d-inline-block">{{favorite.song.relation}}</p>
-                    <p class="card-text text-muted d-inline-block"> • </p>
-                    <i class="fa fa-youtube-play play-btn" onclick="on( '{{ favorite.song.ytb_url }}' )" style="font-size:24px;color:red"></i>
-                    <i class="fa fa-spotify play-btn" onclick="launcher( '{{ favorite.song.spoty_url }}' ) " style="font-size:24px; color: #1DB954; vertical-align: baseline;"></i>
+        <div class="row row-cols-auto">
+            {% for favorite in favorites %}
+            <div class="col mb-2 mt-3">
+                <div class="card h-100">
+                    <div class="card-horizontal">
+                        <div class="card-body">
+                            <h4 class="card-title text-dark">{{favorite.song.title}}</h4>
+                            <p class="card-text text-dark">{{favorite.song.interpreter}}</p>
+                            <p class="card-text text-muted d-inline-block">{{favorite.song.relation}}</p>
+                            <p class="card-text text-muted d-inline-block"> • </p>
+                            <i class="fa fa-youtube-play play-btn" onclick="on( '{{ favorite.song.ytb_url }}' )" style="font-size:24px;color:red"></i>
+                            <i class="fa fa-spotify play-btn" onclick="launcher( '{{ favorite.song.spoty_url }}' ) " style="font-size:24px; color: #1DB954; vertical-align: baseline;"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
+            {% endfor %}
         </div>
-    </div>
-
-    {% endfor %}
     </div>
 
     <div id="bottom-pad-frame"></div>
