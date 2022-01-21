@@ -291,7 +291,7 @@ def request_anime():
     
     form = RequestAnimeForm()
     
-    if form.validate_on_submit():
+    if request.method == 'POST':
         
         create_anime_request(
             name = form.name.data,
