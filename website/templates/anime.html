@@ -1,29 +1,27 @@
 {% extends "base.html" %}
 {% block main %}
 
-<div>
-    <div class="container-fluid px-0 min-vh-100 d-flex flex-column flex-grow-1">
-        <div class="hero-banner ">
-            <div class="banner" style="background: url( {{ url_for('static', filename='images/'+anime.img) }} ); background-repeat: no-repeat; background-size: cover; opacity: 1;">
-                <!-- Set the banner background image -->
-            </div>
-            <div class="banner-content-collapse container">
-                <div class="img-placeholder shadow rounded">
-                    <img src="{{ url_for('static', filename='images/'+anime.img) }}" alt="Anime cover" class="banner-img rounded">
-                </div>
-                <div id="desc" class="desc">
-                    <h3>{{ anime.name }}</h3>
-                    <div class="desc-text-container">
-                        <p id="desc-text" class="readmore">
-                            {% if anime.text %}
-                            {{ anime.text }}
-                            {% endif %}
-                        </p>  
-                        <span class="readmore-link" id="readmore-link"></span> 
-                    </div>  
-                </div>
-            </div>
+<div class="container-fluid px-0 min-vh-100 d-flex flex-column">
+    <div class="hero-banner ">
+        <div class="banner" style="background: url( {{ url_for('static', filename='images/'+anime.img) }} ); background-repeat: no-repeat; background-size: cover; opacity: 1;">
+            <!-- Set the banner background image -->
         </div>
+        <div class="banner-content-collapse container">
+            <div class="img-placeholder shadow rounded">
+                <img src="{{ url_for('static', filename='images/'+anime.img) }}" alt="Anime cover" class="banner-img rounded">
+                <a href="{{ url_for('anime_delete', id = anime.id) }}"><span class="fa fa-close"></span></a>
+            </div>
+            <div id="desc" class="desc">
+                <h3>{{ anime.name }}</h3>
+                <div class="desc-text-container">
+                    <p id="desc-text" class="readmore">
+                        {% if anime.text %}
+                        {{ anime.text }}
+                        {% endif %}
+                    </p>  
+                    <span class="readmore-link" id="readmore-link"></span> 
+                </div>  
+            </div>
         <div class="container-fluid bg-dark flex-grow-1">
             <nav>
                 <ul class="nav justify-content-center text-uppercase pt-3 type-nav">
@@ -116,9 +114,13 @@
                                             <p class="card-text text-muted d-inline-block"> • </p>
                                             <i class="fa fa-youtube-play play-btn" onclick="on( '{{ song.ytb_url }}' )" style="font-size:24px;color:red"></i>
                                             <i class="fa fa-spotify play-btn" onclick="launcher( '{{ song.spoty_url }}' ) " style="font-size:24px; color: #1DB954; vertical-align: baseline;"></i>
+                                            {% if user.is_authenticated %}
+                                            {% if user.role.name == "Administrateur" %}
+                                            <p><a class="btn btn-lg btn-danger" href="{{ url_for('song_delete',id_a = anime.id, id=song.id) }}">Supprimer</a></p>
+                                            {% endif%}
+                                            {% endif %}
                                         </div>
                                     </div>
-                                    
                                 </div>
                             </div>
                             {% endfor %}
@@ -155,9 +157,13 @@
                                             <p class="card-text text-muted d-inline-block"> • </p>
                                             <i class="fa fa-youtube-play play-btn" onclick="on( '{{ song.ytb_url }}' )" style="font-size:24px;color:red"></i>
                                             <i class="fa fa-spotify play-btn" onclick="launcher( '{{ song.spoty_url }}' ) " style="font-size:24px; color: #1DB954; vertical-align: baseline;"></i>
+                                            {% if user.is_authenticated %}
+                                            {% if user.role.name == "Administrateur" %}
+                                            <p><a class="btn btn-lg btn-danger" href="{{ url_for('song_delete',id_a = anime.id, id=song.id) }}">Supprimer</a></p>
+                                            {% endif%}
+                                            {% endif %}
                                         </div>
                                     </div>
-                                    
                                 </div>
                             </div>
                             {% endfor %}
@@ -194,9 +200,14 @@
                                             <p class="card-text text-muted d-inline-block"> • </p>
                                             <i class="fa fa-youtube-play play-btn" onclick="on( '{{ song.ytb_url }}' )" style="font-size:24px;color:red"></i>
                                             <i class="fa fa-spotify play-btn" onclick="launcher( '{{ song.spoty_url }}' ) " style="font-size:24px; color: #1DB954; vertical-align: baseline;"></i>
+                                            {% if user.is_authenticated %}
+                                            {% if user.role.name == "Administrateur" %}
+                                            <p><a class="btn btn-lg btn-danger" href="{{ url_for('song_delete',id_a = anime.id, id=song.id) }}">Supprimer</a></p>
+                                            <p><a class="btn btn-lg btn-danger" href="{{ url_for('song_delete',id_a = anime.id, id=song.id) }}">Supprimer</a></p>
+                                            {% endif%}
+                                            {% endif %}
                                         </div>
                                     </div>
-                                    
                                 </div>
                             </div>
                             {% endfor %}

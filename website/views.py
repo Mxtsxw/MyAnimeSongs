@@ -435,7 +435,7 @@ def administration_request_anime(id):
     
     if form.validate_on_submit():
         
-        if form.accept.data :
+        if form.accept.data:
 
             create_anime(
                 name = form.name.data

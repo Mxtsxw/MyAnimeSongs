@@ -289,3 +289,11 @@ def get_ed():
 
 def get_op():
     return [song for song in get_songs() if song.relation[:2] == "OP"]
+
+def remove_song(song_id):
+    db.session.delete(get_song(song_id))
+    db.session.commit()
+
+def remove_anime(anime_id):
+    db.session.delete(get_anime(anime_id))
+    db.session.commit()
