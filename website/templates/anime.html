@@ -10,8 +10,14 @@
         <div class="banner-content-collapse container">
             <div class="img-placeholder shadow rounded">
                 <img src="{{ url_for('static', filename='images/'+anime.img) }}" alt="Anime cover" class="banner-img rounded">
-                <a href="{{ url_for('administration_edit_anime', id = anime.id) }}"><span class="fa fa-gear"></span></a>
-                <a href="{{ url_for('anime_delete', id = anime.id) }}"><span class="fa fa-close"></span></a>
+                {% if user.is_authenticated %}
+                    {% if user.role.name == "Administrateur" %}
+                    <div class="manage-icons bg-light rounded">
+                        <a href="{{ url_for('administration_edit_anime', id = anime.id) }}"><span class="fa fa-gear text-dark px-1"></span></a>
+                        <a href="{{ url_for('anime_delete', id = anime.id) }}"><span class="fa fa-close text-dark px-1"></span></a>
+                    </div>
+                    {% endif %}
+                {% endif %}
             </div>
             <div id="desc" class="desc">
                 <h3>{{ anime.name }}</h3>
