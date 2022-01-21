@@ -575,12 +575,19 @@ def profile_settings():
         userEdit = userEdit
     )
         
-@app.route("/songs/all/")
+@app.route("/songs/all/", methods = ['GET', 'POST'])
 def songs():
+    page = request.args.get('page', 1, type=int)
+    search = SearchForm()
+    if search.validate_on_submit():
+        songs = get_song_by_filter(search.search.data, 1, 48)
+    else:
+        songs = get_songs_pagination(page, 48)
     return render_template(
         "songs.html",
         user = current_user,
-        songs = get_songs()
+        songs = songs,
+        form = search
     )
     
 @app.route("/anime/<int:id_a>/add/<int:id>", methods = ['GET', 'POST'])

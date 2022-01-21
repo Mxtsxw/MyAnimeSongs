@@ -266,3 +266,8 @@ def get_favorites_songs_of_user(user):
 def get_animes_pagination(page, rows_per_page):
     return Anime.query.paginate(page = page, per_page = rows_per_page)
 
+def get_songs_pagination(page, rows_per_page):
+    return Song.query.paginate(page = page, per_page = rows_per_page)
+
+def get_song_by_filter(tag, page, rows_per_page):
+    return Song.query.filter(Song.title.like(f'%{tag}%')).paginate(page = page, per_page = rows_per_page)
