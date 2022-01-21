@@ -5,6 +5,7 @@ from sqlalchemy.orm import backref
 from .app import db
 from flask_login import UserMixin
 from sqlalchemy.sql.expression import desc
+from sqlalchemy import delete
 
 class Anime(db.Model):
     id = db.Column(db.Integer, primary_key = True)
@@ -282,16 +283,18 @@ def get_songs_by_relation_pagination(page, rows_per_page):
     return Song.query.order_by(Song.relation).paginate(page = page, per_page = rows_per_page)
 
 def get_ost():
-    return [song for song in get_songs() if song.relation == "OST"]
+    Song.query.filter(Song.relation.like("OST")).all()
 
 def get_ed():
-    return [song for song in get_songs() if song.relation[:2] == "ED"]
+    Song.query.filter(Song.relation.like("ED%")).all()
 
 def get_op():
-    return [song for song in get_songs() if song.relation[:2] == "OP"]
+    Song.query.filter(Song.relation.like("OP%")).all()
 
 def remove_song(song_id):
-    db.session.delete(get_song(song_id))
+    favoris = Favorites.query.filter(Favorites.song_id == song_id).all()
+    for favori in favoris:
+        db.session.delete(favori)
     db.session.commit()
 
 def remove_anime(anime_id):
