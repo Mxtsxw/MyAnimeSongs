@@ -14,7 +14,7 @@
                     {% if user.role.name == "Administrateur" %}
                     <div class="manage-icons bg-light rounded">
                         <a href="{{ url_for('administration_edit_anime', id = anime.id) }}"><span class="fa fa-gear text-dark px-1"></span></a>
-                        <a href="{{ url_for('anime_delete', id = anime.id) }}"><span class="fa fa-close text-dark px-1"></span></a>
+                        <a href="{{ url_for('anime_delete', id = anime.id) }}"><span class="fa fa-trash-o text-dark px-1"></span></a>
                     </div>
                     {% endif %}
                 {% endif %}
@@ -126,7 +126,7 @@
                                             {% if user.is_authenticated %}
                                             {% if user.role.name == "Administrateur" %}
                                             <a href="{{ url_for('administration_edit_song', id=song.id) }}"><span class="fa fa-gear"></span></a>
-                                            <a href="{{ url_for('song_delete',id_a = anime.id, id=song.id) }}"><span class="fa fa-close"></span></a>
+                                            <a href="{{ url_for('song_delete',id_a = anime.id, id=song.id) }}"><span class="fa fa-trash-o"></span></a>
                                             {% endif%}
                                             {% endif %}
                                         </div>
@@ -170,7 +170,7 @@
                                             {% if user.is_authenticated %}
                                             {% if user.role.name == "Administrateur" %}
                                             <a href="{{ url_for('administration_edit_song', id=song.id) }}"><span class="fa fa-gear"></span></a>
-                                            <a href="{{ url_for('song_delete',id_a = anime.id, id=song.id) }}"><span class="fa fa-close"></span></a>
+                                            <a href="{{ url_for('song_delete',id_a = anime.id, id=song.id) }}"><span class="fa fa-trash-o"></span></a>
                                             {% endif%}
                                             {% endif %}
                                         </div>
@@ -214,7 +214,7 @@
                                             {% if user.is_authenticated %}
                                             {% if user.role.name == "Administrateur" %}
                                             <a href="{{ url_for('administration_edit_song', id=song.id) }}"><span class="fa fa-gear"></span></a>
-                                            <a href="{{ url_for('song_delete',id_a = anime.id, id=song.id) }}"><span class="fa fa-close"></span></a>
+                                            <a href="{{ url_for('song_delete',id_a = anime.id, id=song.id) }}"><span class="fa fa-trash-o"></span></a>
                                             {% endif%}
                                             {% endif %}
                                         </div>
