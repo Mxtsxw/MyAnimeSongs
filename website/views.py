@@ -595,10 +595,17 @@ def profile_favorites_remove(id_a, id):
     remove_favorite(current_user.id, id)
     return redirect(url_for("anime", id = id_a))
 
-@app.route("/animes/all/")
+@app.route("/animes/all/", methods = ['GET', 'POST'])
 def animes():
+    page = request.args.get('page', 1, type=int)
+    search = SearchForm()
+    if search.validate_on_submit():
+        animes = get_anime_by_filter(search.search.data, 1, 48)
+    else:
+        animes = get_animes_pagination(page, 48) 
     return render_template(
         "animes.html",
         user = current_user,
-        animes = get_animes()
+        animes = animes,
+        form = search
     )
