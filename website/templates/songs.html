@@ -1,22 +1,23 @@
 {% extends "base.html" %}
 {% block main %}
-<div class="container-fluid bg-dark banner">
-    
-</div>
-
-<form action="" method="post" class = "needs-validation" novalidate>
-    {{ form.hidden_tag() }}
-    <div class="d-flex">
-      {{ form.search(class_="form-control")}}
-      {{ form.submit(class_="btn btn-outline-dark ms-1") }}
+<div class="flex-grow-1">
+    <div class="container-fluid bg-dark banner">
     </div>
-</form>
-
-<div class="container-fluid bg-custom">
-    <div class="container offset ">
-        <h1 class="text-center text-white bg-dark">Catalogue - Musiques</h1>
-        <div class="row row-cols-auto">
-            {% for song in songs.items %}
+    
+    <div class="container-fluid bg-custom">
+        <div class="container offset ">
+            <div class="d-flex justify-content-between">
+                <h1 class="text-center text-white bg-dark">Catalogue - Musiques</h1>
+            <form action="" method="post" class = "needs-validation d-flex align-items-center" novalidate>
+                {{ form.hidden_tag() }}
+                <div class="d-flex">
+                  {{ form.search(class_="form-control")}}
+                  {{ form.submit(class_="btn btn-outline-dark ms-1") }}
+                </div>
+            </form>
+            </div>
+            <div class="row row-cols-auto">
+                {% for song in songs.items %}
                 <div class="col mb-2 mt-3">
                     <div class="card h-100">
                         <div class="card-horizontal">
@@ -36,52 +37,54 @@
                 {% endfor %}
             </div>
         </div>
+        <div class="container d-flex justify-content-center">
+            <nav aria-label="...">
+                <ul class="pagination">
+        
+        
+                  {% if songs.has_prev %}
+                  <li class="page-item">
+                  <a class="page-link" href="{{ url_for('songs', page=songs.prev_num) }}" tabindex="-1"><</a>
+                  </li>
+                  {% else %}
+                  <li class="page-item disabled">
+                  <a class="page-link" href="{{ url_for('songs', page=songs.prev_num) }}" tabindex="-1"><</a>
+                  </li>
+                  {% endif %}
+        
+                    {% for page_num in songs.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+        
+                      {% if page_num %}
+        
+                        {% if songs.page == page_num %}
+        
+                          <li class="page-item active"><a class="page-link" href="{{ url_for('songs', page=page_num) }}">{{ page_num }}</a></li>
+        
+        
+                        {% else %}
+        
+                          <li class="page-item"><a class="page-link" href="{{ url_for('songs', page=page_num) }}">{{ page_num }}</a></li>
+        
+                        {% endif %}
+                      {% else %}
+                            ...
+                      {% endif %}
+        
+                    {% endfor %}
+                    
+                    {% if songs.has_next %}
+                    <li class="page-item">
+                    <a class="page-link" href="{{ url_for('songs', page=songs.next_num) }}">></a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disabled">
+                    <a class="page-link" href="{{ url_for('songs', page=songs.next_num) }}">></a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
     </div>
-    <nav aria-label="...">
-        <ul class="pagination">
-
-
-          {% if songs.has_prev %}
-          <li class="page-item">
-          <a class="page-link" href="{{ url_for('songs', page=songs.prev_num) }}" tabindex="-1"><</a>
-          </li>
-          {% else %}
-          <li class="page-item disabled">
-          <a class="page-link" href="{{ url_for('songs', page=songs.prev_num) }}" tabindex="-1"><</a>
-          </li>
-          {% endif %}
-
-            {% for page_num in songs.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
-
-              {% if page_num %}
-
-                {% if songs.page == page_num %}
-
-                  <li class="page-item active"><a class="page-link" href="{{ url_for('songs', page=page_num) }}">{{ page_num }}</a></li>
-
-
-                {% else %}
-
-                  <li class="page-item"><a class="page-link" href="{{ url_for('songs', page=page_num) }}">{{ page_num }}</a></li>
-
-                {% endif %}
-              {% else %}
-                    ...
-              {% endif %}
-
-            {% endfor %}
-            
-            {% if songs.has_next %}
-            <li class="page-item">
-            <a class="page-link" href="{{ url_for('songs', page=songs.next_num) }}">></a>
-            </li>
-            {% else %}
-            <li class="page-item disabled">
-            <a class="page-link" href="{{ url_for('songs', page=songs.next_num) }}">></a>
-            </li>
-            {% endif %}
-        </ul>
-    </nav>
 </div>
 
 {% endblock %}
