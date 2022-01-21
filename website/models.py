@@ -260,9 +260,15 @@ def get_favorite(user_id, song_id):
     return Favorites.query.filter(Favorites.song_id == song_id and Favorites.user_id == user_id).first()
 
 def get_favorites_songs_of_user(user):
-    print([favorite.song.id for favorite in get_favorites_of_user(user)])
-    return [favorite.song.id for favorite in get_favorites_of_user(user)]
+    return [favorite.song.id for favorite in get_favorites_of_user(user) if favorite.song]
 
 def get_animes_pagination(page, rows_per_page):
     return Anime.query.paginate(page = page, per_page = rows_per_page)
 
+def remove_song(song_id):
+    db.session.delete(get_song(song_id))
+    db.session.commit()
+
+def remove_anime(anime_id):
+    db.session.delete(get_anime(anime_id))
+    db.session.commit()

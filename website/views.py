@@ -435,7 +435,7 @@ def administration_request_anime(id):
     
     if form.validate_on_submit():
         
-        if form.accept.data :
+        if form.accept.data:
 
             create_anime(
                 name = form.name.data
@@ -602,3 +602,23 @@ def animes():
         user = current_user,
         animes = get_animes()
     )
+
+@app.route("/anime/<int:id_a>/song/<int:id>/delete", methods = ['GET', 'POST'])
+@login_required
+def song_delete(id_a, id):
+
+    if not current_user.role.name == "Administrateur":
+        return redirect(url_for("anime", id = id_a))
+
+    remove_song(id)
+    return redirect(url_for("anime", id = id_a))
+
+@app.route("/anime/<int:id>/delete", methods = ['GET', 'POST'])
+@login_required
+def anime_delete(id):
+
+    if not current_user.role.name == "Administrateur":
+        return redirect(url_for("home"))
+
+    remove_anime(id)
+    return redirect(url_for("home"))
