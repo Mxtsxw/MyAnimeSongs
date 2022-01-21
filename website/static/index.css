@@ -268,3 +268,6 @@ footer div{
     background-color: #EDF1F5;
 }
 
+#spotify-frame{
+    z-index: 10;
+}
