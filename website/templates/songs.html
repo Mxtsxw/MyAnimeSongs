@@ -1,30 +1,32 @@
 {% extends "base.html" %}
 {% block main %}
-<div class="container-fluid bg-dark banner">
-</div>
-
-<div class="container-fluid bg-custom">
-    <div class="container offset ">
-        <h1 class="text-center text-white bg-dark">Catalogue - Musiques</h1>
-        <div class="row row-cols-auto">
-            {% for song in songs %}
-                <div class="col mb-2 mt-3">
-                    <div class="card h-100">
-                        <div class="card-horizontal">
-                            <div class="card-body">
-                                <h4 class="card-title text-dark">{{song.title}}</h4>
-                                <p class="card-text text-dark">{{song.interpreter}}</p>
-                                <p class="card-text text-muted d-inline-block">{{song.relation}}</p>
-                                <p class="card-text text-muted d-inline-block"> • </p>
-                                <i class="fa fa-youtube-play play-btn" onclick="on( '{{ song.ytb_url }}' )" style="font-size:24px;color:red"></i>
-                                <i class="fa fa-spotify play-btn" onclick="launcher( '{{ song.spoty_url }}' ) " style="font-size:24px; color: #1DB954; vertical-align: baseline;"></i>
-                                <p class="card-text d-inline-block"><a href="">{{song.anime.name}}</a></p>
+<div>
+    <div class="container-fluid bg-dark banner">
+    </div>
+    
+    <div class="container-fluid bg-custom">
+        <div class="container offset ">
+            <h1 class="text-center text-white bg-dark">Catalogue - Musiques</h1>
+            <div class="row row-cols-auto">
+                {% for song in songs %}
+                    <div class="col mb-2 mt-3">
+                        <div class="card h-100">
+                            <div class="card-horizontal">
+                                <div class="card-body">
+                                    <h4 class="card-title text-dark">{{song.title}}</h4>
+                                    <p class="card-text text-dark">{{song.interpreter}}</p>
+                                    <p class="card-text text-muted d-inline-block">{{song.relation}}</p>
+                                    <p class="card-text text-muted d-inline-block"> • </p>
+                                    <i class="fa fa-youtube-play play-btn" onclick="on( '{{ song.ytb_url }}' )" style="font-size:24px;color:red"></i>
+                                    <i class="fa fa-spotify play-btn" onclick="launcher( '{{ song.spoty_url }}' ) " style="font-size:24px; color: #1DB954; vertical-align: baseline;"></i>
+                                    <p class="card-text d-inline-block"><a href="">{{song.anime.name}}</a></p>
+                                </div>
                             </div>
+                            
                         </div>
-                        
                     </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
         </div>
     </div>
 </div>
