@@ -4,6 +4,7 @@ from re import search
 from sqlalchemy.orm import backref
 from .app import db
 from flask_login import UserMixin
+from sqlalchemy.sql.expression import desc
 
 class Anime(db.Model):
     id = db.Column(db.Integer, primary_key = True)
@@ -260,7 +261,6 @@ def get_favorite(user_id, song_id):
     return Favorites.query.filter(Favorites.song_id == song_id and Favorites.user_id == user_id).first()
 
 def get_favorites_songs_of_user(user):
-    print([favorite.song.id for favorite in get_favorites_of_user(user)])
     return [favorite.song.id for favorite in get_favorites_of_user(user)]
 
 def get_animes_pagination(page, rows_per_page):
@@ -271,3 +271,21 @@ def get_songs_pagination(page, rows_per_page):
 
 def get_song_by_filter(tag, page, rows_per_page):
     return Song.query.filter(Song.title.like(f'%{tag}%')).paginate(page = page, per_page = rows_per_page)
+
+def get_songs_by_name_pagination_ascendant(page, rows_per_page):
+    return Song.query.order_by(Song.title).paginate(page = page, per_page = rows_per_page)
+
+def get_songs_by_name_pagination_descendant(page, rows_per_page):
+    return Song.query.order_by(desc(Song.title)).paginate(page = page, per_page = rows_per_page)
+
+def get_songs_by_relation_pagination(page, rows_per_page):
+    return Song.query.order_by(Song.relation).paginate(page = page, per_page = rows_per_page)
+
+def get_ost():
+    return [song for song in get_songs() if song.relation == "OST"]
+
+def get_ed():
+    return [song for song in get_songs() if song.relation[:2] == "ED"]
+
+def get_op():
+    return [song for song in get_songs() if song.relation[:2] == "OP"]
