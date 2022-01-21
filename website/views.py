@@ -578,10 +578,17 @@ def profile_settings():
 @app.route("/songs/all/", methods = ['GET', 'POST'])
 def songs():
     page = request.args.get('page', 1, type=int)
+    tri = request.args.get('tri', None, type=int)
     search = SearchForm()
+    if tri == 1:
+        songs = get_songs_by_name_pagination_ascendant(page, 48)
+    elif tri == 2:
+        songs = get_songs_by_name_pagination_descendant(page, 48)
+    elif tri == 3:
+        songs = get_songs_by_relation_pagination(page, 48)
     if search.validate_on_submit():
         songs = get_song_by_filter(search.search.data, 1, 48)
-    else:
+    elif not tri:
         songs = get_songs_pagination(page, 48)
     return render_template(
         "songs.html",
