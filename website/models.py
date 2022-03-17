@@ -2,7 +2,7 @@ from enum import unique
 from os import name
 from re import search
 from sqlalchemy.orm import backref
-from .app import db
+from .app import db, ma
 from flask_login import UserMixin
 from sqlalchemy.sql.expression import desc
 from sqlalchemy import delete
@@ -307,3 +307,22 @@ def remove_anime(anime_id):
         db.session.delete(song)
     db.session.delete(get_anime(anime_id))
     db.session.commit()
+
+# DB Marshmallow Schemas
+
+# Song
+class AnimeSchema(ma.Schema):
+    class Meta:
+        fields = ("id", "name", "img", "text")
+
+
+# Anime
+class SongSchema(ma.Schema):
+    class Meta:
+        fields = ("id", "title", "relation", "interpreter", "ytb_url", "spoty_url", "anime_id", "anime")
+
+# Init Schema
+anime_schema = AnimeSchema()
+animes_schema = AnimeSchema(many=True)
+song_schema = SongSchema()
+songs_schema = SongSchema(many=True)
