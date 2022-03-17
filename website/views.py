@@ -1,8 +1,8 @@
 from flask.app import Flask
 from werkzeug import datastructures
 from wtforms.fields.simple import HiddenField, SubmitField
-from .app import app, login_manager, db
-from flask import render_template, url_for, redirect, request
+from .app import app, login_manager, db, ma
+from flask import render_template, url_for, redirect, request, jsonify
 from flask_wtf import FlaskForm
 from wtforms import StringField, SelectField, PasswordField, BooleanField, TextAreaField
 from wtforms.validators import DataRequired, InputRequired, Length, Email, URL, ValidationError
