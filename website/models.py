@@ -200,6 +200,17 @@ def create_anime(name):
     )
     db.session.add(obj)
     db.session.commit()
+
+def create_anime_from_api(name, img, text):
+    obj = Anime(
+        name = name,
+        img = img,
+        text = text
+    )
+    db.session.add(obj)
+    db.session.commit()
+
+    return obj
     
 def get_anime_requests_by_user(user):
     return user.anime_requests.all()
