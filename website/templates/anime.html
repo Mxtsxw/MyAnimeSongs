@@ -4,12 +4,22 @@
 
 <div class="container-fluid px-0 min-vh-100 d-flex flex-column">
     <div class="hero-banner">
+        {% if 'http://' in anime.img or 'https://' in anime.img%}
+        <div class="banner" style="background: url( '{{anime.img }}' ); background-repeat: no-repeat; background-size: cover; opacity: 1;">
+            <!-- Set the banner background image -->
+        </div>
+        {% else %}
         <div class="banner" style="background: url( {{ url_for('static', filename='images/'+anime.img) }} ); background-repeat: no-repeat; background-size: cover; opacity: 1;">
             <!-- Set the banner background image -->
         </div>
+        {% endif %}
         <div class="banner-content-collapse container">
             <div class="img-placeholder shadow rounded">
+                {% if 'http://' in anime.img or 'https://' in anime.img%}
+                <img src="{{ anime.img }}" alt="Anime cover" class="banner-img rounded">
+                {% else %}
                 <img src="{{ url_for('static', filename='images/'+anime.img) }}" alt="Anime cover" class="banner-img rounded">
+                {% endif %}
                 {% if user.is_authenticated %}
                     {% if user.role.name == "Administrateur" %}
                     <div class="manage-icons bg-light rounded">

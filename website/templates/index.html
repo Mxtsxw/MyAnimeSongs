@@ -78,7 +78,11 @@
                   <div class="col">
                     <div class="card border-0 d.flex flex-column align-items-center">
                       {% if anime.img %}
-                      <img class="img-responsive rounded" src="{{ url_for('static', filename='images/'+anime.img) }}">
+                        {% if 'http://' in anime.img or 'https://' in anime.img%}
+                        <img src="{{ anime.img }}" alt="Anime cover" class="banner-img rounded">
+                        {% else %}
+                        <img src="{{ url_for('static', filename='images/'+anime.img) }}" alt="Anime cover" class="banner-img rounded">
+                        {% endif %}
                       {% else %}
                       <img class="img-responsive rounded" src="">
                       {% endif %}
