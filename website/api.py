@@ -16,14 +16,14 @@ def get_animes():
 
 # -- GET SPECIFIC ANIME --
 @app.route('/api/anime/<id>', methods=["GET"])
-def get_anime(id):
+def get_anime_route(id):
 
     anime = Anime.query.get(id)
     return anime_schema.jsonify(anime)
 
 # -- ADD ANIME -- 
 @app.route('/api/animes', methods=["POST"])
-def add_anime():
+def add_anime_route():
 
     name = request.json["name"]
     img = request.json["img"]
@@ -36,4 +36,18 @@ def add_anime():
 
 
 # -- UPDATE ANIME --
+@app.route('/api/anime/<id>', methods=["PUT"])
+def put_anime_route(id):
+
+    anime = get_anime(id)
+
+    name = request.json["name"]
+    img = request.json["img"]
+    text = request.json["text"]
+
+    edit_anime_from_api(name, img, text, anime)
+
+    db.session.commit()
+
+    return anime_schema.jsonify(anime)
 
