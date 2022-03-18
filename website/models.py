@@ -236,6 +236,13 @@ def edit_anime(img_url, text, anime):
 
     db.session.commit()
 
+def edit_anime_from_api(name, img_url, text, anime): 
+    anime.img = img_url
+    anime.text = text
+    anime.name = name
+
+    db.session.commit()
+
 def edit_user(email, password, userEdit):
     userEdit.email = email
     userEdit.password = password
