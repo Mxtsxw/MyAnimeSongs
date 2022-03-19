@@ -337,7 +337,7 @@ class AnimeSchema(ma.Schema):
 # Anime
 class SongSchema(ma.Schema):
     class Meta:
-        fields = ("id", "title", "relation", "interpreter", "ytb_url", "spoty_url", "anime_id", "anime")
+        fields = ("id", "title", "relation", "interpreter", "ytb_url", "spoty_url", "anime_id")
 
 # Init Schema
 anime_schema = AnimeSchema()

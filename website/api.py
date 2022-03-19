@@ -51,3 +51,10 @@ def put_anime_route(id):
 
     return anime_schema.jsonify(anime)
 
+# -- GET ALL SONGS --
+@app.route('/api/songs', methods=["GET"])
+def get_songs_route():
+    all_songs = get_songs()
+    result = songs_schema.dump(all_songs)
+
+    return songs_schema.jsonify(result)
