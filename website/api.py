@@ -41,6 +41,7 @@ def put_anime_route(id):
 
     anime = get_anime(id)
 
+    aId = request.json["id"]
     name = request.json["name"]
     img = request.json["img"]
     text = request.json["text"]
