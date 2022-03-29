@@ -59,3 +59,10 @@ def get_songs_route():
     result = songs_schema.dump(all_songs)
 
     return songs_schema.jsonify(result)
+
+# -- GET SPECIFIC SONG --
+@app.route('/api/song/<id>', methods=["GET"])
+def get_song_route(id):
+
+    song = get_song(id)
+    return song_schema.jsonify(song)
