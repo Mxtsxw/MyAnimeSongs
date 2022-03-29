@@ -52,6 +52,17 @@ def put_anime_route(id):
 
     return anime_schema.jsonify(anime)
 
+# -- DELETE ANIME --
+@app.route('/api/anime/<id>', methods=["DELETE"])
+def delete_anime_route(id):
+
+    anime = get_anime(id)
+
+    db.session.delete(anime)
+    db.session.commit()
+
+    return anime_schema.jsonify(anime)
+
 # -- GET ALL SONGS --
 @app.route('/api/songs', methods=["GET"])
 def get_songs_route():
