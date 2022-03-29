@@ -23,7 +23,7 @@ Une fois le server lancé en local, le site est accessible à l'url suivant :
 
 ## Lancement du projet (simple)
 
-Dans le cas où le projet a déjà été lancé, la suite d'instruction suivante suffit 
+Dans le cas où le projet a déjà été lancé, la suite d'instructions suivante suffit 
 
 ```
 source venv/bin/activate
@@ -35,15 +35,25 @@ flask run
 Dans le cas où les modules ne peuvent pas être installé automatiquement à l'aide du script, voici la liste des modules nécessaires.
 
 > pyyaml
+>
 > flask
+>
 > flask-dotenv
+>
 > flask-bootstrap5
+>
 > flask-sqlalchemy
+>
 > flask-wtf
+>
 > flask-login
+>
 > flask-marshmallow
+>
 > marshmallow-sqlalchemy
+>
 > flask-cors
+>
 > flask-dotenv
 
 *Pour plus de détails, se référer au fichier requirement.txt*
