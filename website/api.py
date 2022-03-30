@@ -30,7 +30,6 @@ def add_anime_route():
     text = request.json["text"]
 
     new_anime = create_anime_from_api(name, img, text)
-    print(new_anime)
 
     return anime_schema.jsonify(new_anime)
 
@@ -59,3 +58,8 @@ def get_songs_route():
     result = songs_schema.dump(all_songs)
 
     return songs_schema.jsonify(result)
+
+@app.route('/api/song/<id>', methods=["GET"])
+def get_song_route(id):
+    song = get_songs(id)
+
