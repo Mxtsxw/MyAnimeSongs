@@ -16,12 +16,22 @@ def get_animes_endpoint():
         page = int(request.args.get('page')) if request.args.get('page') is not None else 1
         limit = int(request.args.get('limit')) if request.args.get('limit') is not None else 15
     except ValueError:
-        return "Invalid arguments", 400
+        page = 1
+        limit = 15
 
     # Handling pagination
-    animes = get_animes_pagination(page, limit)
+    animes = get_animes_pagination(page, limit).items
 
-    result = animes_schema.dump(animes.items)
+    # Handling Anime sorting
+    order = request.args.get('order')
+    argument = request.args.get('filter') if request.args.get('filter') is not None else "id"
+    
+    if order == "desc":
+        sorter(animes, argument, True)
+    else: 
+        sorter(animes, argument, False)
+
+    result = animes_schema.dump(animes)
     return jsonify(result)
 
 
@@ -93,21 +103,10 @@ def get_song_endpoint(id):
     return song_schema.jsonify(song)
 
 
-
-
-# Filtering
-
-def filter(list, argument, sorted):
-    if sorted:
-        list.sort(key=lambda anime: anime.argument, reverse=True)
+# Sorting
+def sorter(list, argument, sorted):
+    print(argument)
+    if argument == "title":
+        list.sort(key=lambda anime: anime.name, reverse=sorted)
     else:
-        list.sort(key=lambda anime: anime.argument)
-
-
-
-# order = request.args.get('order')
-#     filter_arg = request.args.get('filter')
-
-#     if (order == "true"):
-#         try:
-#             filter(list, argument, True)
+        list.sort(key=lambda anime: anime.id, reverse=sorted)
