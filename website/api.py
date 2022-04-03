@@ -1,7 +1,8 @@
 from flask.app import Flask
 from website.models import *
-from .app import app
-from flask import request, jsonify
+from .app import app, mkpath
+import os.path
+from flask import request, jsonify, send_file
 
 
 # The part corresponding to the API
@@ -142,3 +143,9 @@ def sort_songs(songs, argument, ordered):
         songs.sort(key=lambda song: (song.anime_id, song.relation, song.title), reverse=ordered)
     else:
         songs.sort(key=lambda song: song.id, reverse=ordered)
+
+
+@app.route('/api/image/<name>')
+def get_image_endpoint(name):
+    filename = os.path.join(os.path.dirname(__file__)) + f"\static\images\{name}"
+    return send_file(filename, mimetype='image/jpeg')
