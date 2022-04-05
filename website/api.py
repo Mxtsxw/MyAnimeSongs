@@ -123,6 +123,17 @@ def get_song_endpoint(id):
     song = get_song(id)
     return song_schema.jsonify(song)
 
+# -- DELETE SONG --
+@app.route('/api/song/<id>', methods=["GET"])
+def delete_song_endpoint(id):
+
+    song = get_song(id)
+
+    db.session.delete(song)
+    db.session.commit()
+
+    return song_schema.jsonify(song)
+
 
 # Sorting Animes
 def sort_animes(animes, argument, ordered):
@@ -148,4 +159,7 @@ def sort_songs(songs, argument, ordered):
 @app.route('/api/image/<name>')
 def get_image_endpoint(name):
     filename = os.path.join(os.path.dirname(__file__)) + f"\static\images\{name}"
-    return send_file(filename, mimetype='image/jpeg')
+    try:
+        return send_file(filename, mimetype='image/jpeg')
+    except FileNotFoundError:
+        return "File not found", 404
