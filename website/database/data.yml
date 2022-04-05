@@ -214,14 +214,6 @@
   ytb_url: QAdvDmhE2fg
   spoty_url: https://open.spotify.com/embed/track/39lq5gU4lPc0rYVaRo0stH
 
-- anime: Rick Roll 
-  relation: OP1
-  img: https://c.tenor.com/x8v1oNUOmg4AAAAd/rickroll-roll.gif
-  title: Never Gonna Give You Up
-  interpreter: Rick Asthley 
-  ytb_url: https://www.youtube.com/watch?v=dQw4w9WgXcQ
-  spoty_url: https://open.spotify.com/embed/track/4cOdK2wGLETKBW3PvgPWqT
-
 - anime: Code Geass - Hangyaku no Lelouch
   relation: OP1
   img: codegeass01.jpg
@@ -437,6 +429,14 @@
   interpreter: Terashima Takuma
   ytb_url: VRICkugHDg8
   spoty_url: https://open.spotify.com/embed/track/1iQGkrB5dxJFfYN41BC9wJ
+
+- anime: Rick Roll 
+  relation: OP1
+  img: https://c.tenor.com/x8v1oNUOmg4AAAAd/rickroll-roll.gif
+  title: Never Gonna Give You Up
+  interpreter: Rick Asthley 
+  ytb_url: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+  spoty_url: https://open.spotify.com/embed/track/4cOdK2wGLETKBW3PvgPWqT
 
 - anime: Tokyo Revengers
   relation: OP1
