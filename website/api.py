@@ -103,6 +103,7 @@ def get_songs_endpoint():
     # Handling pagination & filters
     songs = get_song_by_filter(tag, page, limit).items
     songs.extend(Song.query.filter(Song.interpreter.like(f'%{tag}%')).paginate(page,limit).items)
+    songs = list(dict.fromkeys(songs))
     # songs.extend(Song.query.filter(Song.anime.name.like(f'%{tag}%')).paginate(page, limit).items)
 
     # Handling Songs sorting
