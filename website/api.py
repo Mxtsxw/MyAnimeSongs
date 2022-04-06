@@ -125,8 +125,26 @@ def get_song_endpoint(id):
     song = get_song(id)
     return song_schema.jsonify(song)
 
+# -- UPDATE SONG --
+@app.route('/api/song/<id>', methods=["PUT"])
+def put_anime_endpoint(id):
+
+    song = get_song(id)
+
+    title = request.json["title"]
+    interpreter = request.json["interpreter"]
+    relation = request.json["relation"]
+    youtube = request.json["img"]
+    spotify = request.json["text"]
+
+    edit_song(title, interpreter, relation, youtube, spotify, song)
+
+    db.session.commit()
+
+    return song_schema.jsonify(song)
+
 # -- DELETE SONG --
-@app.route('/api/song/<id>', methods=["GET"])
+@app.route('/api/song/<id>', methods=["DELETE"])
 def delete_song_endpoint(id):
 
     song = get_song(id)
