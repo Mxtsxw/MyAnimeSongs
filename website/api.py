@@ -2,7 +2,7 @@ from flask.app import Flask
 from website.models import *
 from .app import app, mkpath
 import os.path
-from flask import request, jsonify, send_file
+from flask import request, jsonify, send_file, Response
 
 
 # The part corresponding to the API
@@ -35,7 +35,13 @@ def get_animes_endpoint():
         sort_animes(animes, argument, False)
 
     result = animes_schema.dump(animes)
-    return jsonify(result)
+
+    # Calculate Links (useful for pagination)
+
+    # Create the response 
+    response = jsonify(result)
+    
+    return response
 
 
 
@@ -128,6 +134,23 @@ def get_songs_endpoint():
 def get_song_endpoint(id):
 
     song = get_song(id)
+    return song_schema.jsonify(song)
+
+# -- ADD ANIME -- 
+@app.route('/api/songs', methods=["POST"])
+def add_song_endpoint():
+
+    try:
+        title = request.json["title"]
+        interpreter = request.json["interpreter"]
+        relation = request.json["relation"]
+        youtube = request.json["ytb_url"]
+        spotify = request.json["spoty_url"]
+    except Exception:
+        return "Bad Request", 400
+
+    song = create_song(title, interpreter, relation, youtube, spotify)
+
     return song_schema.jsonify(song)
 
 # -- UPDATE SONG --
