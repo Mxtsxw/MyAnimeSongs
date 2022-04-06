@@ -210,7 +210,9 @@ def sort_songs(songs, argument, ordered):
 
 @app.route('/api/image/<name>')
 def get_image_endpoint(name):
-    filename = os.path.join(os.path.dirname(__file__)) + f"\static\images\{name}"
+    
+    filename = os.path.join(os.path.dirname(__file__)) + f"/static/images/{name}"
+    print(filename)
     try:
         return send_file(filename, mimetype='image/jpeg')
     except FileNotFoundError:
