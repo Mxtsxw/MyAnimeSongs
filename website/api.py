@@ -146,10 +146,11 @@ def add_song_endpoint():
         relation = request.json["relation"]
         youtube = request.json["ytb_url"]
         spotify = request.json["spoty_url"]
+        anime_id = request.json["anime_id"]
     except Exception:
         return "Bad Request", 400
 
-    song = create_song(title, interpreter, relation, youtube, spotify)
+    song = create_song(anime_id, title, interpreter, relation, youtube, spotify)
 
     return song_schema.jsonify(song)
 
