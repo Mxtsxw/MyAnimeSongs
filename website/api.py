@@ -127,7 +127,7 @@ def get_song_endpoint(id):
 
 # -- UPDATE SONG --
 @app.route('/api/song/<id>', methods=["PUT"])
-def put_anime_endpoint(id):
+def put_song_endpoint(id):
 
     song = get_song(id)
 
