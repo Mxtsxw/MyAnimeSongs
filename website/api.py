@@ -65,10 +65,14 @@ def put_anime_endpoint(id):
 
     anime = get_anime(id)
 
-    aId = request.json["id"]
-    name = request.json["name"]
-    img = request.json["img"]
-    text = request.json["text"]
+    try:
+        aId = request.json["id"]
+        name = request.json["name"]
+        img = request.json["img"]
+        text = request.json["text"]
+    except Exception:
+        return "Bad Request", 400
+
 
     edit_anime_from_api(name, img, text, anime)
 
@@ -132,11 +136,14 @@ def put_song_endpoint(id):
 
     song = get_song(id)
 
-    title = request.json["title"]
-    interpreter = request.json["interpreter"]
-    relation = request.json["relation"]
-    youtube = request.json["img"]
-    spotify = request.json["text"]
+    try:
+        title = request.json["title"]
+        interpreter = request.json["interpreter"]
+        relation = request.json["relation"]
+        youtube = request.json["ytb_url"]
+        spotify = request.json["spoty_url"]
+    except Exception:
+        return "Bad Request", 400
 
     edit_song(title, interpreter, relation, youtube, spotify, song)
 
