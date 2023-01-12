@@ -60,6 +60,12 @@ Dans le cas où les modules ne peuvent pas être installé automatiquement à l'
 
 ## API REST
 
+
+## Screenshots 
+
+![Screenshot 1](https://user-images.githubusercontent.com/85303770/212152681-6f8dd8ba-6d78-4d75-b261-fcc7d11a59c9.jpg)
+
+
 ## CRÉDITS
 
 Projet réalisé par **Matthieu RANDRIANTSOA**, Baptiste LAMBERT et François ZHU.
