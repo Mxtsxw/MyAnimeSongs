@@ -1,4 +1,3 @@
-import click
 import yaml
 from .app import app, db
 from .models import Anime, Song, Role, User, Status
@@ -9,8 +8,8 @@ def create_db():
     '''Create the tables and populates them with data.yml'''
 
     db.create_all()
-    songs = yaml.load(open("website/database/data.yml"), Loader = yaml.SafeLoader)
-    descriptions = yaml.load(open("website/database/desc.yml"), Loader = yaml.SafeLoader)
+    songs = yaml.load(open("website/database/data.yml", encoding="utf-8"), Loader = yaml.SafeLoader)
+    descriptions = yaml.load(open("website/database/desc.yml", encoding="utf-8"), Loader = yaml.SafeLoader)
     
     animes = dict()
     
