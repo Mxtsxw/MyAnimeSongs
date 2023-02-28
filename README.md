@@ -53,6 +53,9 @@ Dans le cas où les modules ne peuvent pas être installé automatiquement à l'
 Nous mettons à disposition une API pour intéragir avec l'application. 
 Les requêtes prennent la forme suivante : `api/[ressource]/<id>`
 
+Voici une liste des endpoints disponibles :
+![Endpoints POSTMAN](https://user-images.githubusercontent.com/85303770/221856304-66c13f28-3e2c-4a47-b987-cb5c8efe933a.png)
+
 Pour plus d'information le code source est disponible dans le projet [api.py](https://github.com/Mxtsxw/MyAnimeSongs/blob/main/website/api.py).
 
 
