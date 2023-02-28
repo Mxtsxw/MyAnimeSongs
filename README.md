@@ -50,6 +50,11 @@ Dans le cas où les modules ne peuvent pas être installé automatiquement à l'
 
 ## API REST
 
+Nous mettons à disposition une API pour intéragir avec l'application. 
+Les requêtes prennent la forme suivante : `api/[ressource]/<id>`
+
+Pour plus d'information le code source est disponible dans le projet [api.py](https://github.com/Mxtsxw/MyAnimeSongs/blob/main/website/api.py).
+
 
 ## Screenshots 
 
